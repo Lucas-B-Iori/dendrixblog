@@ -1,79 +1,110 @@
-# DESIGN.md — Direção Visual Preliminar, Princípios e Territórios
+# DESIGN.md — Sistema Visual e Direção Estética (Validado Pós-Grill-Me)
 
-> **Status:** Documento Preliminar de Pesquisa (Etapa 2)  
-> **Nota de Governança:** Este documento NÃO define a identidade visual definitiva nem escolhe cores ou tipografias de forma arbitrária. Ele registra os princípios aprendidos, referências visuais de benchmark, restrições ergonômicas e os **4 Territórios Conceituais de Hero** para validação na sessão com a skill `grill-me`.
+> **Status:** Documento Definitivo de Arquitetura Visual (Etapa 2 — Pós-Sabatina)  
+> **Conformidade:** Alinhado com as decisões **DEC-013**, **DEC-017** e **DEC-019** do projeto.
 
 ---
 
-## 1. Princípios de Design Descobertos na Pesquisa
+## 1. Princípios Visuais Inegociáveis
 
 1. **A Interface Real é a Identidade Visual Primária:**
-   - O maior ativo estético do Dendrix é o seu próprio software. A beleza da landing page deve emergir da clareza da tipografia, da precisão dos cards de processo, da linha do tempo dos autos e da elegância do editor de redação.
+   - O maior ativo estético do Dendrix é o seu próprio software. A beleza da landing page emerge da clareza da tipografia, da precisão dos cards de processo, da linha do tempo dos autos e da elegância do editor de redação.
 2. **Gravidade Institucional sem Peso Burocrático:**
-   - O advogado precisa sentir que o Dendrix tem a solidez e a seriedade de uma instituição centenária (como os grandes escritórios Mattos Filho / TozziniFreire), combinada com a velocidade, fluidez e inteligência de um software de ponta (Linear / Attio).
-3. **Calma Óptica e Baixa Fricção Cognitiva:**
-   - Advogados trabalham sob constante estresse de prazos. O site do Dendrix deve ser um oásis de serenidade visual: fundos limpos, respiração generosa, contrastes suaves mas nítidos, evitando poluição de cores neon, popups agressivos e animações circenses.
-4. **Física e Motion com Propósito Funcional:**
-   - Qualquer animação deve demonstrar uma transição real do software: o PDF sendo lido, o prazo sendo recalculado, a petição sendo redigida em streaming bloco a bloco. Zero animações puramente cosméticas.
-5. **Mobile-First Realista:**
-   - O advogado frequentemente acessa o site entre uma audiência e outra pelo celular. O layout mobile não pode ser um "desktop esmagado"; deve apresentar cards compactos, tipografia dimensionada com precisão e CTAs táteis acessíveis ao polegar.
+   - O advogado precisa sentir que o Dendrix tem a solidez e o prestígio de uma grande banca jurídica tradicional (Mattos Filho, Pinheiro Neto), combinada com a precisão, velocidade e inteligência de software moderno (Linear, Harvey).
+3. **Anti-Slop Radical:**
+   - Rejeição absoluta a gradientes neon roxo/ciano de IA, bento grids decorativos sem hierarquia, ícones flutuantes soltos no espaço e ilustrações 3D infantis estilo startup de rede social.
+4. **Calma Óptica e Foco em Leitura Documental:**
+   - Advogados leem centenas de páginas por dia. O site deve proporcionar conforto visual absoluto, com contraste calibrado (WCAG 2.1 AA mínimo 4.5:1), respiração generosa de margens e ritmo tipográfico impecável.
+5. **Motion com Propósito Funcional Estrito:**
+   - Todo movimento no site comunica uma transformação de estado do produto: a página do PDF sendo processada, a citação vinculando-se à minuta, o texto sendo digitado em streaming no editor. Zero animações circenses.
 
 ---
 
-## 2. Hipóteses e Restrições Técnicas
+## 2. Sistema Tipográfico: "Híbrido Editorial de Prestígio"
 
-### Hipóteses Visuais em Avaliação:
-- **Hipótese A (Tipografia Híbrida):** Utilizar uma fonte serifada editorial refinada (estilo *Newsreader*, *Playfair* ou *Merriweather*) para títulos conceituais de destaque, combinada com uma sans-serif neutra de alta densidade técnica (como *Inter* ou *Plus Jakarta Sans*) para a interface e textos corridos.
-- **Hipótese B (Tema Claro vs. Tema Escuro):** Priorizar uma base predominantemente clara (*light mode* sofisticado com tons off-white/marfim e cinza carvão) na maior parte do site para transmitir transparência e legibilidade documental, utilizando seções escuras com moderação apenas para destacar a tecnologia da Mesa Jurídica.
-- **Hipótese C (Demonstração Interativa):** Permitir que o usuário clique em abas ou botões simulados na própria landing page para ver o "Raio-X de Provas" revelando a citação da página sem precisar fazer login.
+A tipografia reflete a dualidade do produto: **autoridade jurídica** nos títulos e **precisão cirúrgica** na interface e leitura.
 
-### Restrições Técnicas Rígidas:
-- **Performance:** Respeitar integralmente o Core Web Vitals (LCP < 2.5s, CLS < 0.1, INP < 200ms).
-- **Acessibilidade:** Conformidade WCAG 2.1 AA (contraste mínimo de cor de 4.5:1 em todos os textos).
-- **Redução de Movimento:** Respeitar a preferência de sistema `prefers-reduced-motion: reduce`, desativando animações complexas para usuários sensíveis.
+### Títulos e Concepção de Marca: Serifa Contemporânea de Autoridade
+- **Família:** `Newsreader` ou `Playfair Display` (serifa moderna de proporções generosas, elegantes e de alta sobriedade).
+- **Uso:** H1 do Hero, H2 das seções principais, frases de posicionamento e manifestos.
+- **Sensação:** Editorial, prestígio institucional, livro jurídico de referência, The Economist.
 
----
+### Corpo de Texto, Interface e Dados: Sans-Serif Técnica e Precisa
+- **Família:** `Inter` ou `Plus Jakarta Sans` (geométrica humanista, nítida em qualquer densidade).
+- **Uso:** Subheadlines, parágrafos explicativos, botões, cards de processo, menus e formulários.
+- **Sensação:** Software de alta engenharia, legibilidade imediata, transparência operacional.
 
-## 3. Os 4 Territórios Conceituais de Hero
-
-Nenhum hero foi escolhido definitivamente. A pesquisa estruturou **4 territórios conceituais**, cada um explorando uma faceta diferente do posicionamento do produto:
-
----
-
-### Território 1: "O Caso Inteiro Conectado" (Foco em Contexto e Fim dos Silos)
-- **Tese Central:** O problema do advogado não é a falta de software, é ter que explicar o mesmo caso para cinco ferramentas diferentes. O Dendrix é o ambiente onde o cliente, os autos, a linha do tempo e a IA já vivem juntos.
-- **Headline Conceitual Provisória:**  
-  *“Antes da peça, existe um caso inteiro. O CRM jurídico que conecta seus autos, prazos e clientes ao mesmo raciocínio.”*
-- **Visual do Hero:**  
-  Uma composição central cinematográfica mostrando um processo real se expandindo: de um lado o contato do WhatsApp e a timeline; do outro, a folha de autos com a IA destacando a prova e a petição sendo redigida.
-- **Vibe:** Arquitetura de software de alta precisão, ordem, sincronia e visão sistêmica.
+### Metadados, Citações de Folhas e Números: Monospaçada Discreta
+- **Família:** `Geist Mono` ou `JetBrains Mono`.
+- **Uso:** Número de processo CNJ (`0012345-67.2024.8.26.0100`), tags de citação (`[Fls. 47 - Contestação]`), contadores de prazo (`48h 12m`).
 
 ---
 
-### Território 2: "Do Caos ao Controle de Prazos" (Foco em Alívio Emocional e Risco Zero)
-- **Tese Central:** Ataca diretamente a maior fonte de pesadelo e ansiedade do advogado: o prazo fatal descoberto tarde demais e a desorganização de rotina.
-- **Headline Conceitual Provisória:**  
-  *“Chega de trabalhar no susto. Prazos sob controle absoluto e inteligência que lê seus autos antes de protocolar.”*
-- **Visual do Hero:**  
-  Destaque para o widget de contagem regressiva de prazos do Dendrix (com alertas visuais impecáveis) integrado a uma visão limpa de agenda e um conferidor marcando "Nenhum erro encontrado no processo".
-- **Vibe:** Tranquilidade, alívio, confiança imediata e proteção contra o erro humano.
+## 3. Paleta de Cores Oficial (Tema Claro Dominante)
+
+O meio jurídico brasileiro responde com alta confiança a ambientes claros, limpos e sóbrios que remetem a papel nobre e ambientes corporativos de alto padrão.
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                        SISTEMA DE CORES DENDRIX                        │
+├──────────────────┬──────────────────────┬──────────────────────────────┤
+│ Nome da Cor      │ Hex / Token          │ Aplicação                    │
+├──────────────────┼──────────────────────┼──────────────────────────────┤
+│ Papel Alvo       │ #FFFFFF              │ Fundo de cards e modais      │
+│ Marfim Suave     │ #FBFBFA / #F8F9FA    │ Fundo principal do site      │
+│ Borda Neutra     │ #E5E7EB / #E2E8F0    │ Linhas divisórias e cards    │
+│ Carvão Profundo  │ #0B0F17 / #0F172A    │ Títulos e textos de alto Ctr │
+│ Grafite Neutro   │ #475569 / #64748B    │ Subheadlines e corpo         │
+│ Azul Marinho Inst│ #0F2B48 / #1E3A8A    │ Acento primário, botões, badges│
+│ Âmbar Alerta     │ #D97706 / #B45309    │ Prazos e urgências forenses  │
+│ Verde Esmeralda  │ #059669 / #047857    │ Provas conferidas e status OK│
+└──────────────────┴──────────────────────┴──────────────────────────────┘
+```
 
 ---
 
-### Território 3: "O Estagiário Sênior Ultra-Organizado" (Foco em Mesa Jurídica e Raio-X)
-- **Tese Central:** A IA não substitui o advogado; ela faz o trabalho hercúleo e tedioso de ler centenas de páginas de autos, cruzar contradições e entregar o mapa do caso pronto para o advogado decidir.
-- **Headline Conceitual Provisória:**  
-  *“Transforme 300 páginas de autos em um mapa claro do caso em minutos. A IA apoia. O advogado decide.”*
-- **Visual do Hero:**  
-  Uma interface interativa em tela dividida: à esquerda, o PDF do processo judicial aberto com uma tarja na `Página 42`; à direita, o Raio-X do Dendrix apontando: *"Contradição detectada entre a petição inicial e a contestação da ré"*.
-- **Vibe:** Inteligência analítica cirúrgica, rigor documental e empoderamento do profissional.
+## 4. O Hero Dominante: Split-Screen Dinâmico do "Fluxo Completo do Caso"
+
+Conforme a decisão **DEC-013**, o Hero abandona abstrações e exibe o software em ação no primeiro viewport:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│ [BARRA SUPERIOR]: Logo Dendrix | Recursos | Calculadora | Segurança | Blog     │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│   TAG EDITORIAL: O CRM Jurídico com Inteligência Real de Caso                  │
+│                                                                                 │
+│   H1 (SERIFA): Antes da peça, existe um caso inteiro.                          │
+│                O Dendrix organiza. A IA apoia. Você decide.                     │
+│                                                                                 │
+│   SUB (SANS):  Conecte seus autos em PDF, prazos e clientes ao mesmo            │
+│                raciocínio. Veja a IA ler o processo e redigir a peça           │
+│                fundamentada em minutos — com citação exata de página.          │
+│                                                                                 │
+│   [ CTA: Agendar Demonstração Prática (15 min) ]  [ Ver Como Funciona (Âncora) ]│
+│   Microcopy: Demonstração ao vivo com um processo da sua banca • Sem compromisso│
+│                                                                                 │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│   PROVA VISUAL HERO: SPLIT-SCREEN DINÂMICO                                      │
+│                                                                                 │
+│   ┌───────────────────────────┐  CONEXÃO   ┌───────────────────────────────┐   │
+│   │ AUTOS EM PDF (FLS. 47)    │ ─────────> │ REDATOR JURÍDICO EM STREAMING │   │
+│   │                           │    CRM     │                               │   │
+│   │ [Grifo em amarelo suave]: │  Contexto  │ "Em face dos fatos narrados às│   │
+│   │ '...a ré não entregou o   │  Cliente:  │ fls. 47, resta incontroverso  │   │
+│   │ laudo no prazo fixado...' │ João Silva │ o descumprimento contratual..."│   │
+│   │                           │  Proc. CNJ │                               │   │
+│   │ Tag: [Pág. 47 - Réplica]  │ 1002341-.. │ Badges: [Fls. 47] [Contrato]  │   │
+│   └───────────────────────────┘            └───────────────────────────────┘   │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
-### Território 4: "O Redator com Memória do Caso" (Foco em Produção Jurídica sem Página em Branco)
-- **Tese Central:** O ChatGPT cospe generalidades porque não conhece o processo. O Dendrix redige a peça junto com você, puxando os fatos, as partes e os pedidos que já estão na ficha do caso.
-- **Headline Conceitual Provisória:**  
-  *“Escreva peças de alto nível em minutos. Sem folha em branco, sem copiar e colar e sem prompts infinitos.”*
-- **Visual do Hero:**  
-  O editor rico do Dendrix (Tiptap) gerando uma petição trabalhista ou cível em streaming, enquanto as variáveis do cliente e do processo são preenchidas dinamicamente ao lado com indicação de fontes.
-- **Vibe:** Produtividade fluida, artesanato textual e velocidade com segurança.
+## 5. Diretrizes de Mobile
+
+- **Empilhamento Fluido:** O Split-Screen do Hero se transforma em uma visualização sequencial intuitiva: primeiro o trecho do PDF dos autos com o grifo, seguido de um conector sutil e o trecho gerado pelo Redator.
+- **Thumb Zone:** Botão de agendamento sempre visível ou acessível com um toque, com suporte nativo a abertura de conversa no WhatsApp como canal rápido.
+- **Performance Mobile:** Zero layout shifts (CLS = 0), fontes carregadas com `display: swap`, imagens e mockups comprimidos em formato `.webp` e `.svg`.

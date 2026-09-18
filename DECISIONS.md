@@ -27,10 +27,23 @@
 
 ---
 
-## 3. Hipóteses em Aberto (NÃO são decisões ainda)
+| **DEC-010** | 18/09/2026 | **Escopo Real e Maturidade do Produto** | O produto no `dendrix.app.br` está 100% completo e operacional: CRM de ponta a ponta, Mesa Jurídica (leitura de autos), Assistente Geral de IA treinado no direito brasileiro, Projetos Jurídicos, Acompanhamento automático de publicações com IA, Assistente do Caso e Redator treinado em peças ouro em 2 cliques. | ✅ Definitivo |
+| **DEC-011** | 18/09/2026 | **Wedge de Aquisição (Cavalo de Troia)** | O cavalo de troia de aquisição é o **'Fluxo Completo do Caso'**: o advogado é fisgado pela dor aguda do tempo lendo autos pesados e redigindo peças com lentidão, e provamos que a IA redige e lê com precisão porque tem o contexto do CRM já conectado. | ✅ Definitivo |
+| **DEC-012** | 18/09/2026 | **Mecânica de Conversão e Funil Primário** | O modelo de aquisição é **100% Venda Consultiva / Demonstração Guiada**. A conversão primária é o agendamento de demonstração prática (15 min) via Cal.com integrado + mini-formulário para capturar Nome, WhatsApp e Tamanho do Escritório (garantindo qualificação e contato direto). | ✅ Definitivo |
+| **DEC-013** | 18/09/2026 | **Prova Visual Dominante no Hero** | A dobra principal (Hero) utilizará um **Split-Screen Dinâmico da Interface Real**: Autos em PDF com página exata grifada à esquerda -> metadados do caso -> Redator gerando a petição em streaming com badges contextuais à direita, provando o loop em 3 segundos. | ✅ Definitivo |
+| **DEC-014** | 18/09/2026 | **Estratégia de Preços no Site** | Não haverá tabela fria de preços estática no lançamento. O site contará com uma **Calculadora Interativa de Economia de Horas / ROI**: o advogado insere número de processos e tamanho da banca, vê o ganho de tempo e clica para agendar a demonstração daquele plano. | ✅ Definitivo |
+| **DEC-015** | 18/09/2026 | **Governança de Prova Social e Confiança** | A credibilidade será fundamentada em **Prova Técnica Radical do Produto + Caso Real Desidentificado**. Fica estritamente proibido o uso de depoimentos fictícios ou métricas falsas. A prova é sustentada por telas reais, um processo real anonimizado e transparência total de infraestrutura/LGPD. | ✅ Definitivo |
+| **DEC-016** | 18/09/2026 | **Escopo Técnico de Claims e Infraestrutura** | Publicações com cobertura ampla nacional via OAB/diários oficiais; leitura OCR para autos escaneados e nativos; dados em infraestrutura segura com Supabase em São Paulo; consumo de LLM via APIs privadas sem retenção de dados para treinamento de modelos. | ✅ Definitivo |
+| **DEC-017** | 18/09/2026 | **Identidade Visual e Tipografia** | Padrão visual **'Híbrido Editorial de Prestígio'**: títulos com serifa contemporânea de autoridade jurídica, corpo e interface com sans-serif técnica nítida. Tema predominantemente claro (Light Theme refinado) com alto contraste, papel off-white, carvão profundo e azul marinho institucional. | ✅ Definitivo |
+| **DEC-018** | 18/09/2026 | **Arquitetura de Páginas da V1** | Escopo de lançamento: **Home Long-form Completa de Alta Conversão** (narrativa imersiva com navegação por âncoras) + `/demonstracao` (agendamento dedicado com Cal.com) + `/seguranca` (LGPD e infraestrutura) + `/blog` (arquitetura estática para SEO). | ✅ Definitivo |
+| **DEC-019** | 18/09/2026 | **Tom de Voz da Marca** | **'Pragmático Forense de Alta Autoridade'**: profissional, direto, respeitoso, sem gírias de startup infantilizadas e sem juridiquês arcaico pedante. Fala a linguagem da rotina do fórum e do advogado que decide. | ✅ Definitivo |
 
-As seguintes questões permanecem como hipóteses a serem validadas na próxima etapa:
-- *Qual dos 4 territórios de hero será o escolhido como direção primária.*
-- *Modelo de aquisição final da landing: Teste Grátis Self-Service (7 ou 10 dias) vs. Demonstração Comercial guiada.*
-- *Padrão tipográfico final (uso de serifas clássicas no título vs. sans-serif total moderna).*
-- *Estrutura de precificação pública no site vs. contato sob demanda.*
+---
+
+## 3. Registro de Hipóteses Resolvidas na Sabatina (Grill-Me)
+
+Todas as 4 hipóteses preliminares levantadas na Etapa 2 foram resolvidas e convalidadas como decisões definitivas (DEC-010 a DEC-019) durante a sessão interativa de grill-me:
+- *Território de Hero:* Resolvido pelo Split-Screen Dinâmico do Fluxo Completo do Caso (DEC-013).
+- *Modelo de Aquisição:* Resolvido por 100% Venda Consultiva / Demonstração com Cal.com + mini formulário (DEC-012).
+- *Padrão Tipográfico e Tema:* Resolvido pelo Híbrido Editorial de Prestígio em tema claro dominante (DEC-017).
+- *Precificação no Site:* Resolvido pela Calculadora Interativa de Economia de Horas / ROI (DEC-014).

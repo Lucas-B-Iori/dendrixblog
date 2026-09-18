@@ -50,70 +50,47 @@ No Dendrix, o trabalho jurídico e o contexto já vivem no mesmo ecossistema. A 
 
 ---
 
-## 3. Classificação de Funcionalidades
+## 3. Classificação de Funcionalidades (Atualizada Pós-Grill-Me)
 
-### Categoria 1: VERIFIED (Confirmadas no Produto / Base Técnica)
-*Funcionalidades implementadas, presentes no código-fonte ou em fase de produção ativa no ecossistema Dendrix:*
+### Categoria 1: VERIFIED (100% Confirmadas e Operacionais em dendrix.app.br)
+*Funcionalidades totalmente operacionais e disponíveis no produto:*
 
-1. **Gestão de Prazos Operacionais:**
-   - Visualização com contagem regressiva em dias/horas.
-   - Alertas visuais de proximidade e vencimento.
-   - Distinção entre prazo fatal e audiência.
-   - Vínculo direto e bidirecional com a entidade Processo.
-   - Widget de controle no Dashboard ("Prazos vencendo esta semana").
-2. **Ficha Estruturada do Processo:**
-   - Cadastro detalhado: Número do processo (padrão CNJ), Vara / Comarca, Parte Contrária, Valor da Causa, Fase Processual, Área do Direito.
-   - Visualização centralizada de andamentos em timeline.
-3. **Gestão de Clientes e Relacionamento:**
-   - Cadastro de contatos e pessoas vinculadas ao processo.
-   - Integração nativa com WhatsApp e secretária virtual de atendimento.
-   - Histórico de interações registrado no contexto do cliente.
-4. **Financeiro e Gestão de Honorários:**
-   - Módulo de honorários com divisão: Contratual, Êxito (%), Consultivo/Mensal.
-   - Visão de valores faturados, a receber e divisão por área de atuação.
-5. **Estrutura de Documentos e Editor Rico:**
-   - Editor de texto embutido (Tiptap / Web Doc Editor) para confecção colaborativa de textos.
-   - Infraestrutura de upload e armazenamento de PDFs (Supabase Storage SP).
-   - Extração determinística de textos via `pdfjs-dist` com preservação precisa de página de referência.
-6. **Infraestrutura de Processamento Assíncrono:**
-   - Orquestração de jobs em background (Inngest) e controle estrito de teto de custos de LLM (`budget guardrails`).
-
----
-
-### Categoria 2: NEEDS VERIFICATION (Em Desenvolvimento / Roteiro Ativo)
-*Funcionalidades concebidas e documentadas no planejamento técnico da Mesa Jurídica / Redator, que precisam de confirmação sobre estágio de liberação comercial:*
-
-1. **Mesa Jurídica — Mapa do Processo (Leitura de Autos):**
-   - Extração automática de partes, pedidos, decisões interlocutórias, cronologia e pendências com link para a página dos autos.
-   - Exportação automática do relatório gerado em Word (.docx) e PDF.
-2. **OCR para Autos Escaneados:**
-   - Pipeline de OCR (Tesseract / Visão LLM) para digitalizações legadas do interior onde não há camada de texto nativa.
-3. **Raio-X de Provas e Contradições:**
-   - Cruzamento automatizado: fato alegado na inicial vs. contestação vs. prova documental vs. depoimentos, apontando lacunas.
-4. **Conferidor Pré-Protocolo:**
-   - Validador híbrido: regras determinísticas (CPF/CNPJ inválido, datas incompatíveis, tags `[XXX]`, documentos citados e não anexados) + análise semântica de pedidos não fundamentados nos fatos.
-5. **Redator Jurídico em Streaming por Seção:**
-   - Geração de petições estruturadas (endereçamento, qualificação, fatos, direito, pedidos) diretamente no editor, puxando as variáveis do caso sem que o advogado copie e cole.
-6. **Perguntar aos Autos (RAG Contextual):**
-   - Busca semântica nos autos com pgvector com exigência de citação exata de página ("onde está o comprovante de residência?").
-7. **Pesquisa Jurisprudencial nos Tribunais Superiores (STF/STJ):**
-   - Motor de busca integrado e comparador de julgados.
+1. **CRM e Gestão Operacional de Ponta a Ponta:**
+   - Gestão de Prazos com contagem regressiva em tempo real e distinção prazo vs. audiência.
+   - Ficha Estruturada do Processo (CNJ, comarca, partes, valor da causa, fases, timeline de andamentos).
+   - Gestão de Clientes e Relacionamento (contatos, partes vinculadas, histórico de interações).
+   - Módulo Financeiro e Gestão de Honorários (contratual, êxito, consultivo, faturamento).
+   - Módulo de Projetos Jurídicos (contratos, ONGs, associações, estruturação extrajudicial).
+2. **Acompanhamento Automático de Publicações com IA:**
+   - Cobertura nacional integrada via OAB e Diários Oficiais (DJEN e Diários de Justiça estaduais/federais).
+   - Inteligência Artificial que lê a publicação e sugere proativamente o próximo passo processual e prazo cabível.
+3. **Mesa Jurídica (Raio-X e Leitura Analítica de Autos):**
+   - Upload de autos judiciais em PDF com processamento de texto nativo e OCR para peças escaneadas (até ~300 páginas).
+   - Extração automática de partes, cronologia, pedidos e decisões interlocutórias.
+   - Grounding visual absoluto: toda constatação cita expressamente a página do PDF (ex: `[Pág. 47 - Contestação]`).
+   - Mapeamento de fatos, teses e contradições entre petições e documentos.
+4. **Assistente Geral de IA:**
+   - Copiloto inteligente treinado na legislação, doutrina e jurisprudência brasileira.
+   - Respostas fundamentadas com linguagem técnica jurídica precisa.
+5. **Assistente do Caso (Estratégico Contextual):**
+   - IA contextual ancorada na Ficha do Processo específico: responde dúvidas sobre a prova dos autos, sugere estratégias processuais e analisa pontos fracos da parte contrária sem necessidade de repassar o contexto.
+6. **Redator Jurídico em 2 Cliques (Treinado em Peças Ouro):**
+   - Geração de minutas completas fundamentadas a partir dos dados do CRM e dos autos lidos.
+   - Treinamento refinado em banco de "peças ouro" de alta técnica processual.
+   - Editor rico em tempo real (Tiptap) para revisão humana antes do protocolo.
+7. **Infraestrutura e Segurança de Nível Corporativo:**
+   - Banco de dados isolado e seguro no Supabase em São Paulo (AWS sa-east-1).
+   - Consumo de modelos de fronteira via APIs corporativas privadas com garantia formal de **zero retenção de dados para treinamento de modelos públicos**.
+   - Criptografia em repouso e em trânsito (AES-256 e TLS 1.3).
 
 ---
 
-### Categoria 3: OPPORTUNITY (Identificadas no Mercado / Não Implementadas)
-*Funcionalidades populares em concorrentes ou identificadas na pesquisa que NÃO estão evidenciadas no produto e NÃO devem ser prometidas:*
-
-1. **Varredura Automática de Todos os Diários de Justiça Eletrônicos (DJEs) Nacionais:**
-   - Concorrentes antigos (ADVBOX, Projuris, Astrea) possuem robôs de busca de publicações por nome/OAB em todos os diários oficiais. No Dendrix, o foco inicial é o contexto dos autos e o CRM; a cobertura massiva de diários requer verificação ou integração parceira.
-2. **Protocolo Eletrônico Automático Direto nos Tribunais (PJe, e-SAJ, Projudi):**
-   - Envio de petições com certificado digital em lote diretamente para as plataformas dos tribunais sem abrir o navegador do tribunal.
-3. **Assinatura Eletrônica Própria de Contratos via WhatsApp:**
-   - Assinatura com validade jurídica integrada (estilo DocuSign/Clicksign embutido no chat).
-4. **Portal Exclusivo do Cliente Final (App do Cliente):**
-   - Área do cliente com login para acompanhar o andamento processual sem acionar o advogado.
-5. **Calculadora Trabalhista / Previdenciária de Liquidação Complexa:**
-   - Cálculos profundos com atualização monetária e índices de correção homologados.
+### Categoria 2: OPPORTUNITY (Não prometidas nem anunciadas no lançamento)
+*Funcionalidades de expansão futura que NÃO fazem parte da promessa da V1:*
+1. Protocolo eletrônico automatizado via certificado digital A1/A3 direto no tribunal (sem passar pelo portal oficial).
+2. Assinatura eletrônica proprietária de procurações embutida no chat de WhatsApp.
+3. Portal do cliente final com aplicativo móvel próprio.
+4. Calculadoras judiciais de liquidação trabalhista complexa com índices de correção homologados.
 
 ---
 
