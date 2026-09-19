@@ -29,12 +29,13 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { label: "Recursos", href: "#recursos" },
-    { label: "Cockpit", href: "#cockpit" },
-    { label: "Como Funciona", href: "#como-funciona" },
-    { label: "Especialidades", href: "#especialidades" },
-    { label: "Segurança", href: "#seguranca" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Recursos", href: "/#recursos" },
+    { label: "Cockpit", href: "/#cockpit" },
+    { label: "Como Funciona", href: "/#como-funciona" },
+    { label: "Especialidades", href: "/#especialidades" },
+    { label: "Segurança", href: "/#seguranca" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "Blog", href: "/blog" },
   ];
 
   return (
