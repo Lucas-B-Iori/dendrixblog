@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { HeroSplitScreen } from "./HeroSplitScreen";
 import { ArrowRight, Sparkles } from "lucide-react";
@@ -7,16 +5,8 @@ import { OpenDemoButton } from "@/components/cta/OpenDemoButton";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { ContainerScroll3D } from "@/components/motion/ContainerScroll3D";
 import { RollingCounter } from "@/components/motion/RollingCounter";
-import {
-  HeroDynamicHeadline,
-  HeroDynamicController,
-  useHeroDynamicCycle,
-} from "./HeroDynamicText";
 
 export function HeroSection() {
-  const { activeIndex, selectSlide, progress, isPaused, pause, resume } =
-    useHeroDynamicCycle();
-
   return (
     <SectionWrapper
       id="hero"
@@ -35,18 +25,20 @@ export function HeroSection() {
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10 w-full py-6">
-        {/* Coluna Esquerda: Texto Oficial com Revelação Dinâmica (Skiper 6) */}
-        <div className="lg:col-span-5 space-y-5 sm:space-y-6 text-left">
+        {/* Coluna Esquerda: Texto Oficial Travado com Destaque de Origem */}
+        <div className="lg:col-span-5 space-y-6 sm:space-y-7 text-left">
           {/* Eyebrow Institucional */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-600 dark:text-emerald-400 text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider shadow-[0_0_12px_rgba(16,185,129,0.15)]">
             <Sparkles className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400 animate-pulse" />
             <span>CRM Jurídico com Inteligência Contextual</span>
           </div>
 
-          {/* H1 com Rotação Cinética Inspirada no Skiper 6 (V5.1) */}
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-[3.15rem] font-medium leading-[1.14] tracking-[-0.03em] text-slate-900 dark:text-white text-balance min-h-[90px] sm:min-h-[110px]">
+          {/* H1 Oficial com 'a origem das informações' em destaque estético */}
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-[3.25rem] font-medium leading-[1.12] tracking-[-0.03em] text-slate-900 dark:text-white text-balance">
             Dos autos à minuta, com{" "}
-            <HeroDynamicHeadline activeIndex={activeIndex} />{" "}
+            <span className="font-serif italic text-emerald-600 dark:text-emerald-400 underline decoration-emerald-500/40 decoration-wavy decoration-1 underline-offset-4">
+              a origem das informações
+            </span>{" "}
             sempre visível.
           </h1>
 
@@ -55,18 +47,8 @@ export function HeroSection() {
             O Dendrix conecta o contexto do processo à leitura dos autos em PDF, identifica fatos e contradições com referência às páginas e auxilia na redação da peça no mesmo ambiente.
           </p>
 
-          {/* Controlador Interativo de Pílulas com Auto-Ciclo (Skiper 6 Dynamic Ticker) */}
-          <HeroDynamicController
-            activeIndex={activeIndex}
-            onSelect={selectSlide}
-            progress={progress}
-            isPaused={isPaused}
-            onMouseEnter={pause}
-            onMouseLeave={resume}
-          />
-
           {/* Action CTAs */}
-          <div className="space-y-3.5 pt-2">
+          <div className="space-y-3.5 pt-1">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <OpenDemoButton className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white bg-gradient-to-r from-[#0F2B48] to-[#0A3D62] hover:from-[#143D66] hover:to-[#0D4B78] border border-white/10 rounded-xl transition-all shadow-[0_0_25px_rgba(15,43,72,0.6)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer focus-ring text-center">
                 <span>Agendar demonstração prática</span>
