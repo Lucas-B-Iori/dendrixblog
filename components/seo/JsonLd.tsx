@@ -22,19 +22,8 @@ export function JsonLd() {
     name: "Dendrix CRM",
     operatingSystem: "Web Browser",
     applicationCategory: "BusinessApplication",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "BRL",
-      description: "Demonstração prática guiada de 15 minutos",
-    },
     description:
       "Software jurídico que conecta o contexto do processo à leitura dos autos em PDF com citação de páginas e redação assistida no mesmo ambiente.",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "24",
-    },
   };
 
   const faqSchema = {

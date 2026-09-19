@@ -53,11 +53,6 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#calculadora" className="hover:text-white transition-colors">
-                  Calculadora de Tempo
-                </a>
-              </li>
-              <li>
                 <a href="#seguranca" className="hover:text-white transition-colors">
                   Segurança & LGPD
                 </a>

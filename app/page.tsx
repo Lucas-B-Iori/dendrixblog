@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { CaosSection } from "@/components/sections/CaosSection";
@@ -15,21 +12,15 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { ClosingCtaSection } from "@/components/sections/ClosingCtaSection";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileBar } from "@/components/layout/StickyMobileBar";
-import { DemoModal } from "@/components/modals/DemoModal";
 
 export default function HomePage() {
-  const [isDemoOpen, setIsDemoOpen] = useState(false);
-
-  const handleOpenDemo = () => setIsDemoOpen(true);
-  const handleCloseDemo = () => setIsDemoOpen(false);
-
   return (
     <div className="flex min-h-screen flex-col bg-[var(--surface-canvas)] text-[var(--text-primary)]">
-      <Navbar onOpenDemo={handleOpenDemo} />
+      <Navbar />
 
       <main className="flex-1">
         {/* Seção 01: Hero com Split-Screen Programático */}
-        <HeroSection onOpenDemo={handleOpenDemo} />
+        <HeroSection />
 
         {/* Seção 02: O Custo do Caos Forense */}
         <CaosSection />
@@ -38,10 +29,10 @@ export default function HomePage() {
         <LoopSection />
 
         {/* Seção 04: Mesa Jurídica (Pilar 1 - Raio-X dos Autos) */}
-        <MesaJuridicaSection onOpenDemo={handleOpenDemo} />
+        <MesaJuridicaSection />
 
         {/* Seção 05: Redator Assistido (Pilar 2 - Minuta com Citação) */}
-        <RedatorSection onOpenDemo={handleOpenDemo} />
+        <RedatorSection />
 
         {/* Seção 06: Prazos e Publicações (Pilar 3 - Painel Operacional) */}
         <PrazosSection />
@@ -60,17 +51,14 @@ export default function HomePage() {
 
         {/* Seção 11: Fechamento (Closing CTA) */}
         <div id="agendar">
-          <ClosingCtaSection onOpenDemo={handleOpenDemo} />
+          <ClosingCtaSection />
         </div>
       </main>
 
       <Footer />
 
       {/* Barra de Polegar Fixa no Mobile Pós-Hero */}
-      <StickyMobileBar onOpenDemo={handleOpenDemo} />
-
-      {/* Modal de Agendamento em 2 Passos (Cal.com + Qualificação) */}
-      <DemoModal isOpen={isDemoOpen} onClose={handleCloseDemo} />
+      <StickyMobileBar />
     </div>
   );
 }

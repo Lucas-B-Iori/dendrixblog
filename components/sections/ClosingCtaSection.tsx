@@ -1,17 +1,12 @@
-"use client";
-
+import React from "react";
 import { Calendar, MessageSquare, ArrowRight } from "lucide-react";
+import { getWhatsAppLink } from "@/lib/config";
+import { OpenDemoButton } from "@/components/cta/OpenDemoButton";
 
-interface ClosingCtaSectionProps {
-  onOpenDemo?: () => void;
-}
-
-export function ClosingCtaSection({ onOpenDemo }: ClosingCtaSectionProps) {
-  const whatsappUrl =
-    "https://wa.me/5511999999999?text=" +
-    encodeURIComponent(
-      "Olá! Estava no site do Dendrix e gostaria de agendar uma demonstração prática de 15 minutos para o meu escritório."
-    );
+export function ClosingCtaSection() {
+  const whatsappUrl = getWhatsAppLink(
+    "Olá! Estava no site do Dendrix e gostaria de agendar uma demonstração prática de 15 minutos para o meu escritório."
+  );
 
   return (
     <section className="bg-[var(--surface-dark)] text-white py-20 sm:py-28 relative overflow-hidden border-t border-[var(--border-subtle)]">
@@ -40,13 +35,10 @@ export function ClosingCtaSection({ onOpenDemo }: ClosingCtaSectionProps) {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-          <button
-            onClick={onOpenDemo}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[var(--accent-emerald)] hover:bg-[#047857] text-white font-medium text-base shadow-lg shadow-emerald-950/40 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-          >
+          <OpenDemoButton className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[var(--accent-emerald)] hover:bg-[#047857] text-white font-medium text-base shadow-lg shadow-emerald-950/40 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
             <span>Agendar demonstração prática (15 min)</span>
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </OpenDemoButton>
 
           <a
             href={whatsappUrl}

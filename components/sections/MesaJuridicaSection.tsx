@@ -74,9 +74,14 @@ export function MesaJuridicaSection({ onOpenDemo }: MesaJuridicaSectionProps = {
             {/* Header */}
             <div className="h-9 px-4 bg-[#F8F9FA] border-b border-[#E2E8F0] flex items-center justify-between text-xs font-mono text-[#475569]">
               <span className="truncate">Mesa Jurídica • Análise de Autos em PDF</span>
-              <span className="text-[11px] text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                OCR Ativo
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">
+                  Dados demonstrativos
+                </span>
+                <span className="text-[11px] text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  OCR Ativo
+                </span>
+              </div>
             </div>
 
             {/* Document Analysis Body */}

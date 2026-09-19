@@ -1,14 +1,11 @@
 import React from "react";
 import { HeroSplitScreen } from "./HeroSplitScreen";
-import { ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { OpenDemoButton } from "@/components/cta/OpenDemoButton";
 
-interface HeroSectionProps {
-  onOpenDemo?: () => void;
-}
-
-export function HeroSection({ onOpenDemo }: HeroSectionProps) {
+export function HeroSection() {
   return (
-    <div className="w-full pt-4 pb-16 sm:pb-24 lg:pb-28">
+    <div id="hero" className="w-full pt-4 pb-16 sm:pb-24 lg:pb-28">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
         {/* Left Column: Official Locked Copy */}
         <div className="lg:col-span-5 space-y-6 sm:space-y-7 text-left">
@@ -31,14 +28,10 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
           {/* Action CTAs */}
           <div className="space-y-3 pt-1">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <button
-                type="button"
-                onClick={onOpenDemo}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white bg-[#0F2B48] hover:bg-[#0A1C30] rounded-md transition-all shadow-sm hover:shadow cursor-pointer focus-ring text-center"
-              >
+              <OpenDemoButton className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white bg-[#0F2B48] hover:bg-[#0A1C30] rounded-md transition-all shadow-sm hover:shadow cursor-pointer focus-ring text-center">
                 <span>Agendar demonstração prática</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </OpenDemoButton>
 
               <a
                 href="#como-funciona"

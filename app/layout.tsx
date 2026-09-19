@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Newsreader, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { DemoModalProvider } from "@/components/providers/DemoModalProvider";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
@@ -66,7 +67,7 @@ export default function RootLayout({
     >
       <body className="antialiased min-h-screen bg-[#FBFBFA] text-[#0F172A] font-sans selection:bg-[#0F2B48] selection:text-white">
         <JsonLd />
-        {children}
+        <DemoModalProvider>{children}</DemoModalProvider>
       </body>
     </html>
   );

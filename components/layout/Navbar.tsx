@@ -3,12 +3,15 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { useDemoModal } from "@/components/providers/DemoModalProvider";
 
 interface NavbarProps {
   onOpenDemo?: () => void;
 }
 
 export function Navbar({ onOpenDemo }: NavbarProps) {
+  const { openDemoModal } = useDemoModal();
+  const handleOpen = onOpenDemo || openDemoModal;
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -23,7 +26,6 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
   const navLinks = [
     { label: "Recursos", href: "#recursos" },
     { label: "O Loop do Caso", href: "#como-funciona" },
-    { label: "Calculadora", href: "#calculadora" },
     { label: "Segurança", href: "#seguranca" },
     { label: "FAQ", href: "#faq" },
   ];
@@ -75,7 +77,7 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
 
             <button
               type="button"
-              onClick={onOpenDemo}
+              onClick={handleOpen}
               className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-[#0F2B48] hover:bg-[#0A1C30] rounded-md transition-colors shadow-xs cursor-pointer focus-ring"
             >
               Agendar demonstração
@@ -86,7 +88,7 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
           <div className="flex md:hidden items-center gap-2">
             <button
               type="button"
-              onClick={onOpenDemo}
+              onClick={handleOpen}
               className="px-3 py-1.5 text-xs font-semibold text-white bg-[#0F2B48] rounded-md cursor-pointer"
             >
               Agendar
@@ -132,7 +134,7 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
               type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenDemo?.();
+                handleOpen();
               }}
               className="w-full py-3 text-sm font-semibold text-white bg-[#0F2B48] rounded-md text-center shadow-xs cursor-pointer"
             >

@@ -68,7 +68,12 @@ export function PrazosSection() {
           <div className="rounded-xl border border-[#E2E8F0] bg-white shadow-card overflow-hidden">
             {/* Header */}
             <div className="h-9 px-4 bg-[#F8F9FA] border-b border-[#E2E8F0] flex items-center justify-between text-xs font-mono text-[#475569]">
-              <span>Diário de Justiça Eletrônico • DJEN</span>
+              <div className="flex items-center gap-2">
+                <span>Diário de Justiça Eletrônico • DJEN</span>
+                <span className="text-[10px] text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 hidden sm:inline-block">
+                  Exemplo demonstrativo
+                </span>
+              </div>
               <span className="text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
                 Prazo Fatal: 8 dias úteis
               </span>

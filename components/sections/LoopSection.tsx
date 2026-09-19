@@ -33,7 +33,7 @@ export function LoopSection() {
   ];
 
   return (
-    <div className="w-full space-y-12 sm:space-y-16">
+    <div id="como-funciona" className="w-full space-y-12 sm:space-y-16 scroll-mt-20">
       {/* Centered Header for Architectural Shift */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
         <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#0F2B48]">
