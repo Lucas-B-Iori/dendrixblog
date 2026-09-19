@@ -46,6 +46,13 @@ export function LiquidBackground({
       mouse.targetY = e.clientY - rect.top;
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!e.touches[0]) return;
+      const rect = canvas.getBoundingClientRect();
+      mouse.targetX = e.touches[0].clientX - rect.left;
+      mouse.targetY = e.touches[0].clientY - rect.top;
+    };
+
     const handleResize = () => {
       if (!canvas.parentElement) return;
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -58,6 +65,8 @@ export function LiquidBackground({
 
     window.addEventListener("resize", handleResize, { passive: true });
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchstart", handleTouchMove, { passive: true });
     handleResize();
 
     // Intersection observer para pausar quando fora do viewport
@@ -71,12 +80,13 @@ export function LiquidBackground({
 
     let t = 0;
 
-    // Configuração de paletas para Dark Prestige e Light Mode
+    // Configuração de paletas para Dark Prestige e Light Mode (com nó de convergência inferior)
     const blobs = [
-      { x: 0.3, y: 0.3, r: 0.45, color: "rgba(11, 26, 42, 0.75)", lightColor: "rgba(219, 234, 254, 0.45)", speed: 0.0006 },
-      { x: 0.7, y: 0.4, r: 0.5, color: "rgba(6, 38, 30, 0.45)", lightColor: "rgba(209, 250, 229, 0.45)", speed: 0.0008 },
-      { x: 0.5, y: 0.7, r: 0.55, color: "rgba(15, 35, 55, 0.6)", lightColor: "rgba(241, 245, 249, 0.55)", speed: 0.0005 },
-      { x: 0.8, y: 0.8, r: 0.4, color: "rgba(8, 20, 32, 0.7)", lightColor: "rgba(224, 231, 255, 0.35)", speed: 0.0007 },
+      { x: 0.25, y: 0.25, r: 0.48, color: "rgba(11, 32, 52, 0.8)", lightColor: "rgba(219, 234, 254, 0.55)", speed: 0.0007 },
+      { x: 0.72, y: 0.35, r: 0.52, color: "rgba(6, 48, 38, 0.55)", lightColor: "rgba(209, 250, 229, 0.55)", speed: 0.0009 },
+      { x: 0.48, y: 0.65, r: 0.58, color: "rgba(15, 42, 68, 0.7)", lightColor: "rgba(241, 245, 249, 0.65)", speed: 0.0006 },
+      { x: 0.82, y: 0.78, r: 0.45, color: "rgba(8, 26, 42, 0.75)", lightColor: "rgba(224, 231, 255, 0.45)", speed: 0.0008 },
+      { x: 0.5, y: 0.95, r: 0.38, color: "rgba(16, 185, 129, 0.25)", lightColor: "rgba(16, 185, 129, 0.16)", speed: 0.0005 },
     ];
 
     const render = () => {
@@ -86,7 +96,7 @@ export function LiquidBackground({
       }
 
       t += 1;
-      // Lerp mouse
+      // Lerp mouse / touch
       mouse.x += (mouse.targetX - mouse.x) * 0.04;
       mouse.y += (mouse.targetY - mouse.y) * 0.04;
 
@@ -116,7 +126,7 @@ export function LiquidBackground({
 
         const color = isDark ? blob.color : blob.lightColor;
         gradient.addColorStop(0, color);
-        gradient.addColorStop(0.5, color.replace(/[\d\.]+\)$/, "0.15)"));
+        gradient.addColorStop(0.5, color.replace(/[\d\.]+\)$/, "0.18)"));
         gradient.addColorStop(1, isDark ? "rgba(5, 8, 12, 0)" : "rgba(248, 250, 252, 0)");
 
         ctx.fillStyle = gradient;
@@ -125,7 +135,32 @@ export function LiquidBackground({
         ctx.fill();
       });
 
-      // Ponto de luz focal interativo seguindo o mouse
+      // Funil de convergência na base da Hero conectando à Espinha Dorsal (Skiper 19)
+      if (variant === "hero") {
+        const funnel = ctx.createRadialGradient(
+          width * 0.5,
+          height,
+          0,
+          width * 0.5,
+          height,
+          Math.min(width, height) * 0.45
+        );
+        if (isDark) {
+          funnel.addColorStop(0, "rgba(16, 185, 129, 0.28)");
+          funnel.addColorStop(0.35, "rgba(2, 132, 199, 0.14)");
+          funnel.addColorStop(1, "rgba(5, 8, 12, 0)");
+        } else {
+          funnel.addColorStop(0, "rgba(16, 185, 129, 0.18)");
+          funnel.addColorStop(0.35, "rgba(15, 43, 72, 0.09)");
+          funnel.addColorStop(1, "rgba(248, 250, 252, 0)");
+        }
+        ctx.fillStyle = funnel;
+        ctx.beginPath();
+        ctx.arc(width * 0.5, height, Math.min(width, height) * 0.45, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Ponto de luz focal interativo seguindo o mouse / toque
       const mouseGlow = ctx.createRadialGradient(
         mouse.x,
         mouse.y,
@@ -135,12 +170,12 @@ export function LiquidBackground({
         Math.min(width, height) * 0.35
       );
       if (isDark) {
-        mouseGlow.addColorStop(0, "rgba(16, 185, 129, 0.12)"); // Esmeralda nobre
-        mouseGlow.addColorStop(0.4, "rgba(2, 132, 199, 0.08)"); // Ciano institucional
+        mouseGlow.addColorStop(0, "rgba(16, 185, 129, 0.15)"); // Esmeralda nobre
+        mouseGlow.addColorStop(0.4, "rgba(2, 132, 199, 0.09)"); // Ciano institucional
         mouseGlow.addColorStop(1, "rgba(5, 8, 12, 0)");
       } else {
-        mouseGlow.addColorStop(0, "rgba(16, 185, 129, 0.07)");
-        mouseGlow.addColorStop(0.4, "rgba(2, 132, 199, 0.04)");
+        mouseGlow.addColorStop(0, "rgba(16, 185, 129, 0.09)");
+        mouseGlow.addColorStop(0.4, "rgba(2, 132, 199, 0.05)");
         mouseGlow.addColorStop(1, "rgba(248, 250, 252, 0)");
       }
       ctx.fillStyle = mouseGlow;
@@ -174,6 +209,8 @@ export function LiquidBackground({
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchMove);
       observer.disconnect();
     };
   }, [variant]);

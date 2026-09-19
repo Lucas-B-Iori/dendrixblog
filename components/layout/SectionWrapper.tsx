@@ -34,7 +34,7 @@ export function SectionWrapper({
 
   return (
     <section id={id} className={`w-full relative ${spacingClasses[spacing]} ${className}`}>
-      <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${widthClasses[width]} ${containerClassName}`}>
+      <div className={`relative z-20 mx-auto px-4 sm:px-6 lg:px-8 ${widthClasses[width]} ${containerClassName}`}>
         {children}
       </div>
     </section>

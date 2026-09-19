@@ -14,13 +14,17 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { ClosingCtaSection } from "@/components/sections/ClosingCtaSection";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileBar } from "@/components/layout/StickyMobileBar";
+import { ContinuousPageSpine } from "@/components/motion/ContinuousPageSpine";
 
 export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col bg-[var(--surface-canvas)] text-[var(--text-primary)] transition-colors duration-300">
       <Navbar />
 
-      <main className="flex-1">
+      <main className="flex-1 relative">
+        {/* V5 Flagship Feature: Espinha Dorsal Contínua em Background (Skiper 19) */}
+        <ContinuousPageSpine />
+
         {/* Seção 01: Hero com Split-Screen Programático e Liquid Mesh (Skiper 12) */}
         <HeroSection />
 
