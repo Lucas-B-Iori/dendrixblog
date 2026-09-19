@@ -16,7 +16,7 @@ export function HeroSection() {
           </div>
 
           {/* H1 (Locked) */}
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-[3.25rem] font-medium leading-[1.12] tracking-tight text-[#0F172A] text-balance">
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-[3.25rem] font-medium leading-[1.14] tracking-[-0.025em] text-[#0F172A] text-balance">
             Dos autos à minuta, com a origem das informações sempre visível.
           </h1>
 
@@ -28,23 +28,23 @@ export function HeroSection() {
           {/* Action CTAs */}
           <div className="space-y-3 pt-1">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <OpenDemoButton className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white bg-[#0F2B48] hover:bg-[#0A1C30] rounded-md transition-all shadow-sm hover:shadow cursor-pointer focus-ring text-center">
+              <OpenDemoButton className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white bg-[#0F2B48] hover:bg-[#0A1C30] active:scale-[0.99] rounded-md transition-all shadow-sm hover:shadow cursor-pointer focus-ring text-center">
                 <span>Agendar demonstração prática</span>
                 <ArrowRight className="w-4 h-4" />
               </OpenDemoButton>
 
               <a
                 href="#como-funciona"
-                className="inline-flex items-center justify-center px-5 py-3.5 text-sm font-semibold text-[#0F172A] hover:text-[#0F2B48] bg-transparent hover:bg-black/5 rounded-md transition-colors text-center"
+                className="inline-flex items-center justify-center px-5 py-3.5 text-sm font-semibold text-[#0F172A] hover:text-[#0F2B48] bg-transparent hover:bg-black/5 active:bg-black/10 rounded-md transition-colors text-center border border-transparent hover:border-[#E2E8F0]"
               >
                 Ver o produto em ação
               </a>
             </div>
 
             {/* Microcopy (Locked) */}
-            <p className="text-xs text-[#64748B] flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block" />
-              <span>15 minutos • Traga um processo da sua banca ou use nosso caso modelo.</span>
+            <p className="text-xs text-[#64748B] flex items-start sm:items-center gap-2 pt-0.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block shrink-0 mt-1 sm:mt-0" />
+              <span className="leading-snug">15 minutos • Traga um processo da sua banca ou use nosso caso modelo.</span>
             </p>
           </div>
 

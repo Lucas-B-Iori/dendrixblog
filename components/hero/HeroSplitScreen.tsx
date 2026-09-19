@@ -31,31 +31,32 @@ export function HeroSplitScreen() {
   return (
     <div className="w-full relative rounded-xl border border-[#E2E8F0] bg-white shadow-card overflow-hidden">
       {/* Top Web Application Header (Fiel à arquitetura web do Dendrix, sem molduras fictícias de macOS) */}
-      <div className="h-10 px-4 bg-[#F8F9FA] border-b border-[#E2E8F0] flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-[#0F2B48]" />
-          <span className="font-mono text-xs font-semibold text-[#0F2B48]">
+      <div className="h-10 px-3 sm:px-4 bg-[#F8F9FA] border-b border-[#E2E8F0] flex items-center justify-between gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+          <div className="w-2 h-2 rounded-full bg-[#0F2B48] shrink-0" />
+          <span className="font-mono text-xs font-semibold text-[#0F2B48] shrink-0">
             Dendrix CRM
           </span>
-          <span className="text-slate-300 text-xs">/</span>
-          <span className="font-mono text-[11px] text-[#64748B] truncate">
+          <span className="text-slate-300 text-xs shrink-0">/</span>
+          <span className="font-mono text-[11px] text-[#64748B] truncate max-w-[130px] sm:max-w-none">
             Processo 1002341-89.2024.8.26.0100
           </span>
-          <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 hidden sm:inline-block">
+          <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 hidden md:inline-block shrink-0">
             Dados demonstrativos
           </span>
         </div>
 
         {/* Dynamic Connection Indicator (Estado 4+) */}
         <div
-          className={`flex items-center gap-1.5 text-[11px] font-mono px-2 py-0.5 rounded transition-all duration-300 ${
+          className={`flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded transition-all duration-300 shrink-0 ${
             step >= 4
-              ? "text-emerald-800 bg-emerald-50 border border-emerald-200/80"
+              ? "text-emerald-800 bg-emerald-50 border border-emerald-200/80 font-medium"
               : "text-slate-400 bg-slate-100 border border-slate-200/60"
           }`}
         >
-          <Link2 className={`w-3 h-3 ${step >= 4 ? "text-emerald-600" : "text-slate-400"}`} />
-          <span>{step >= 4 ? "Dados dos Autos Conectados ao CRM" : "Sincronizando Autos..."}</span>
+          <Link2 className={`w-3 h-3 shrink-0 ${step >= 4 ? "text-emerald-600" : "text-slate-400"}`} />
+          <span className="hidden sm:inline">{step >= 4 ? "Dados dos Autos Conectados ao CRM" : "Sincronizando Autos..."}</span>
+          <span className="sm:hidden">{step >= 4 ? "Conectado ao CRM" : "Sincronizando..."}</span>
         </div>
       </div>
 
@@ -166,14 +167,16 @@ export function HeroSplitScreen() {
 
             {/* Context Breadcrumb from CRM (Estado 4+ acende em verde/marinho) */}
             <div
-              className={`px-3 py-1.5 rounded-md border text-[11px] font-mono flex items-center justify-between transition-all duration-300 ${
+              className={`px-3 py-1.5 rounded-md border text-[11px] font-mono flex items-center justify-between gap-2 transition-all duration-300 ${
                 step >= 4
-                  ? "bg-[#EDF2F7] border-[#CBD5E1] text-[#0F2B48] font-semibold"
+                  ? "bg-[#EDF2F7] border-[#CBD5E1] text-[#0F2B48]"
                   : "bg-slate-50 border-slate-200 text-slate-400"
               }`}
             >
               <span className="truncate">Cliente: João Silva • Ação de Cobrança</span>
-              <span className="text-xs">Contexto CRM</span>
+              <span className="text-[10px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded bg-[#0F2B48]/10 text-[#0F2B48] font-semibold shrink-0">
+                Contexto CRM
+              </span>
             </div>
 
             {/* Rich Editor Output (Estados 5 e 6) */}
@@ -208,8 +211,7 @@ export function HeroSplitScreen() {
                 }`}
               >
                 Em atenção à contestação apresentada, cumpre destacar que, conforme comprovado às{" "}
-                <CaseSourceBadge page="47" documentType="Contestação" variant="emerald" className="mx-1 align-baseline" />
-                , a parte ré não comprovou a entrega tempestiva do laudo, caracterizando mora incontroversa.
+                <CaseSourceBadge page="47" documentType="Contestação" variant="emerald" className="inline-flex align-baseline" />, a parte ré não comprovou a entrega tempestiva do laudo, caracterizando mora incontroversa.
               </p>
 
               {/* Parágrafo 2 conclusivo (surge no Estado 6) */}

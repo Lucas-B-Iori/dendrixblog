@@ -57,7 +57,7 @@ export default function BlogPage() {
           <div className="mb-8">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-xs font-mono text-[var(--text-tertiary)] hover:text-[var(--accent-navy)] transition-colors"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white border border-[#E2E8F0] text-xs font-mono text-[var(--text-secondary)] hover:text-[#0F2B48] hover:border-slate-300 transition-colors shadow-2xs"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Voltar para a página inicial</span>
@@ -70,10 +70,10 @@ export default function BlogPage() {
               <BookOpen className="w-3.5 h-3.5" />
               <span>CONTEÚDO FORENSE ESTRATÉGICO</span>
             </div>
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[var(--text-primary)] leading-tight">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[var(--text-primary)] leading-tight text-balance">
               Blog Forense Dendrix
             </h1>
-            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
+            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl">
               Artigos analíticos, guias práticos e estudos de fluxo sobre tecnologia, inteligência contextual e gestão forense sem atalhos simplistas.
             </p>
           </div>

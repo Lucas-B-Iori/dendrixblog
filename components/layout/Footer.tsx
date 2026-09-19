@@ -87,9 +87,14 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#agendar" className="hover:text-white transition-colors">
+                <Link href="/seguranca" className="hover:text-white transition-colors">
+                  Diretrizes de Segurança & LGPD
+                </Link>
+              </li>
+              <li>
+                <Link href="/demonstracao" className="hover:text-white transition-colors">
                   Agendar Demonstração (15 min)
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

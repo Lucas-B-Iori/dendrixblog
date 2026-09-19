@@ -48,7 +48,7 @@ export default function SegurancaPage() {
           <div className="mb-8">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-xs font-mono text-[var(--text-tertiary)] hover:text-[var(--accent-navy)] transition-colors"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white border border-[#E2E8F0] text-xs font-mono text-[var(--text-secondary)] hover:text-[#0F2B48] hover:border-slate-300 transition-colors shadow-2xs"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Voltar para a página inicial</span>
@@ -61,10 +61,10 @@ export default function SegurancaPage() {
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>GOVERNANÇA TÉCNICA E JURÍDICA</span>
             </div>
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[var(--text-primary)] leading-tight">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[var(--text-primary)] leading-tight text-balance">
               Segurança da Informação, Privacidade e Conformidade Ética
             </h1>
-            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
+            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-3xl">
               O Dendrix CRM foi concebido para atender às exigências de escritórios que lidam com dados sensíveis, processos em segredo de justiça e as prerrogativas de sigilo da advocacia.
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function SegurancaPage() {
               return (
                 <div
                   key={idx}
-                  className="p-6 sm:p-8 rounded-xl bg-white border border-[var(--border-subtle)] shadow-xs space-y-3"
+                  className="p-6 sm:p-8 rounded-xl bg-white border border-[var(--border-subtle)] shadow-xs space-y-3 hover:border-slate-300 transition-colors"
                 >
                   <div className="flex items-center gap-3">
                     <div className="p-2.5 rounded-lg bg-[#EDF2F7] text-[#0F2B48]">
@@ -95,7 +95,7 @@ export default function SegurancaPage() {
           </div>
 
           {/* Institutional Compliance Box */}
-          <div className="p-6 sm:p-8 rounded-xl bg-slate-900 text-white space-y-4 mb-16">
+          <div className="p-6 sm:p-8 rounded-xl bg-slate-900 text-white space-y-4 mb-8 shadow-card">
             <h3 className="font-serif text-xl sm:text-2xl font-medium">
               Nota sobre Inteligência Artificial e Sigilo Profissional
             </h3>
@@ -111,6 +111,19 @@ export default function SegurancaPage() {
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
+          </div>
+
+          {/* DPO / LGPD Official Channel */}
+          <div className="p-6 sm:p-7 rounded-xl bg-white border border-[#E2E8F0] text-[var(--text-secondary)] space-y-2 mb-16 shadow-2xs">
+            <h4 className="font-mono text-xs font-bold uppercase tracking-wider text-[#0F2B48]">
+              Canal do Encarregado de Dados (DPO) • Solicitações LGPD
+            </h4>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Em cumprimento ao art. 41 da Lei nº 13.709/2018 (LGPD), qualquer dúvida sobre governança de dados, requisição de direitos de titulares ou envio de minutas de Acordo de Processamento de Dados (DPA / NDA) pode ser encaminhada diretamente ao nosso encarregado institucional:
+            </p>
+            <p className="text-xs font-mono font-medium text-[#0F2B48] pt-1">
+              E-mail do DPO: <a href="mailto:privacidade@dendrixcrm.com.br" className="underline hover:text-emerald-700">privacidade@dendrixcrm.com.br</a>
+            </p>
           </div>
         </div>
       </main>

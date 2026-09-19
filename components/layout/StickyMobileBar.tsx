@@ -10,29 +10,14 @@ export function StickyMobileBar() {
   const { openDemoModal } = useDemoModal();
 
   useEffect(() => {
-    const heroEl = document.getElementById("hero");
-    if (!heroEl) {
-      const handleScroll = () => {
-        setIsVisible(window.scrollY > 500);
-      };
-      window.addEventListener("scroll", handleScroll, { passive: true });
-      return () => window.removeEventListener("scroll", handleScroll);
-    }
+    const handleScroll = () => {
+      // No mobile, ativa quando o usuário rola além de 350px (passou dos botões do Hero)
+      setIsVisible(window.scrollY > 350);
+    };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // A barra surge após o Hero sair do campo de visão superior
-        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(heroEl);
-    return () => observer.disconnect();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const whatsappUrl = getWhatsAppLink(
