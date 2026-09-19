@@ -39,7 +39,7 @@ const SPECIALTIES: SpecialtyItem[] = [
     description: "Ações de cobrança, indenizatórias, cumprimento de sentença e execuções de título.",
     stat: "Prazos CPC/15",
     badge: "Cível",
-    tagColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+    tagColor: "text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
   },
   {
     id: "criminal",
@@ -49,7 +49,7 @@ const SPECIALTIES: SpecialtyItem[] = [
     description: "Acompanhamento de inquéritos, audiências de custódia, pedidos de liberdade e defesas prévias.",
     stat: "CPP & Súmulas",
     badge: "Criminal",
-    tagColor: "text-rose-400 bg-rose-500/10 border-rose-500/20",
+    tagColor: "text-rose-700 dark:text-rose-400 bg-rose-500/10 border-rose-500/20",
   },
   {
     id: "familias",
@@ -59,7 +59,7 @@ const SPECIALTIES: SpecialtyItem[] = [
     description: "Inventários judiciais e extrajudiciais, partilhas de bens, divórcios e alimentos sem retrabalho.",
     stat: "Partilha Ágil",
     badge: "Famílias",
-    tagColor: "text-amber-400 bg-amber-500/10 border-amber-500/20",
+    tagColor: "text-amber-700 dark:text-amber-400 bg-amber-500/10 border-amber-500/20",
   },
   {
     id: "previdenciario",
@@ -69,7 +69,7 @@ const SPECIALTIES: SpecialtyItem[] = [
     description: "Análise de vínculos CNIS, cálculo de tempo especial, RMI e regras de transição.",
     stat: "CNIS Match",
     badge: "Previdenciário",
-    tagColor: "text-teal-400 bg-teal-500/10 border-teal-500/20",
+    tagColor: "text-teal-700 dark:text-teal-400 bg-teal-500/10 border-teal-500/20",
   },
   {
     id: "trabalhista",
@@ -79,7 +79,7 @@ const SPECIALTIES: SpecialtyItem[] = [
     description: "Apuração automática de horas extras, reflexos em verbas e precedentes vigentes do TST.",
     stat: "Súmulas TST",
     badge: "Trabalhista",
-    tagColor: "text-blue-400 bg-blue-500/10 border-blue-500/20",
+    tagColor: "text-blue-700 dark:text-blue-400 bg-blue-500/10 border-blue-500/20",
   },
   {
     id: "consumidor",
@@ -89,7 +89,7 @@ const SPECIALTIES: SpecialtyItem[] = [
     description: "Inscrição indevida, vícios de produto, repetição de indébito e aplicação estratégica do CDC.",
     stat: "Dano Moral",
     badge: "Consumidor",
-    tagColor: "text-cyan-400 bg-cyan-500/10 border-cyan-500/20",
+    tagColor: "text-cyan-700 dark:text-cyan-400 bg-cyan-500/10 border-cyan-500/20",
   },
   {
     id: "tributario",
@@ -99,7 +99,7 @@ const SPECIALTIES: SpecialtyItem[] = [
     description: "Teses de compensação, repercussão geral, defesas fiscais e precedentes CARF/STJ.",
     stat: "Teses STJ/STF",
     badge: "Tributário",
-    tagColor: "text-purple-400 bg-purple-500/10 border-purple-500/20",
+    tagColor: "text-purple-700 dark:text-purple-400 bg-purple-500/10 border-purple-500/20",
   },
   {
     id: "franquias",
@@ -109,7 +109,7 @@ const SPECIALTIES: SpecialtyItem[] = [
     description: "Análise de Circular de Oferta (COF), contratos de franquia e disputas entre franqueador e franqueado.",
     stat: "Lei 13.966",
     badge: "Franquias",
-    tagColor: "text-orange-400 bg-orange-500/10 border-orange-500/20",
+    tagColor: "text-orange-700 dark:text-orange-400 bg-orange-500/10 border-orange-500/20",
   },
   {
     id: "contratos",
@@ -119,7 +119,7 @@ const SPECIALTIES: SpecialtyItem[] = [
     description: "Elaboração e revisão de minutas, cláusulas de risco, garantias reais e due diligence.",
     stat: "Due Diligence",
     badge: "Contratos",
-    tagColor: "text-indigo-400 bg-indigo-500/10 border-indigo-500/20",
+    tagColor: "text-indigo-700 dark:text-indigo-400 bg-indigo-500/10 border-indigo-500/20",
   },
   {
     id: "recursos",
@@ -129,7 +129,7 @@ const SPECIALTIES: SpecialtyItem[] = [
     description: "Prequestionamento, recursos especiais e extraordinários, agravos e teses repetitivas.",
     stat: "Súmulas 7 e 282",
     badge: "Recursos Especiais",
-    tagColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+    tagColor: "text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
   },
   {
     id: "bancario",
@@ -139,7 +139,7 @@ const SPECIALTIES: SpecialtyItem[] = [
     description: "Revisão de contratos de financiamento, cédulas de crédito bancário e teses de juros remuneratórios.",
     stat: "Teses STJ",
     badge: "Bancário",
-    tagColor: "text-sky-400 bg-sky-500/10 border-sky-500/20",
+    tagColor: "text-sky-700 dark:text-sky-400 bg-sky-500/10 border-sky-500/20",
   },
 ];
 

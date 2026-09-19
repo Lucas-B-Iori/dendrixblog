@@ -116,10 +116,10 @@ export function SmoothScrollSlider() {
       {/* Controles de Navegação */}
       <div className="flex items-center justify-between mb-6 px-4 sm:px-0">
         <div>
-          <span className="font-mono text-xs font-semibold text-emerald-400 uppercase tracking-wider">
+          <span className="font-mono text-xs font-semibold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">
             Galeria de Peças Processuais
           </span>
-          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1">
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
             Evidências & Documentos Reais na Mesa
           </h3>
         </div>
@@ -129,7 +129,7 @@ export function SmoothScrollSlider() {
             type="button"
             onClick={handlePrev}
             disabled={activeIndex === 0}
-            className="w-10 h-10 rounded-full border border-white/10 bg-[#0B131C] text-white flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#111C2A] hover:border-emerald-500/30 transition-colors shadow-xs"
+            className="w-10 h-10 rounded-full border border-slate-300 dark:border-white/10 bg-white dark:bg-[#0B131C] text-slate-800 dark:text-white flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:bg-slate-100 dark:hover:bg-[#111C2A] hover:border-emerald-500/30 transition-colors shadow-xs"
             aria-label="Item anterior"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -138,7 +138,7 @@ export function SmoothScrollSlider() {
             type="button"
             onClick={handleNext}
             disabled={activeIndex === SLIDES.length - 1}
-            className="w-10 h-10 rounded-full border border-white/10 bg-[#0B131C] text-white flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#111C2A] hover:border-emerald-500/30 transition-colors shadow-xs"
+            className="w-10 h-10 rounded-full border border-slate-300 dark:border-white/10 bg-white dark:bg-[#0B131C] text-slate-800 dark:text-white flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:bg-slate-100 dark:hover:bg-[#111C2A] hover:border-emerald-500/30 transition-colors shadow-xs"
             aria-label="Próximo item"
           >
             <ChevronRight className="w-5 h-5" />
@@ -148,9 +148,9 @@ export function SmoothScrollSlider() {
 
       {/* Trilho de Scroll com Vinhetagem Lateral */}
       <div className="relative">
-        {/* Vinhetas de fade nas bordas */}
-        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-[#05080C] to-transparent z-10 pointer-events-none hidden sm:block" />
-        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-[#05080C] to-transparent z-10 pointer-events-none hidden sm:block" />
+        {/* Vinhetas de fade nas bordas (adaptadas para Light e Dark Mode) */}
+        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-[#F8FAFC] dark:from-[#05080C] to-transparent z-10 pointer-events-none hidden sm:block" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-[#F8FAFC] dark:from-[#05080C] to-transparent z-10 pointer-events-none hidden sm:block" />
 
         <div
           ref={containerRef}
@@ -169,41 +169,41 @@ export function SmoothScrollSlider() {
                 transition={{ duration: 0.25 }}
                 className={`slider-card snap-center shrink-0 w-[310px] sm:w-[420px] rounded-2xl p-6 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                   isSelected
-                    ? "bg-[#0B141E] border-emerald-500/50 shadow-[0_0_35px_rgba(16,185,129,0.18)] scale-[1.02]"
-                    : "bg-[#070D14]/90 border-white/[0.08] hover:border-white/20 opacity-85 hover:opacity-100"
+                    ? "bg-white dark:bg-[#0B141E] border-emerald-500/50 shadow-xl dark:shadow-[0_0_35px_rgba(16,185,129,0.18)] scale-[1.02]"
+                    : "bg-white/90 dark:bg-[#070D14]/90 border-slate-200 dark:border-white/[0.08] hover:border-slate-300 dark:hover:border-white/20 shadow-xs"
                 }`}
               >
                 {/* Cabeçalho do Card */}
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="font-mono text-[11px] font-semibold text-emerald-400 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                    <span className="font-mono text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
                       {slide.tag}
                     </span>
-                    <span className="font-mono text-[10px] text-slate-400 px-2 py-0.5 rounded bg-white/[0.05]">
+                    <span className="font-mono text-[10px] text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded bg-slate-100 dark:bg-white/[0.05]">
                       {slide.badge}
                     </span>
                   </div>
 
                   <div className="flex items-start gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white shrink-0 mt-0.5">
-                      <Icon className="w-5 h-5 text-emerald-400" />
+                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-white shrink-0 mt-0.5">
+                      <Icon className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-white tracking-tight leading-snug">
+                      <h4 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
                         {slide.title}
                       </h4>
-                      <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
                         {slide.subtitle}
                       </p>
                     </div>
                   </div>
 
                   {/* Metadados Processuais em Pílulas */}
-                  <div className="grid grid-cols-3 gap-2 my-4 py-3 px-3 rounded-xl bg-black/30 border border-white/[0.06]">
+                  <div className="grid grid-cols-3 gap-2 my-4 py-3 px-3 rounded-xl bg-slate-100 dark:bg-black/30 border border-slate-200 dark:border-white/[0.06]">
                     {slide.meta.map((m, i) => (
                       <div key={i} className="text-center">
-                        <span className="text-[10px] text-slate-400 block">{m.label}</span>
-                        <span className="text-xs font-mono font-semibold text-slate-200 block truncate">
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 block">{m.label}</span>
+                        <span className="text-xs font-mono font-semibold text-slate-800 dark:text-slate-200 block truncate">
                           {m.val}
                         </span>
                       </div>
@@ -212,7 +212,7 @@ export function SmoothScrollSlider() {
                 </div>
 
                 {/* Pré-visualização do Documento (Efeito Papel Digital Escuro) */}
-                <div className="mt-2 p-3.5 rounded-xl bg-[#04080D] border border-white/[0.06] font-mono text-[11px] text-slate-300 leading-relaxed overflow-hidden">
+                <div className="mt-2 p-3.5 rounded-xl bg-[#04080D] border border-slate-800 dark:border-white/[0.06] font-mono text-[11px] text-slate-300 leading-relaxed overflow-hidden">
                   <div className="flex items-center gap-1.5 pb-2 mb-2 border-b border-white/[0.06] text-[10px] text-slate-400">
                     <div className="w-2 h-2 rounded-full bg-emerald-400" />
                     <span>Dendrix Security Engine • Visualização Segura</span>
@@ -235,7 +235,7 @@ export function SmoothScrollSlider() {
             type="button"
             onClick={() => scrollToIndex(i)}
             className={`h-1.5 rounded-full transition-all duration-300 ${
-              activeIndex === i ? "w-7 bg-emerald-400" : "w-2 bg-white/20 hover:bg-white/40"
+              activeIndex === i ? "w-7 bg-emerald-500 dark:bg-emerald-400" : "w-2 bg-slate-300 dark:bg-white/20 hover:bg-slate-400 dark:hover:bg-white/40"
             }`}
             aria-label={`Ir para documento ${i + 1}`}
           />

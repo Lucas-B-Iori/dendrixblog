@@ -15,7 +15,7 @@ export function EspecialidadesSection() {
   return (
     <SectionWrapper
       id="especialidades"
-      className="border-t border-white/[0.08] bg-[#05080C] relative overflow-hidden"
+      className="border-t border-slate-200 dark:border-white/[0.08] bg-[#F8FAFC] dark:bg-[#05080C] text-slate-900 dark:text-white relative overflow-hidden"
       spacing="default"
     >
       {/* Brilho de Fundo Esmeralda & Ciano */}
@@ -33,7 +33,7 @@ export function EspecialidadesSection() {
       </div>
 
       {/* 02. Lista Interativa com Cursor Follower dos Tribunais Conectados (Skiper 6) */}
-      <div className="relative z-10 pt-12 border-t border-white/[0.08]">
+      <div className="relative z-10 pt-12 border-t border-slate-200 dark:border-white/[0.08]">
         <HoverRevealList />
       </div>
     </SectionWrapper>

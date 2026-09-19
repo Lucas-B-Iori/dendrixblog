@@ -124,7 +124,7 @@ export function HoverRevealList() {
               setActiveItem(item);
             }}
             onMouseLeave={() => setActiveItem(null)}
-            className="group relative flex flex-col sm:flex-row sm:items-center justify-between py-5 px-4 sm:px-6 hover:bg-slate-50 dark:hover:bg-white/[0.03] transition-colors cursor-pointer rounded-xl"
+            className="group relative flex flex-col sm:flex-row sm:items-center justify-between py-5 px-4 sm:px-6 hover:bg-white dark:hover:bg-white/[0.03] hover:shadow-xs transition-all cursor-pointer rounded-xl"
           >
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-300 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-colors">
