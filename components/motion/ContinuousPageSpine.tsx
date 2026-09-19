@@ -47,37 +47,26 @@ const SPINE_SCROLL_PATH = `
 
 /**
  * MOBILE_HERO_KNOT_PATH (Fita Fluida da Hero Mobile — Margem Segura):
- * Corre discretamente na margem direita (X: 372) sem invadir o texto central.
+ * Corre discretamente na margem direita de respiro (X: 382) sem invadir o texto central.
  */
 const MOBILE_HERO_KNOT_PATH = `
-  M 374 80
-  C 376 220, 368 400, 372 560
-  C 374 660, 368 720, 370 780
+  M 382 80
+  C 384 220, 380 400, 382 560
+  C 384 660, 380 720, 382 780
 `;
 
 /**
  * MOBILE_SPINE_SCROLL_PATH (Espinha Dorsal Fluida Mobile — ViewBox 390 x 10000):
- * Serpenteia pelas margens de respiro (X: 18 e X: 372) e cruza suavemente
- * apenas nos vãos entre seções, garantindo 100% de legibilidade do texto no celular.
+ * Percorre a margem direita segura (X: 382) em ondas orgânicas suaves,
+ * mantendo 100% de legibilidade e garantindo zero colisão com textos ou cards no celular.
  */
 const MOBILE_SPINE_SCROLL_PATH = `
-  M 370 780
-  C 375 950, 375 1150, 370 1280
-  C 350 1340, 50 1360, 20 1440
-  C 15 1600, 15 1750, 20 1880
-  C 40 1960, 340 1980, 370 2100
-  C 375 2350, 375 2600, 370 2800
-  C 340 2900, 50 2950, 20 3100
-  C 15 3400, 15 3800, 20 4100
-  C 50 4250, 340 4300, 370 4450
-  C 375 4800, 375 5200, 370 5500
-  C 340 5650, 50 5700, 20 5850
-  C 15 6200, 15 6600, 20 6900
-  C 50 7050, 340 7100, 370 7250
-  C 375 7600, 375 8100, 370 8500
-  C 340 8650, 50 8700, 20 8900
-  C 15 9200, 15 9500, 20 9650
-  C 40 9750, 195 9850, 195 9970
+  M 382 780
+  C 380 1400, 384 2100, 382 2800
+  C 380 3500, 384 4200, 382 4900
+  C 380 5600, 384 6300, 382 7000
+  C 380 7700, 384 8400, 382 9100
+  C 382 9400, 382 9700, 382 9970
 `;
 
 interface Milestone {
@@ -99,16 +88,16 @@ const DESKTOP_MILESTONES: Milestone[] = [
 ];
 
 const MOBILE_MILESTONES: Milestone[] = [
-  { id: "hero", x: 370, y: 780 },
-  { id: "caos", x: 20, y: 1440 },
-  { id: "loop", x: 370, y: 2100 },
-  { id: "cockpit", x: 20, y: 3100 },
-  { id: "mesa", x: 370, y: 4450 },
-  { id: "redator", x: 20, y: 5850 },
-  { id: "prazos", x: 370, y: 7250 },
-  { id: "especialidades", x: 370, y: 8500 },
-  { id: "seguranca", x: 20, y: 8900 },
-  { id: "agendamento", x: 195, y: 9970 },
+  { id: "hero", x: 382, y: 780 },
+  { id: "caos", x: 382, y: 1440 },
+  { id: "loop", x: 382, y: 2100 },
+  { id: "cockpit", x: 382, y: 3100 },
+  { id: "mesa", x: 382, y: 4450 },
+  { id: "redator", x: 382, y: 5850 },
+  { id: "prazos", x: 382, y: 7250 },
+  { id: "especialidades", x: 382, y: 8500 },
+  { id: "seguranca", x: 382, y: 8900 },
+  { id: "agendamento", x: 382, y: 9970 },
 ];
 
 /**
@@ -389,11 +378,11 @@ export function ContinuousPageSpine() {
         <motion.path
           d={MOBILE_HERO_KNOT_PATH}
           stroke="url(#liquid-grad-mobile-dark)"
-          strokeWidth="16"
+          strokeWidth="7"
           strokeLinecap="round"
           strokeLinejoin="round"
           filter="url(#liquid-glow-mobile)"
-          opacity="0.25"
+          opacity="0.2"
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
@@ -403,7 +392,7 @@ export function ContinuousPageSpine() {
         <motion.path
           d={MOBILE_HERO_KNOT_PATH}
           stroke="url(#liquid-grad-mobile-dark)"
-          strokeWidth="9"
+          strokeWidth="3.5"
           strokeLinecap="round"
           strokeLinejoin="round"
           initial={{ pathLength: 0 }}
@@ -416,7 +405,7 @@ export function ContinuousPageSpine() {
         <motion.path
           d={MOBILE_HERO_KNOT_PATH}
           stroke="url(#liquid-grad-mobile-light)"
-          strokeWidth="8"
+          strokeWidth="3.5"
           strokeLinecap="round"
           strokeLinejoin="round"
           initial={{ pathLength: 0 }}
@@ -429,7 +418,7 @@ export function ContinuousPageSpine() {
         <motion.path
           d={MOBILE_HERO_KNOT_PATH}
           stroke="rgba(255, 255, 255, 0.85)"
-          strokeWidth="2"
+          strokeWidth="1"
           strokeLinecap="round"
           strokeLinejoin="round"
           initial={{ pathLength: 0 }}
@@ -442,11 +431,11 @@ export function ContinuousPageSpine() {
         <path
           d={MOBILE_SPINE_SCROLL_PATH}
           stroke="currentColor"
-          strokeWidth="2"
-          strokeDasharray="4 6"
+          strokeWidth="1"
+          strokeDasharray="3 5"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-slate-300/50 dark:text-white/[0.06]"
+          className="text-slate-300/40 dark:text-white/[0.04]"
         />
 
         {/* TUBO LÍQUIDO MOBILE (MODO ESCURO) */}
@@ -454,7 +443,7 @@ export function ContinuousPageSpine() {
           ref={spineRefMobile}
           d={MOBILE_SPINE_SCROLL_PATH}
           stroke="url(#liquid-grad-mobile-dark)"
-          strokeWidth="9"
+          strokeWidth="3.5"
           strokeLinecap="round"
           strokeLinejoin="round"
           filter="url(#liquid-glow-mobile)"
@@ -467,7 +456,7 @@ export function ContinuousPageSpine() {
         <motion.path
           d={MOBILE_SPINE_SCROLL_PATH}
           stroke="url(#liquid-grad-mobile-light)"
-          strokeWidth="8"
+          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
           style={{ pathLength: spineScrollLength }}
@@ -479,7 +468,7 @@ export function ContinuousPageSpine() {
         <motion.path
           d={MOBILE_SPINE_SCROLL_PATH}
           stroke="rgba(255, 255, 255, 0.85)"
-          strokeWidth="2"
+          strokeWidth="1"
           strokeLinecap="round"
           strokeLinejoin="round"
           style={{ pathLength: spineScrollLength }}
@@ -488,20 +477,20 @@ export function ContinuousPageSpine() {
 
         {/* CABEÇA DE FEIXE LASER MOBILE */}
         <g transform={`translate(${mobileBeadPos.x}, ${mobileBeadPos.y})`}>
-          <circle r="22" className="fill-emerald-500/20 dark:fill-emerald-400/25 animate-ping" />
-          <circle r="12" className="fill-emerald-500/35 dark:fill-emerald-400/40 blur-xs" />
-          <circle r="5" className="fill-white dark:fill-emerald-100 stroke-2 stroke-emerald-600 dark:stroke-emerald-400" />
+          <circle r="10" className="fill-emerald-500/20 dark:fill-emerald-400/25 animate-ping" />
+          <circle r="5" className="fill-emerald-500/35 dark:fill-emerald-400/40 blur-xs" />
+          <circle r="2.5" className="fill-white dark:fill-emerald-100 stroke-1 stroke-emerald-600 dark:stroke-emerald-400" />
         </g>
 
         {/* NÓS DE MARCO MOBILE */}
         {MOBILE_MILESTONES.map((m) => (
           <g key={m.id} transform={`translate(${m.x}, ${m.y})`}>
             <circle
-              r="7"
-              className="fill-white dark:fill-[#05080C] stroke-2 stroke-emerald-600 dark:stroke-emerald-400 shadow-sm"
+              r="3.5"
+              className="fill-white dark:fill-[#05080C] stroke-1 stroke-emerald-600 dark:stroke-emerald-400 shadow-sm"
             />
             <circle
-              r="3"
+              r="1.5"
               className="fill-emerald-600 dark:fill-emerald-400"
             />
           </g>

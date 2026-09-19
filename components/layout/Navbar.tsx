@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, ArrowUpRight, Calendar } from "lucide-react";
 import { useDemoModal } from "@/components/providers/DemoModalProvider";
 import { useTheme } from "@/components/providers/ThemeProvider";
@@ -124,44 +125,52 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 dark:border-white/10 bg-[#FBFBFA]/98 dark:bg-[#05080C]/98 backdrop-blur-2xl px-4 pt-2 pb-6 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
-          <nav className="flex flex-col space-y-1.5 pt-2">
-            {navLinks.map((link) => (
+      {/* Mobile Drawer com animação sutil e suave de abertura e fechamento */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            className="md:hidden overflow-hidden border-b border-slate-200 dark:border-white/10 bg-[#FBFBFA]/98 dark:bg-[#05080C]/98 backdrop-blur-2xl px-4 pt-2 pb-6 space-y-3"
+          >
+            <nav className="flex flex-col space-y-1.5 pt-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/[0.05] rounded-lg transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+            <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex flex-col gap-3">
               <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/[0.05] rounded-lg transition-colors"
+                href="https://dendrix.app.br"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1.5 w-full py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 rounded-xl"
               >
-                {link.label}
+                Acessar plataforma (Entrar)
+                <ArrowUpRight className="w-4 h-4" />
               </a>
-            ))}
-          </nav>
-          <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex flex-col gap-3">
-            <a
-              href="https://dendrix.app.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1.5 w-full py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 rounded-xl"
-            >
-              Acessar plataforma (Entrar)
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
-            <button
-              type="button"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                handleOpen();
-              }}
-              className="w-full py-3 text-sm font-semibold text-white bg-gradient-to-r from-[#0F2B48] to-[#0A3D62] border border-white/10 rounded-xl text-center shadow-lg cursor-pointer"
-            >
-              Agendar demonstração prática (15 min)
-            </button>
-          </div>
-        </div>
-      )}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleOpen();
+                }}
+                className="w-full py-3 text-sm font-semibold text-white bg-gradient-to-r from-[#0F2B48] to-[#0A3D62] border border-white/10 rounded-xl text-center shadow-lg cursor-pointer"
+              >
+                Agendar demonstração prática (15 min)
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

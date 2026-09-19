@@ -28,7 +28,7 @@ export function PrazosSection() {
   ];
 
   return (
-    <SectionWrapper className="border-t border-slate-200 dark:border-white/[0.08] bg-transparent" spacing="default">
+    <SectionWrapper id="prazos" className="border-t border-slate-200 dark:border-white/[0.08] bg-transparent" spacing="default">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         {/* Left Column: Copy */}
         <div className="lg:col-span-6 space-y-6 text-left">
@@ -71,42 +71,44 @@ export function PrazosSection() {
         <div className="lg:col-span-6 w-full">
           <div className="relative rounded-2xl border border-white/10 bg-[#09121B] shadow-2xl overflow-hidden backdrop-blur-xl">
             <BorderBeam size={180} duration={7} colorFrom="#B45309" colorTo="#10B981" borderWidth={2} />
-            {/* Header */}
-            <div className="h-10 px-4 bg-black/40 border-b border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
-              <div className="flex items-center gap-2 min-w-0">
-                <span className="font-semibold text-slate-200 shrink-0">DJEN • Publicação Oficial</span>
-                <span className="text-[10px] text-slate-400 bg-white/[0.05] px-2 py-0.5 rounded border border-white/10 hidden md:inline-block shrink-0">
+            {/* Header com proteção total anti-colisão no mobile */}
+            <div className="min-h-10 py-2 sm:py-0 px-3 sm:px-4 bg-black/40 border-b border-white/10 flex items-center justify-between gap-2 text-xs font-mono text-slate-400">
+              <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                <span className="font-semibold text-slate-200 text-[11px] sm:text-xs truncate">
+                  DJEN • Publicação Oficial
+                </span>
+                <span className="text-[10px] text-slate-400 bg-white/[0.05] px-1.5 py-0.5 rounded border border-white/10 hidden md:inline-block shrink-0">
                   Demonstrativo
                 </span>
               </div>
-              <span className="text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded border border-amber-500/20 shrink-0 font-medium text-[11px]">
+              <span className="text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 shrink-0 font-medium text-[10px] sm:text-[11px] whitespace-nowrap">
                 Prazo Fatal: 8 dias úteis
               </span>
             </div>
 
             {/* Publication card */}
-            <div className="p-5 sm:p-6 space-y-4">
-              <div className="p-4 bg-black/40 rounded-xl border border-white/[0.08] font-mono text-xs text-slate-300 space-y-2">
-                <div className="flex justify-between text-[11px] text-slate-400">
+            <div className="p-4 sm:p-6 space-y-4">
+              <div className="p-3.5 sm:p-4 bg-black/40 rounded-xl border border-white/[0.08] font-mono text-xs text-slate-300 space-y-2">
+                <div className="flex flex-wrap sm:flex-nowrap justify-between gap-1 text-[10px] sm:text-[11px] text-slate-400">
                   <span>DISPONIBILIZAÇÃO: 14/09/2026</span>
                   <span>PUBLICAÇÃO: 15/09/2026</span>
                 </div>
-                <p className="text-white font-semibold">
+                <p className="text-white font-semibold text-xs sm:text-sm">
                   PROCESSO 1002341-89.2024.8.26.0100 — 2ª VARA CÍVEL
                 </p>
-                <p className="text-slate-300 line-clamp-3 leading-relaxed">
+                <p className="text-slate-300 line-clamp-3 leading-relaxed text-[11px] sm:text-xs">
                   &ldquo;...Intime-se a parte autora para que, no prazo legal de 15 (quinze) dias, manifeste-se sobre a contestação e documentos juntados aos autos pelo requerido...&rdquo;
                 </p>
               </div>
 
               {/* AI Suggestion Box */}
-              <div className="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-blue-950/40 to-emerald-950/30 border border-emerald-500/30 space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400">
-                    <Bot className="w-4 h-4" />
-                    <span>Análise do Dendrix • Sugestão Processual</span>
+              <div className="p-3.5 sm:p-5 rounded-xl bg-gradient-to-r from-blue-950/40 to-emerald-950/30 border border-emerald-500/30 space-y-3">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-emerald-400 min-w-0">
+                    <Bot className="w-4 h-4 shrink-0" />
+                    <span className="truncate">Análise do Dendrix • Sugestão Processual</span>
                   </div>
-                  <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">
+                  <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30 shrink-0">
                     Ato: Réplica
                   </span>
                 </div>
@@ -115,11 +117,11 @@ export function PrazosSection() {
                   Identificada determinação de manifestação sobre a contestação. Prazo processual computado em dias úteis com vencimento em <strong className="text-white">06/10/2026</strong>.
                 </p>
 
-                <div className="pt-2 flex items-center justify-between">
+                <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                   <span className="text-[11px] text-slate-400 font-mono">
                     Cadastrar prazo no processo
                   </span>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-emerald-600/80 hover:bg-emerald-600 px-3.5 py-1.5 rounded-lg shadow-sm border border-emerald-500/40 transition-colors cursor-pointer">
+                  <span className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-white bg-emerald-600/80 hover:bg-emerald-600 px-3.5 py-2 rounded-lg shadow-sm border border-emerald-500/40 transition-colors cursor-pointer w-full sm:w-auto">
                     Abrir Minuta no Redator
                     <ArrowRight className="w-3.5 h-3.5" />
                   </span>

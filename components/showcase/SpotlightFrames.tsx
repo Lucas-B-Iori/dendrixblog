@@ -107,9 +107,9 @@ export function SpotlightFrames() {
               onMouseEnter={() => setActiveId(frame.id)}
               layout
               transition={{
-                layout: { type: "spring", stiffness: 180, damping: 26, mass: 0.8 },
+                layout: { type: "spring", stiffness: 135, damping: 21, mass: 0.65 },
               }}
-              className={`relative rounded-2xl overflow-hidden cursor-pointer border flex flex-col justify-between p-7 select-none transition-colors duration-500 ${
+              className={`relative rounded-2xl overflow-hidden cursor-pointer border flex flex-col justify-between p-6 lg:p-7 select-none transition-colors duration-400 ${
                 isActive
                   ? "flex-[3.5] bg-white dark:bg-[#0A121A] border-emerald-500/40 shadow-xl dark:shadow-[0_0_30px_rgba(16,185,129,0.15)]"
                   : "flex-1 bg-slate-100/80 dark:bg-[#070D14]/70 border-slate-200 dark:border-white/[0.08] hover:border-slate-300 dark:hover:border-white/20 hover:bg-white dark:hover:bg-[#0A121A]/50"
@@ -117,7 +117,7 @@ export function SpotlightFrames() {
             >
               {/* Brilho de fundo temático */}
               <div
-                className={`absolute inset-0 bg-gradient-to-b ${frame.accent} pointer-events-none transition-opacity duration-500 ${
+                className={`absolute inset-0 bg-gradient-to-b ${frame.accent} pointer-events-none transition-opacity duration-400 ${
                   isActive ? "opacity-100" : "opacity-0"
                 }`}
               />
@@ -133,7 +133,7 @@ export function SpotlightFrames() {
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
+                <h3 className="text-lg lg:text-xl font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
                   {frame.title}
                 </h3>
 
@@ -199,9 +199,12 @@ export function SpotlightFrames() {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.22 }}
-                      className="text-left py-1"
+                      className="text-left"
                     >
-                      <span className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 block whitespace-nowrap">
+                      <span className="font-mono text-xl font-bold text-slate-800 dark:text-emerald-400 block tracking-tight">
+                        {frame.metric}
+                      </span>
+                      <span className="font-mono text-[10.5px] font-medium text-slate-500 dark:text-slate-400 block whitespace-nowrap mt-0.5">
                         {frame.tag}
                       </span>
                     </motion.div>

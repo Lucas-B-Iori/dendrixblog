@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { SectionWrapper } from "../layout/SectionWrapper";
 import { ChevronDown } from "lucide-react";
 import { FAQ_DATA } from "@/lib/faqData";
@@ -51,30 +52,38 @@ export function FaqSection() {
                 />
               </button>
 
-              {isOpen && (
-                <div
-                  id={contentId}
-                  role="region"
-                  aria-labelledby={buttonId}
-                  className="pt-3 pb-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed animate-in fade-in-50 duration-200"
-                >
-                  {faq.bullets ? (
-                    <div className="space-y-3">
-                      <p>{faq.answerText}</p>
-                      <ul className="list-disc pl-5 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                        {faq.bullets.map((bullet, bIdx) => (
-                          <li key={bIdx}>
-                            <strong className="text-slate-900 dark:text-white font-semibold">{bullet.label}:</strong>{" "}
-                            {bullet.text}
-                          </li>
-                        ))}
-                      </ul>
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    id={contentId}
+                    role="region"
+                    aria-labelledby={buttonId}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.36, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pt-3 pb-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                      {faq.bullets ? (
+                        <div className="space-y-3">
+                          <p>{faq.answerText}</p>
+                          <ul className="list-disc pl-5 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                            {faq.bullets.map((bullet, bIdx) => (
+                              <li key={bIdx}>
+                                <strong className="text-slate-900 dark:text-white font-semibold">{bullet.label}:</strong>{" "}
+                                {bullet.text}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : (
+                        <p>{faq.answerText}</p>
+                      )}
                     </div>
-                  ) : (
-                    <p>{faq.answerText}</p>
-                  )}
-                </div>
-              )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           );
         })}

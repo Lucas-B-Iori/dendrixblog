@@ -209,8 +209,37 @@ export function RoundCarousel3D() {
     setIsDragging(false);
   };
 
-  const rotatePrev = () => setRotation((prev) => prev + anglePerItem);
-  const rotateNext = () => setRotation((prev) => prev - anglePerItem);
+  const mobileScrollRef = useRef<HTMLDivElement | null>(null);
+  const [activeMobileIndex, setActiveMobileIndex] = useState(0);
+
+  const rotatePrev = () => {
+    setRotation((prev) => prev + anglePerItem);
+    if (mobileScrollRef.current) {
+      const target = Math.max(0, activeMobileIndex - 1);
+      const cardWidth = 276;
+      mobileScrollRef.current.scrollTo({ left: target * cardWidth, behavior: "smooth" });
+      setActiveMobileIndex(target);
+    }
+  };
+
+  const rotateNext = () => {
+    setRotation((prev) => prev - anglePerItem);
+    if (mobileScrollRef.current) {
+      const target = Math.min(SPECIALTIES.length - 1, activeMobileIndex + 1);
+      const cardWidth = 276;
+      mobileScrollRef.current.scrollTo({ left: target * cardWidth, behavior: "smooth" });
+      setActiveMobileIndex(target);
+    }
+  };
+
+  const handleMobileScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const scrollLeft = e.currentTarget.scrollLeft;
+    const cardWidth = 276;
+    const index = Math.round(scrollLeft / cardWidth);
+    if (index !== activeMobileIndex && index >= 0 && index < SPECIALTIES.length) {
+      setActiveMobileIndex(index);
+    }
+  };
 
   return (
     <div className="w-full py-8 select-none">
@@ -218,13 +247,13 @@ export function RoundCarousel3D() {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 px-4 sm:px-0 gap-4">
         <div>
           <span className="font-mono text-xs font-semibold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">
-            Visão Tridimensional de Áreas
+            Visão de Áreas Especializadas
           </span>
           <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
             As 11 Áreas de Atuação do Dendrix no Seu Escritório
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 max-w-xl">
-            Giro contínuo e interativo em 3D: explore como o Dendrix apoia o raciocínio e a gestão de cada área da sua banca.
+            Explore como o Dendrix apoia o raciocínio, teses e a gestão técnica de cada área da sua banca jurídica.
           </p>
         </div>
 
@@ -233,7 +262,7 @@ export function RoundCarousel3D() {
           <button
             type="button"
             onClick={() => setIsAutoPlay(!isAutoPlay)}
-            className="h-10 px-3 rounded-full border border-slate-300 dark:border-white/10 bg-white dark:bg-[#0B131C] text-slate-800 dark:text-white flex items-center gap-1.5 text-xs font-mono hover:bg-slate-100 dark:hover:bg-[#111C2A] transition-colors shadow-xs"
+            className="hidden md:flex h-10 px-3 rounded-full border border-slate-300 dark:border-white/10 bg-white dark:bg-[#0B131C] text-slate-800 dark:text-white items-center gap-1.5 text-xs font-mono hover:bg-slate-100 dark:hover:bg-[#111C2A] transition-colors shadow-xs"
             aria-label={isAutoPlay ? "Pausar rotação automática" : "Ativar rotação automática"}
           >
             {isAutoPlay ? <Pause className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" /> : <Play className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" />}
@@ -258,9 +287,9 @@ export function RoundCarousel3D() {
         </div>
       </div>
 
-      {/* Palco 3D do Cilindro */}
+      {/* 1. VISUALIZAÇÃO DESKTOP: Palco 3D do Cilindro Giratório (Apenas md e acima) */}
       <div
-        className="relative h-[440px] sm:h-[480px] w-full flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing"
+        className="hidden md:flex relative h-[440px] sm:h-[480px] w-full items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onPointerDown={handlePointerDown}
@@ -329,6 +358,86 @@ export function RoundCarousel3D() {
               </div>
             );
           })}
+        </div>
+      </div>
+
+      {/* 2. VISUALIZAÇÃO MOBILE: Slider Horizontal de Toque Responsivo (Apenas telas < md) */}
+      <div className="block md:hidden w-full">
+        <div
+          ref={mobileScrollRef}
+          onScroll={handleMobileScroll}
+          className="flex gap-3.5 overflow-x-auto snap-x snap-mandatory px-4 pb-4 scrollbar-none"
+          style={{ scrollSnapType: "x mandatory" }}
+        >
+          {SPECIALTIES.map((spec) => {
+            const Icon = spec.icon;
+
+            return (
+              <div
+                key={spec.id}
+                className="snap-center shrink-0 w-[82vw] max-w-[280px] h-[310px] rounded-2xl p-5 border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-[#081018]/95 backdrop-blur-md shadow-lg flex flex-col justify-between"
+              >
+                {/* Cabeçalho do Card */}
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span
+                      className={`font-mono text-[10px] font-semibold px-2.5 py-0.5 rounded-full border ${spec.tagColor}`}
+                    >
+                      {spec.badge}
+                    </span>
+                    <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-white/80">
+                      <Icon className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
+                    </div>
+                  </div>
+
+                  <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 block mb-1">
+                    {spec.category}
+                  </span>
+                  <h4 className="text-base font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
+                    {spec.title}
+                  </h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
+                    {spec.description}
+                  </p>
+                </div>
+
+                {/* Rodapé com Métrica e Status */}
+                <div className="pt-3 border-t border-slate-200 dark:border-white/[0.08] flex items-center justify-between">
+                  <div>
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400 block font-sans">Destaque</span>
+                    <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400">
+                      {spec.stat}
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full font-semibold">
+                    Módulo Ativo
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Indicador de Paginação por Pontos no Mobile */}
+        <div className="flex items-center justify-center gap-1.5 mt-3">
+          {SPECIALTIES.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => {
+                if (mobileScrollRef.current) {
+                  mobileScrollRef.current.scrollTo({ left: idx * 276, behavior: "smooth" });
+                  setActiveMobileIndex(idx);
+                }
+              }}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                idx === activeMobileIndex
+                  ? "w-6 bg-emerald-500 dark:bg-emerald-400"
+                  : "w-1.5 bg-slate-300 dark:bg-white/20"
+              }`}
+              aria-label={`Ir para especialidade ${idx + 1}`}
+            />
+          ))}
         </div>
       </div>
     </div>
