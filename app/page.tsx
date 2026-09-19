@@ -1,12 +1,76 @@
+"use client";
+
+import { useState } from "react";
+import { Navbar } from "@/components/layout/Navbar";
+import { HeroSection } from "@/components/hero/HeroSection";
+import { CaosSection } from "@/components/sections/CaosSection";
+import { LoopSection } from "@/components/sections/LoopSection";
+import { MesaJuridicaSection } from "@/components/sections/MesaJuridicaSection";
+import { RedatorSection } from "@/components/sections/RedatorSection";
+import { PrazosSection } from "@/components/sections/PrazosSection";
+import { CaseStudySection } from "@/components/sections/CaseStudySection";
+import { RoiCalculator } from "@/components/sections/RoiCalculator";
+import { SecuritySection } from "@/components/sections/SecuritySection";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { ClosingCtaSection } from "@/components/sections/ClosingCtaSection";
+import { Footer } from "@/components/layout/Footer";
+import { StickyMobileBar } from "@/components/layout/StickyMobileBar";
+import { DemoModal } from "@/components/modals/DemoModal";
+
 export default function HomePage() {
+  const [isDemoOpen, setIsDemoOpen] = useState(false);
+
+  const handleOpenDemo = () => setIsDemoOpen(true);
+  const handleCloseDemo = () => setIsDemoOpen(false);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8 text-center">
-      <div className="max-w-md space-y-4">
-        <h1 className="text-3xl font-semibold tracking-tight">Dendrix CRM</h1>
-        <p className="text-sm text-neutral-500">
-          Infraestrutura e ambiente base configurados. Projeto em preparação para as próximas etapas.
-        </p>
-      </div>
-    </main>
+    <div className="flex min-h-screen flex-col bg-[var(--surface-canvas)] text-[var(--text-primary)]">
+      <Navbar onOpenDemo={handleOpenDemo} />
+
+      <main className="flex-1">
+        {/* Seção 01: Hero com Split-Screen Programático */}
+        <HeroSection onOpenDemo={handleOpenDemo} />
+
+        {/* Seção 02: O Custo do Caos Forense */}
+        <CaosSection />
+
+        {/* Seção 03: O Loop do Caso */}
+        <LoopSection />
+
+        {/* Seção 04: Mesa Jurídica (Pilar 1 - Raio-X dos Autos) */}
+        <MesaJuridicaSection onOpenDemo={handleOpenDemo} />
+
+        {/* Seção 05: Redator Assistido (Pilar 2 - Minuta com Citação) */}
+        <RedatorSection onOpenDemo={handleOpenDemo} />
+
+        {/* Seção 06: Prazos e Publicações (Pilar 3 - Painel Operacional) */}
+        <PrazosSection />
+
+        {/* Seção 07: Estudo de Caso Desidentificado (Preflight Gated via SHOW_CASE_STUDY) */}
+        <CaseStudySection />
+
+        {/* Seção 08: Calculadora de Horas (Preflight Gated via SHOW_CALCULATOR) */}
+        <RoiCalculator />
+
+        {/* Seção 09: Segurança da Informação, Governança e LGPD */}
+        <SecuritySection />
+
+        {/* Seção 10: FAQ de Transparência Radical */}
+        <FaqSection />
+
+        {/* Seção 11: Fechamento (Closing CTA) */}
+        <div id="agendar">
+          <ClosingCtaSection onOpenDemo={handleOpenDemo} />
+        </div>
+      </main>
+
+      <Footer />
+
+      {/* Barra de Polegar Fixa no Mobile Pós-Hero */}
+      <StickyMobileBar onOpenDemo={handleOpenDemo} />
+
+      {/* Modal de Agendamento em 2 Passos (Cal.com + Qualificação) */}
+      <DemoModal isOpen={isDemoOpen} onClose={handleCloseDemo} />
+    </div>
   );
 }
