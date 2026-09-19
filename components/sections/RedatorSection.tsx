@@ -33,7 +33,7 @@ export function RedatorSection({ onOpenDemo }: RedatorSectionProps = {}) {
   ];
 
   return (
-    <SectionWrapper className="border-t border-white/[0.08] bg-[#05080C]" spacing="default">
+    <SectionWrapper className="border-t border-slate-200 dark:border-white/[0.08] bg-white dark:bg-[#05080C]" spacing="default">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         {/* Left Column: Macro-recorte do Redator (Inverted layout) */}
         <div className="lg:col-span-6 w-full order-2 lg:order-1">
@@ -41,7 +41,7 @@ export function RedatorSection({ onOpenDemo }: RedatorSectionProps = {}) {
             <BorderBeam size={180} duration={8} colorFrom="#0284C7" colorTo="#10B981" borderWidth={2} />
             {/* Header */}
             <div className="h-10 px-4 bg-black/40 border-b border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
-              <span className="truncate">Redator Forense • Réplica_Civil_V2.docx</span>
+              <span className="truncate">Redator Jurídico • Réplica_Civil_V2.docx</span>
               <div className="flex items-center gap-2 shrink-0">
                 <span className="text-[10px] text-slate-400 bg-white/[0.05] px-2 py-0.5 rounded border border-white/10 hidden sm:inline-block">
                   Dados demonstrativos
@@ -73,9 +73,9 @@ export function RedatorSection({ onOpenDemo }: RedatorSectionProps = {}) {
                 </p>
               </div>
 
-              <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/20">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Dados de partes e prazos validados diretamente pelo CRM Dendrix.</span>
+              <div className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-300 font-mono flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Base legal verificada: Art. 397 do Código Civil • Súmula 54 STJ</span>
               </div>
             </div>
           </div>
@@ -84,15 +84,15 @@ export function RedatorSection({ onOpenDemo }: RedatorSectionProps = {}) {
         {/* Right Column: Copy */}
         <div className="lg:col-span-6 space-y-6 text-left order-1 lg:order-2">
           <div className="space-y-3">
-            <p className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400">
+            <p className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
               Pilar 02 • Redator Jurídico
             </p>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-white leading-tight text-balance">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-slate-900 dark:text-white leading-tight text-balance">
               Minutas estruturadas sem folha em branco, com base direta nas informações do processo.
             </h2>
           </div>
 
-          <p className="text-base text-slate-300 leading-relaxed">
+          <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
             A petição nasce estruturada a partir dos dados da ficha do processo e dos fatos apontados nos autos. Você não perde tempo formatando preâmbulos ou caçando dados cadastrais.
           </p>
 
@@ -100,16 +100,16 @@ export function RedatorSection({ onOpenDemo }: RedatorSectionProps = {}) {
             {features.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="p-4 sm:p-5 rounded-xl bg-[#0B131C] border border-white/10 space-y-2 shadow-xs hover:border-emerald-500/30 transition-colors">
+                <div key={idx} className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#0B131C] border border-slate-200 dark:border-white/10 space-y-2 shadow-xs hover:border-emerald-500/30 transition-colors">
                   <div className="flex items-center gap-2.5">
-                    <div className="p-1.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                    <div className="p-1.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400">
                       <Icon className="w-4 h-4" />
                     </div>
-                    <h3 className="text-xs font-semibold text-white">
+                    <h3 className="text-xs font-semibold text-slate-900 dark:text-white">
                       {item.title}
                     </h3>
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                     {item.description}
                   </p>
                 </div>

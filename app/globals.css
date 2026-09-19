@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  /* Surfaces & Backgrounds */
-  --surface-canvas: #FBFBFA;
-  --surface-primary: #FFFFFF;
-  --surface-subtle: #F4F4F2;
-  --surface-dark: #0B0F17;
+  /* Surfaces & Backgrounds (Default Dark Prestige V4) */
+  --surface-canvas: #05080C;
+  --surface-primary: #09131C;
+  --surface-subtle: #0E1A26;
+  --surface-dark: #020406;
 
   /* Text & Typography */
-  --text-primary: #0F172A;
-  --text-secondary: #334155;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
   --text-tertiary: #64748B;
   --text-muted: #64748B;
   --text-on-dark: #F8FAFC;
@@ -19,26 +21,71 @@
   --brand-primary: #0F2B48;
   --brand-primary-hover: #0A1C30;
   --brand-primary-subtle: #EDF2F7;
-  --accent-emerald: #047857;
-  --accent-amber: #B45309;
+  --accent-emerald: #10B981;
+  --accent-amber: #F59E0B;
   --accent-gold: #D97706;
 
   /* Borders & Hairlines */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --border-brand: #0284C7;
+
+  /* Functional Status */
+  --status-attention: #F59E0B;
+  --status-attention-bg: rgba(245, 158, 11, 0.12);
+  --status-success: #10B981;
+  --status-success-bg: rgba(16, 185, 129, 0.12);
+  --status-danger: #EF4444;
+  --status-danger-bg: rgba(239, 68, 68, 0.12);
+
+  /* Focus Ring */
+  --focus-ring: #10B981;
+}
+
+html.dark,
+[data-theme="dark"] {
+  --surface-canvas: #05080C;
+  --surface-primary: #09131C;
+  --surface-subtle: #0E1A26;
+  --surface-dark: #020406;
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-tertiary: #64748B;
+  --text-muted: #64748B;
+  --text-on-dark: #F8FAFC;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --border-brand: #0284C7;
+}
+
+html.light,
+[data-theme="light"] {
+  --surface-canvas: #FBFBFA;
+  --surface-primary: #FFFFFF;
+  --surface-subtle: #F4F4F2;
+  --surface-dark: #0B0F17;
+
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-tertiary: #64748B;
+  --text-muted: #64748B;
+  --text-on-dark: #F8FAFC;
+
+  --accent-navy: #0F2B48;
+  --brand-primary: #0F2B48;
+  --brand-primary-hover: #0A1C30;
+  --brand-primary-subtle: #EDF2F7;
+  --accent-emerald: #047857;
+  --accent-amber: #B45309;
+
   --border-subtle: #E2E8F0;
   --border-hairline: #E2E8F0;
   --border-strong: #CBD5E1;
   --border-brand: #93C5FD;
-
-  /* Functional Status */
-  --status-attention: #B45309;
-  --status-attention-bg: #FEF3C7;
-  --status-success: #047857;
-  --status-success-bg: #D1FAE5;
-  --status-danger: #B91C1C;
-  --status-danger-bg: #FEE2E2;
-
-  /* Focus Ring */
-  --focus-ring: #0F2B48;
 }
 
 @theme {

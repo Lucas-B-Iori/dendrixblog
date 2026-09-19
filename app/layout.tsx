@@ -3,6 +3,7 @@ import { Newsreader, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google"
 import "./globals.css";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { DemoModalProvider } from "@/components/providers/DemoModalProvider";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ScrollProgressBar } from "@/components/layout/ScrollProgressBar";
 
 const newsreader = Newsreader({
@@ -25,14 +26,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#FBFBFA",
+  themeColor: "#05080C",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
   title: "Dendrix CRM | O CRM Jurídico com Inteligência Contextual",
-  description: "Dos autos à minuta, com a origem das informações sempre visível. Conecte processos, prazos e clientes ao mesmo raciocínio forense.",
+  description: "Dos autos à minuta, com a origem das informações sempre visível. Conecte processos, prazos e clientes à melhor estratégia jurídica.",
   metadataBase: new URL("https://dendrixcrm.com.br"),
   alternates: {
     canonical: "/",
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Dendrix CRM | O CRM Jurídico com Inteligência Contextual",
-    description: "Dos autos à minuta, com a origem das informações sempre visível. Conecte processos, prazos e clientes ao mesmo raciocínio forense.",
+    description: "Dos autos à minuta, com a origem das informações sempre visível. Conecte processos, prazos e clientes à melhor estratégia jurídica.",
     url: "https://dendrixcrm.com.br",
     siteName: "Dendrix CRM",
     locale: "pt_BR",
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Dendrix CRM | O CRM Jurídico com Inteligência Contextual",
-    description: "Dos autos à minuta, com a origem das informações sempre visível. Conecte processos, prazos e clientes ao mesmo raciocínio forense.",
+    description: "Dos autos à minuta, com a origem das informações sempre visível. Conecte processos, prazos e clientes à melhor estratégia jurídica.",
   },
 };
 
@@ -64,12 +65,15 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${newsreader.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} scroll-smooth`}
+      className={`${newsreader.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} scroll-smooth dark`}
+      data-theme="dark"
     >
-      <body className="antialiased min-h-screen bg-[#05080C] text-[#F8FAFC] font-sans selection:bg-[#0F2B48] selection:text-white">
-        <ScrollProgressBar />
-        <JsonLd />
-        <DemoModalProvider>{children}</DemoModalProvider>
+      <body className="antialiased min-h-screen bg-[var(--surface-canvas)] text-[var(--text-primary)] font-sans selection:bg-[#0F2B48] selection:text-white transition-colors duration-300">
+        <ThemeProvider>
+          <ScrollProgressBar />
+          <JsonLd />
+          <DemoModalProvider>{children}</DemoModalProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

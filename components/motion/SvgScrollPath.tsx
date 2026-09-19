@@ -12,7 +12,7 @@ interface SvgScrollPathProps {
 /**
  * SvgScrollPath (Inspirado em Skiper 19 / Svg follow scroll)
  * Linha vetorial dinâmica que se desenha acompanhando o progresso vertical do scroll,
- * conectando marcos e acendendo pontos de luz forense na esteira do caso.
+ * conectando marcos e acendendo pontos de luz processual na esteira do caso.
  */
 export function SvgScrollPath({
   className = "",

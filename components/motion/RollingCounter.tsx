@@ -16,7 +16,7 @@ interface RollingCounterProps {
 /**
  * RollingCounter (Inspirado em Skiper 37 / Animated Number)
  * Odômetro digital com desaceleração exponencial quando entra no viewport.
- * Suporta formatação brasileira (10.412) e sufixos/prefixos forenses.
+ * Suporta formatação brasileira (10.412) e sufixos/prefixos processuais.
  */
 export function RollingCounter({
   value,

@@ -55,7 +55,7 @@ export function AppleFeatureCard() {
         <div className="lg:col-span-7 space-y-5">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs font-semibold">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>DENDRIX FORENSICS CORE • ART. 34 CED-OAB</span>
+            <span>DENDRIX SECURITY CORE • ART. 34 CED-OAB</span>
           </div>
 
           <h3 className="text-2xl sm:text-4xl font-bold text-white tracking-tight leading-tight">

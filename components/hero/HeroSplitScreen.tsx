@@ -204,7 +204,7 @@ export function HeroSplitScreen() {
                 DOS FATOS E DA MORA INCONTROVERSA
               </p>
 
-              {/* Parágrafo 1 com citação forense (surge no Estado 5) */}
+              {/* Parágrafo 1 com citação dos autos (surge no Estado 5) */}
               <p
                 className={`text-slate-700 transition-opacity duration-400 ${
                   step >= 5 ? "opacity-100" : "opacity-0"

@@ -71,13 +71,12 @@ export function LiquidBackground({
 
     let t = 0;
 
-    // Configuração de paleta refinada para Dark Prestige Forense
-    // Tons: Obsidiana (#04070B), Chumbo Azulado (#09131C), Toque Esmeralda (#064E3B) e Ciano (#0369A1)
+    // Configuração de paletas para Dark Prestige e Light Mode
     const blobs = [
-      { x: 0.3, y: 0.3, r: 0.45, color: "rgba(11, 26, 42, 0.75)", speed: 0.0006 },
-      { x: 0.7, y: 0.4, r: 0.5, color: "rgba(6, 38, 30, 0.45)", speed: 0.0008 },
-      { x: 0.5, y: 0.7, r: 0.55, color: "rgba(15, 35, 55, 0.6)", speed: 0.0005 },
-      { x: 0.8, y: 0.8, r: 0.4, color: "rgba(8, 20, 32, 0.7)", speed: 0.0007 },
+      { x: 0.3, y: 0.3, r: 0.45, color: "rgba(11, 26, 42, 0.75)", lightColor: "rgba(219, 234, 254, 0.45)", speed: 0.0006 },
+      { x: 0.7, y: 0.4, r: 0.5, color: "rgba(6, 38, 30, 0.45)", lightColor: "rgba(209, 250, 229, 0.45)", speed: 0.0008 },
+      { x: 0.5, y: 0.7, r: 0.55, color: "rgba(15, 35, 55, 0.6)", lightColor: "rgba(241, 245, 249, 0.55)", speed: 0.0005 },
+      { x: 0.8, y: 0.8, r: 0.4, color: "rgba(8, 20, 32, 0.7)", lightColor: "rgba(224, 231, 255, 0.35)", speed: 0.0007 },
     ];
 
     const render = () => {
@@ -91,10 +90,12 @@ export function LiquidBackground({
       mouse.x += (mouse.targetX - mouse.x) * 0.04;
       mouse.y += (mouse.targetY - mouse.y) * 0.04;
 
+      const isDark = !document.documentElement.classList.contains("light");
+
       ctx.clearRect(0, 0, width, height);
 
-      // Fundo escuro base de veludo
-      ctx.fillStyle = "#05080C";
+      // Fundo base
+      ctx.fillStyle = isDark ? "#05080C" : "#F8FAFC";
       ctx.fillRect(0, 0, width, height);
 
       // Renderização das lentes líquidas sobrepostas
@@ -113,9 +114,10 @@ export function LiquidBackground({
           radius
         );
 
-        gradient.addColorStop(0, blob.color);
-        gradient.addColorStop(0.5, blob.color.replace(/[\d\.]+\)$/, "0.2)"));
-        gradient.addColorStop(1, "rgba(5, 8, 12, 0)");
+        const color = isDark ? blob.color : blob.lightColor;
+        gradient.addColorStop(0, color);
+        gradient.addColorStop(0.5, color.replace(/[\d\.]+\)$/, "0.15)"));
+        gradient.addColorStop(1, isDark ? "rgba(5, 8, 12, 0)" : "rgba(248, 250, 252, 0)");
 
         ctx.fillStyle = gradient;
         ctx.beginPath();
@@ -132,16 +134,22 @@ export function LiquidBackground({
         mouse.y,
         Math.min(width, height) * 0.35
       );
-      mouseGlow.addColorStop(0, "rgba(16, 185, 129, 0.12)"); // Esmeralda nobre
-      mouseGlow.addColorStop(0.4, "rgba(2, 132, 199, 0.08)"); // Ciano forense
-      mouseGlow.addColorStop(1, "rgba(5, 8, 12, 0)");
+      if (isDark) {
+        mouseGlow.addColorStop(0, "rgba(16, 185, 129, 0.12)"); // Esmeralda nobre
+        mouseGlow.addColorStop(0.4, "rgba(2, 132, 199, 0.08)"); // Ciano institucional
+        mouseGlow.addColorStop(1, "rgba(5, 8, 12, 0)");
+      } else {
+        mouseGlow.addColorStop(0, "rgba(16, 185, 129, 0.07)");
+        mouseGlow.addColorStop(0.4, "rgba(2, 132, 199, 0.04)");
+        mouseGlow.addColorStop(1, "rgba(248, 250, 252, 0)");
+      }
       ctx.fillStyle = mouseGlow;
       ctx.beginPath();
       ctx.arc(mouse.x, mouse.y, Math.min(width, height) * 0.35, 0, Math.PI * 2);
       ctx.fill();
 
       // Linhas finas de grade técnica sutil (Technical Grid)
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.02)";
+      ctx.strokeStyle = isDark ? "rgba(255, 255, 255, 0.02)" : "rgba(15, 23, 42, 0.03)";
       ctx.lineWidth = 1;
       const gridSize = 48;
       for (let x = 0; x < width; x += gridSize) {
@@ -181,7 +189,7 @@ export function LiquidBackground({
         style={{ width: "100%", height: "100%" }}
       />
       {/* Máscara de vinheta superior e inferior para transição suave com seções vizinhas */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#05080C]/80 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--surface-canvas)]/80 pointer-events-none" />
     </div>
   );
 }

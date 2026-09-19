@@ -100,7 +100,7 @@ export default function SegurancaPage() {
               Nota sobre Inteligência Artificial e Sigilo Profissional
             </h3>
             <p className="text-sm text-slate-300 leading-relaxed">
-              Diferente de interfaces genéricas de chat acessíveis ao público geral, o Dendrix não armazena o histórico dos processos de clientes para fins de melhoria de produtos públicos. O raciocínio forense é estritamente contextualizado ao ambiente da banca contratante.
+              Diferente de interfaces genéricas de chat acessíveis ao público geral, o Dendrix não armazena o histórico dos processos de clientes para fins de melhoria de produtos públicos. O raciocínio jurídico é estritamente contextualizado ao ambiente da banca contratante.
             </p>
             <div className="pt-2">
               <Link

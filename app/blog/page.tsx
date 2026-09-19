@@ -5,9 +5,9 @@ import { Footer } from "@/components/layout/Footer";
 import { ArrowLeft, BookOpen, Layers, Sparkles, Clock, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Blog Forense | Dendrix CRM",
+  title: "Blog Jurídico | Dendrix CRM",
   description:
-    "Artigos e guias práticos sobre inteligência forense, gestão de processos e produtividade para advogados e pequenos escritórios.",
+    "Artigos e guias práticos sobre inteligência jurídica, gestão de processos e produtividade para advogados e pequenos escritórios.",
 };
 
 export default function BlogPage() {
@@ -20,12 +20,12 @@ export default function BlogPage() {
       topics: [
         "Controle de prazos processuais no CPC sem planilhas paralelas",
         "Como organizar processos no escritório em crescimento",
-        "WhatsApp integrado à rotina forense sem perda de histórico",
+        "WhatsApp integrado à rotina da banca sem perda de histórico",
       ],
     },
     {
       icon: Sparkles,
-      title: "Inteligência Artificial Forense",
+      title: "Inteligência Artificial Jurídica",
       description:
         "Análises técnicas sobre as limitações do ChatGPT na advocacia, metodologias de leitura analítica de autos em PDF e checagem de preliminares.",
       topics: [
@@ -36,7 +36,7 @@ export default function BlogPage() {
     },
     {
       icon: Clock,
-      title: "Produtividade da Rotina Forense",
+      title: "Produtividade da Rotina Jurídica",
       description:
         "Estratégias para advogados autônomos e sócios de bancas de 2 a 8 advogados reduzirem o tempo consumido em tarefas burocráticas.",
       topics: [
@@ -68,13 +68,13 @@ export default function BlogPage() {
           <div className="space-y-4 mb-12 text-left">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--accent-navy)]/10 text-[var(--accent-navy)] text-xs font-mono font-medium">
               <BookOpen className="w-3.5 h-3.5" />
-              <span>CONTEÚDO FORENSE ESTRATÉGICO</span>
+              <span>CONTEÚDO JURÍDICO ESTRATÉGICO</span>
             </div>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[var(--text-primary)] leading-tight text-balance">
-              Blog Forense Dendrix
+              Blog Jurídico Dendrix
             </h1>
             <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl">
-              Artigos analíticos, guias práticos e estudos de fluxo sobre tecnologia, inteligência contextual e gestão forense sem atalhos simplistas.
+              Artigos analíticos, guias práticos e estudos de fluxo sobre tecnologia, inteligência contextual e gestão jurídica sem atalhos simplistas.
             </p>
           </div>
 

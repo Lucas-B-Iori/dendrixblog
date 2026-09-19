@@ -34,7 +34,7 @@ export function SecuritySection() {
   ];
 
   return (
-    <SectionWrapper id="seguranca" className="border-t border-white/[0.08] bg-[#05080C]" spacing="default">
+    <SectionWrapper id="seguranca" className="border-t border-slate-200 dark:border-white/[0.08] bg-slate-50 dark:bg-[#05080C]" spacing="default">
       {/* Bloco Flagship Apple (Skiper 76 / Apple Feature Block) */}
       <div className="mb-14">
         <AppleFeatureCard />
@@ -42,13 +42,13 @@ export function SecuritySection() {
 
       {/* Header Secundário */}
       <div className="text-left max-w-3xl space-y-4 mb-12">
-        <p className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400">
+        <p className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
           Segurança da Informação e Privacidade
         </p>
-        <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-white leading-tight text-balance">
+        <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-slate-900 dark:text-white leading-tight text-balance">
           Seus dados não treinam modelos públicos. A decisão final é sempre sua.
         </h2>
-        <p className="text-base text-slate-300 leading-relaxed">
+        <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
           O Dendrix foi projetado adotando controles de segurança técnica, isolamento de dados e respeito às prerrogativas e deveres de sigilo da advocacia.
         </p>
       </div>
@@ -64,14 +64,14 @@ export function SecuritySection() {
               enableSpotlight={true}
               spotlightColor="rgba(16, 185, 129, 0.12)"
             >
-              <div className="h-full p-7 sm:p-8 rounded-2xl bg-[#09131C] border border-white/10 shadow-xl space-y-4 hover:border-emerald-500/30 transition-all backdrop-blur-xl">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shadow-xs">
+              <div className="h-full p-7 sm:p-8 rounded-2xl bg-white dark:bg-[#09131C] border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-xl space-y-4 hover:border-emerald-500/30 transition-all backdrop-blur-xl">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-xs">
                   <Icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-base sm:text-lg font-semibold text-white">
+                <h3 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white">
                   {pillar.title}
                 </h3>
-                <p className="text-sm text-slate-300 leading-relaxed">
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   {pillar.description}
                 </p>
               </div>
@@ -81,13 +81,13 @@ export function SecuritySection() {
       </div>
 
       {/* Link Contextual para Documentação Completa */}
-      <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs sm:text-sm">
-        <p className="text-slate-400">
+      <div className="mt-10 pt-6 border-t border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs sm:text-sm">
+        <p className="text-slate-600 dark:text-slate-400">
           Dúvidas sobre governança técnica, DPO ou conformidade com a LGPD?
         </p>
         <Link
           href="/seguranca"
-          className="inline-flex items-center gap-1.5 font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+          className="inline-flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 transition-colors"
         >
           <span>Consulte nossas diretrizes completas de segurança</span>
           <ArrowRight className="w-4 h-4" />

@@ -67,7 +67,7 @@ const SLIDES: SlideItem[] = [
   },
   {
     id: "ocr",
-    tag: "Mesa OCR Forense",
+    tag: "Mesa de Leitura & OCR",
     title: "Espelho de Triagem de Autos",
     subtitle: "Indexação de 842 páginas em 8 segundos com extração cronológica.",
     badge: "OCR 100% Concluído",
@@ -117,7 +117,7 @@ export function SmoothScrollSlider() {
       <div className="flex items-center justify-between mb-6 px-4 sm:px-0">
         <div>
           <span className="font-mono text-xs font-semibold text-emerald-400 uppercase tracking-wider">
-            Galeria de Peças Forenses
+            Galeria de Peças Processuais
           </span>
           <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1">
             Evidências & Documentos Reais na Mesa
@@ -198,7 +198,7 @@ export function SmoothScrollSlider() {
                     </div>
                   </div>
 
-                  {/* Metadados Forenses em Pílulas */}
+                  {/* Metadados Processuais em Pílulas */}
                   <div className="grid grid-cols-3 gap-2 my-4 py-3 px-3 rounded-xl bg-black/30 border border-white/[0.06]">
                     {slide.meta.map((m, i) => (
                       <div key={i} className="text-center">
@@ -215,7 +215,7 @@ export function SmoothScrollSlider() {
                 <div className="mt-2 p-3.5 rounded-xl bg-[#04080D] border border-white/[0.06] font-mono text-[11px] text-slate-300 leading-relaxed overflow-hidden">
                   <div className="flex items-center gap-1.5 pb-2 mb-2 border-b border-white/[0.06] text-[10px] text-slate-400">
                     <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                    <span>Dendrix Forensic Engine • Visualização Segura</span>
+                    <span>Dendrix Security Engine • Visualização Segura</span>
                   </div>
                   <pre className="whitespace-pre-wrap font-mono text-[10.5px] text-slate-300 selection:bg-emerald-500/30 max-h-24 overflow-hidden">
                     {slide.snippet}

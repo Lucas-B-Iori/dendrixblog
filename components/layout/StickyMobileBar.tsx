@@ -29,7 +29,7 @@ export function StickyMobileBar() {
   return (
     <aside
       aria-label="Barra de ações rápidas"
-      className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#05080C]/90 backdrop-blur-xl border-t border-white/10 px-4 py-2.5 shadow-[0_-10px_30px_rgba(0,0,0,0.8)] transition-transform duration-300 animate-in slide-in-from-bottom-full"
+      className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/90 dark:bg-[#05080C]/90 backdrop-blur-xl border-t border-slate-200 dark:border-white/10 px-4 py-2.5 shadow-xl dark:shadow-[0_-10px_30px_rgba(0,0,0,0.8)] transition-transform duration-300 animate-in slide-in-from-bottom-full"
       style={{ paddingBottom: "calc(0.625rem + env(safe-area-inset-bottom, 0px))" }}
     >
       <div className="flex items-center gap-2.5 max-w-md mx-auto">
@@ -47,9 +47,9 @@ export function StickyMobileBar() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Falar no WhatsApp"
-          className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl bg-white/[0.05] border border-white/10 text-slate-200 hover:text-emerald-400 active:scale-[0.98] transition-colors"
+          className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-200 hover:text-emerald-500 dark:hover:text-emerald-400 active:scale-[0.98] transition-colors"
         >
-          <MessageSquare className="w-5 h-5 text-emerald-400" />
+          <MessageSquare className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
         </a>
       </div>
     </aside>

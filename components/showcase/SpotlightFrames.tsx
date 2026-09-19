@@ -21,7 +21,7 @@ const FRAMES: FrameItem[] = [
   {
     id: "ocr",
     step: "01",
-    title: "Leitura Forense & OCR",
+    title: "Leitura de Autos & OCR",
     subtitle: "Digerir 1.200 páginas em 8 segundos sem perder uma linha dos autos.",
     icon: FileSearch,
     tag: "Extração Instantânea",
@@ -40,7 +40,7 @@ const FRAMES: FrameItem[] = [
     title: "Redator Assistido com IA",
     subtitle: "Minutas fundamentadas na jurisprudência real do STJ e TST.",
     icon: PenTool,
-    tag: "Precisão Forense",
+    tag: "Precisão Jurídica",
     accent: "from-emerald-600/20 via-emerald-500/10 to-transparent",
     details: [
       "Sugestão de teses embasadas em acórdãos vigentes e súmulas vinculantes",
@@ -109,8 +109,8 @@ export function SpotlightFrames() {
               transition={{ type: "spring", stiffness: 280, damping: 28 }}
               className={`relative rounded-2xl overflow-hidden cursor-pointer border transition-all duration-300 flex flex-col justify-between p-7 ${
                 isActive
-                  ? "flex-[3.5] bg-[#0A121A] border-emerald-500/40 shadow-[0_0_30px_rgba(16,185,129,0.15)]"
-                  : "flex-1 bg-[#070D14]/70 border-white/[0.08] hover:border-white/20 hover:bg-[#0A121A]/50"
+                  ? "flex-[3.5] bg-white dark:bg-[#0A121A] border-emerald-500/40 shadow-xl dark:shadow-[0_0_30px_rgba(16,185,129,0.15)]"
+                  : "flex-1 bg-slate-100/80 dark:bg-[#070D14]/70 border-slate-200 dark:border-white/[0.08] hover:border-slate-300 dark:hover:border-white/20 hover:bg-white dark:hover:bg-[#0A121A]/50"
               }`}
             >
               {/* Brilho de fundo temático */}
@@ -123,15 +123,15 @@ export function SpotlightFrames() {
               {/* Cabeçalho do Card */}
               <div className="relative z-10">
                 <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="font-mono text-xs font-bold text-emerald-400/80 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                  <span className="font-mono text-xs font-bold text-emerald-700 dark:text-emerald-400/80 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
                     FASE {frame.step}
                   </span>
-                  <div className="w-9 h-9 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white/80">
-                    <Icon className="w-4 h-4" />
+                  <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-white/80">
+                    <Icon className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-white tracking-tight leading-snug">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
                   {frame.title}
                 </h3>
 
@@ -140,7 +140,7 @@ export function SpotlightFrames() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="text-sm text-slate-300 mt-2 line-clamp-2"
+                    className="text-sm text-slate-600 dark:text-slate-300 mt-2 line-clamp-2"
                   >
                     {frame.subtitle}
                   </motion.p>
@@ -156,8 +156,8 @@ export function SpotlightFrames() {
                   className="relative z-10 my-4 space-y-2.5"
                 >
                   {frame.details.map((detail, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-300">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-600 dark:text-slate-300">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
                       <span>{detail}</span>
                     </div>
                   ))}
@@ -165,22 +165,24 @@ export function SpotlightFrames() {
               )}
 
               {/* Rodapé com Métrica de Destaque */}
-              <div className="relative z-10 pt-4 border-t border-white/[0.08] flex items-end justify-between">
+              <div className="relative z-10 pt-4 border-t border-slate-200 dark:border-white/[0.08] flex items-end justify-between">
                 {isActive ? (
                   <div>
-                    <span className="text-2xl font-bold font-mono text-emerald-400 tracking-tight block">
+                    <span className="font-mono text-3xl font-extrabold text-slate-900 dark:text-white block tracking-tight">
                       {frame.metric}
                     </span>
-                    <span className="text-[11px] text-slate-400 font-sans block">
+                    <span className="text-[11px] font-sans text-slate-500 dark:text-slate-400 block mt-0.5">
                       {frame.metricLabel}
                     </span>
                   </div>
                 ) : (
-                  <div className="w-full flex items-center justify-between text-xs text-slate-400">
-                    <span className="font-mono text-xs">{frame.metric}</span>
-                    <ArrowRight className="w-3.5 h-3.5 opacity-50" />
+                  <div className="text-left">
+                    <span className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 block">
+                      {frame.tag}
+                    </span>
                   </div>
                 )}
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 dark:bg-emerald-400 shadow-[0_0_8px_#34D399]" />
               </div>
             </motion.div>
           );
@@ -199,25 +201,25 @@ export function SpotlightFrames() {
               onClick={() => setActiveId(frame.id)}
               className={`rounded-2xl p-5 border transition-all duration-200 ${
                 isActive
-                  ? "bg-[#0A121A] border-emerald-500/50 shadow-[0_0_20px_rgba(16,185,129,0.15)]"
-                  : "bg-[#070D14] border-white/10"
+                  ? "bg-white dark:bg-[#0A121A] border-emerald-500/50 shadow-lg dark:shadow-[0_0_20px_rgba(16,185,129,0.15)]"
+                  : "bg-slate-50 dark:bg-[#070D14] border-slate-200 dark:border-white/10"
               }`}
             >
               <div className="flex items-center justify-between mb-3">
-                <span className="font-mono text-xs text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
+                <span className="font-mono text-xs text-emerald-700 dark:text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
                   {frame.step} • {frame.tag}
                 </span>
-                <Icon className="w-5 h-5 text-slate-300" />
+                <Icon className="w-5 h-5 text-slate-500 dark:text-slate-300" />
               </div>
 
-              <h3 className="text-lg font-bold text-white mb-1">{frame.title}</h3>
-              <p className="text-xs text-slate-300 mb-3">{frame.subtitle}</p>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{frame.title}</h3>
+              <p className="text-xs text-slate-600 dark:text-slate-300 mb-3">{frame.subtitle}</p>
 
               {isActive && (
-                <div className="space-y-2 py-3 border-t border-white/10 my-2">
+                <div className="space-y-2 py-3 border-t border-slate-200 dark:border-white/10 my-2">
                   {frame.details.map((detail, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs text-slate-300">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <div key={idx} className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
                       <span>{detail}</span>
                     </div>
                   ))}
@@ -225,8 +227,8 @@ export function SpotlightFrames() {
               )}
 
               <div className="flex items-center justify-between pt-2 text-xs">
-                <span className="text-emerald-400 font-mono font-bold">{frame.metric}</span>
-                <span className="text-slate-400 text-[11px]">{frame.metricLabel}</span>
+                <span className="text-emerald-700 dark:text-emerald-400 font-mono font-bold">{frame.metric}</span>
+                <span className="text-slate-500 dark:text-slate-400 text-[11px]">{frame.metricLabel}</span>
               </div>
             </div>
           );

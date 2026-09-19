@@ -11,7 +11,7 @@ export function ClosingCtaSection() {
   );
 
   return (
-    <section className="bg-[#05080C] text-white py-20 sm:py-28 relative overflow-hidden border-t border-white/[0.08]">
+    <section className="bg-[#F8FAFC] dark:bg-[#05080C] text-slate-900 dark:text-white py-20 sm:py-28 relative overflow-hidden border-t border-slate-200 dark:border-white/[0.08]">
       {/* Liquid Canvas de Fechamento (Skiper 12) */}
       <LiquidBackground variant="closing" />
 
@@ -25,19 +25,19 @@ export function ClosingCtaSection() {
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="relative rounded-3xl bg-[#09131C]/90 border border-white/15 p-8 sm:p-14 md:p-16 text-center backdrop-blur-2xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] overflow-hidden">
+        <div className="relative rounded-3xl bg-white/95 dark:bg-[#09131C]/90 border border-slate-200 dark:border-white/15 p-8 sm:p-14 md:p-16 text-center backdrop-blur-2xl shadow-xl dark:shadow-[0_25px_60px_rgba(0,0,0,0.8)] overflow-hidden">
           <BorderBeam size={220} duration={9} colorFrom="#10B981" colorTo="#38BDF8" borderWidth={1.5} />
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-xs font-mono text-emerald-400 uppercase tracking-wider mb-6 border border-emerald-500/20 shadow-[0_0_12px_rgba(16,185,129,0.15)]">
-            <Calendar className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-xs font-mono text-emerald-700 dark:text-emerald-400 uppercase tracking-wider mb-6 border border-emerald-500/20 shadow-[0_0_12px_rgba(16,185,129,0.15)]">
+            <Calendar className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
             <span>AGENDAMENTO DE DEMONSTRAÇÃO</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight mb-6 text-white leading-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight mb-6 text-slate-900 dark:text-white leading-tight">
             Coloque ordem no seu escritório e ganhe horas de estratégia.
           </h2>
 
-          <p className="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-sans">
+          <p className="text-base sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-sans">
             Traga um processo da sua banca para uma demonstração prática de 15 minutos. Veja o Dendrix ler os autos, apontar informações relevantes e estruturar a minuta ao vivo.
           </p>
 
@@ -52,9 +52,9 @@ export function ClosingCtaSection() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white/[0.05] hover:bg-white/[0.08] text-slate-200 border border-white/10 font-medium text-base transition-colors backdrop-blur-md"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.05] dark:hover:bg-white/[0.08] text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-white/10 font-medium text-base transition-colors backdrop-blur-md"
             >
-              <MessageSquare className="w-4 h-4 text-emerald-400" />
+              <MessageSquare className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
               <span>Dúvidas rápidas? Fale pelo WhatsApp</span>
             </a>
           </div>

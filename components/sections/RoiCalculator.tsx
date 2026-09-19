@@ -121,7 +121,7 @@ export function RoiCalculator({ onOpenDemo }: RoiCalculatorProps) {
               </div>
 
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Tempo que pode ser redirecionado de tarefas manuais de leitura de autos e minutas básicas para audiências, atendimento e estratégia forense.
+                Tempo que pode ser redirecionado de tarefas manuais de leitura de autos e minutas básicas para audiências, atendimento e estratégia processual e jurídica.
               </p>
             </div>
 
@@ -140,7 +140,7 @@ export function RoiCalculator({ onOpenDemo }: RoiCalculatorProps) {
         <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-start gap-2 text-[11px] text-slate-500 leading-relaxed">
           <Info className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
           <p>
-            Os valores apresentados constituem estimativas baseadas em parâmetros médios de leitura e digitação forense. Os ganhos reais variam conforme a complexidade do acervo e a rotina de cada escritório. Metodologia apresentada na sessão técnica de 15 minutos.
+            Os valores apresentados constituem estimativas baseadas em parâmetros médios de leitura e digitação processual. Os ganhos reais variam conforme a complexidade do acervo e a rotina de cada escritório. Metodologia apresentada na sessão técnica de 15 minutos.
           </p>
         </div>
       </div>

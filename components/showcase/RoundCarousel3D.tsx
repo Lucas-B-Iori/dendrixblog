@@ -1,8 +1,23 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { motion } from "motion/react";
-import { Briefcase, Building2, HeartHandshake, Landmark, Users, Scale, ArrowLeft, ArrowRight } from "lucide-react";
+import {
+  Briefcase,
+  Building2,
+  HeartHandshake,
+  Landmark,
+  Users,
+  Scale,
+  ShieldAlert,
+  ShoppingCart,
+  FileCheck2,
+  GitPullRequest,
+  CreditCard,
+  ArrowLeft,
+  ArrowRight,
+  Play,
+  Pause,
+} from "lucide-react";
 
 interface SpecialtyItem {
   id: string;
@@ -17,98 +32,166 @@ interface SpecialtyItem {
 
 const SPECIALTIES: SpecialtyItem[] = [
   {
+    id: "civel",
+    title: "Cível & Obrigações",
+    category: "Contencioso Geral",
+    icon: Scale,
+    description: "Ações de cobrança, indenizatórias, cumprimento de sentença e execuções de título.",
+    stat: "Prazos CPC/15",
+    badge: "Cível",
+    tagColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+  },
+  {
+    id: "criminal",
+    title: "Direito Penal",
+    category: "Defesa Criminal",
+    icon: ShieldAlert,
+    description: "Acompanhamento de inquéritos, audiências de custódia, pedidos de liberdade e defesas prévias.",
+    stat: "CPP & Súmulas",
+    badge: "Criminal",
+    tagColor: "text-rose-400 bg-rose-500/10 border-rose-500/20",
+  },
+  {
+    id: "familias",
+    title: "Família & Sucessões",
+    category: "Direito Patrimonial & Pessoal",
+    icon: HeartHandshake,
+    description: "Inventários judiciais e extrajudiciais, partilhas de bens, divórcios e alimentos sem retrabalho.",
+    stat: "Partilha Ágil",
+    badge: "Famílias",
+    tagColor: "text-amber-400 bg-amber-500/10 border-amber-500/20",
+  },
+  {
+    id: "previdenciario",
+    title: "Direito Previdenciário",
+    category: "Benefícios & Aposentadoria",
+    icon: Users,
+    description: "Análise de vínculos CNIS, cálculo de tempo especial, RMI e regras de transição.",
+    stat: "CNIS Match",
+    badge: "Previdenciário",
+    tagColor: "text-teal-400 bg-teal-500/10 border-teal-500/20",
+  },
+  {
     id: "trabalhista",
     title: "Trabalhista Estratégico",
     category: "Contencioso de Alto Volume",
     icon: Briefcase,
-    description: "Apuração automática de horas extras, reflexos em verbas e precedentes TST.",
-    stat: "148 teses",
-    badge: "Súmulas TST",
+    description: "Apuração automática de horas extras, reflexos em verbas e precedentes vigentes do TST.",
+    stat: "Súmulas TST",
+    badge: "Trabalhista",
     tagColor: "text-blue-400 bg-blue-500/10 border-blue-500/20",
   },
   {
-    id: "civel",
-    title: "Cível & Consumidor",
-    category: "Responsabilidade Civil",
-    icon: Scale,
-    description: "Dano moral por negativação indevida e vícios com jurisprudência STJ conferida.",
-    stat: "99.4% precisão",
-    badge: "Precedentes STJ",
-    tagColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
-  },
-  {
-    id: "familia",
-    title: "Família & Sucessões",
-    category: "Direito Patrimonial",
-    icon: HeartHandshake,
-    description: "Estruturação de inventários complexos, partilhas e alimentos sem pontas soltas.",
-    stat: "Zero retrabalho",
-    badge: "CPC/15",
-    tagColor: "text-amber-400 bg-amber-500/10 border-amber-500/20",
+    id: "consumidor",
+    title: "Direito do Consumidor",
+    category: "Relações de Consumo",
+    icon: ShoppingCart,
+    description: "Inscrição indevida, vícios de produto, repetição de indébito e aplicação estratégica do CDC.",
+    stat: "Dano Moral",
+    badge: "Consumidor",
+    tagColor: "text-cyan-400 bg-cyan-500/10 border-cyan-500/20",
   },
   {
     id: "tributario",
     title: "Tributário Contencioso",
     category: "Defesa Fiscal",
     icon: Landmark,
-    description: "Teses de compensação, repercussão geral STF e teses repetitivas mapeadas.",
-    stat: "STF / STJ",
-    badge: "Repetitivos",
+    description: "Teses de compensação, repercussão geral, defesas fiscais e precedentes CARF/STJ.",
+    stat: "Teses STJ/STF",
+    badge: "Tributário",
     tagColor: "text-purple-400 bg-purple-500/10 border-purple-500/20",
   },
   {
-    id: "empresarial",
-    title: "Societário & M&A",
-    category: "Governança Corporativa",
+    id: "franquias",
+    title: "Direito de Franquias",
+    category: "Franchising & Expansão",
     icon: Building2,
-    description: "Auditoria de contratos, due diligence de passivos e minutas de atos societários.",
-    stat: "Due Diligence",
-    badge: "Auditoria",
-    tagColor: "text-cyan-400 bg-cyan-500/10 border-cyan-500/20",
+    description: "Análise de Circular de Oferta (COF), contratos de franquia e disputas entre franqueador e franqueado.",
+    stat: "Lei 13.966",
+    badge: "Franquias",
+    tagColor: "text-orange-400 bg-orange-500/10 border-orange-500/20",
   },
   {
-    id: "previdenciario",
-    title: "Previdenciário",
-    category: "Benefícios & Aposentadoria",
-    icon: Users,
-    description: "Cruzamento de CNIS, cálculo de tempo especial e aplicação de regras de transição.",
-    stat: "CNIS Match",
-    badge: "INSS",
-    tagColor: "text-teal-400 bg-teal-500/10 border-teal-500/20",
+    id: "contratos",
+    title: "Contratos & Negócios",
+    category: "Direito Contratual",
+    icon: FileCheck2,
+    description: "Elaboração e revisão de minutas, cláusulas de risco, garantias reais e due diligence.",
+    stat: "Due Diligence",
+    badge: "Contratos",
+    tagColor: "text-indigo-400 bg-indigo-500/10 border-indigo-500/20",
+  },
+  {
+    id: "recursos",
+    title: "Recursos aos Superiores",
+    category: "STJ & STF",
+    icon: GitPullRequest,
+    description: "Prequestionamento, recursos especiais e extraordinários, agravos e teses repetitivas.",
+    stat: "Súmulas 7 e 282",
+    badge: "Recursos Especiais",
+    tagColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+  },
+  {
+    id: "bancario",
+    title: "Direito Bancário",
+    category: "Operações Financeiras",
+    icon: CreditCard,
+    description: "Revisão de contratos de financiamento, cédulas de crédito bancário e teses de juros remuneratórios.",
+    stat: "Teses STJ",
+    badge: "Bancário",
+    tagColor: "text-sky-400 bg-sky-500/10 border-sky-500/20",
   },
 ];
 
 /**
  * RoundCarousel3D (Inspirado em OriginKit Round Carousel / 3D Cylinder Gallery)
- * Cilindro tridimensional giratório em torno do eixo Y com perspectiva espacial,
- * física de arrasto inercial e cartas com profundidade.
+ * Cilindro tridimensional giratório em torno do eixo Y com rotação automática contínua,
+ * física de arrasto inercial e suporte às 11 áreas reais do Dendrix.
  */
 export function RoundCarousel3D() {
   const [rotation, setRotation] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
   const startXRef = useRef(0);
   const startRotationRef = useRef(0);
 
   const total = SPECIALTIES.length;
   const anglePerItem = 360 / total;
 
-  // Raio do cilindro adaptativo para não cortar em telas menores
-  const [radius, setRadius] = useState(380);
+  // Raio adaptativo
+  const [radius, setRadius] = useState(450);
 
   useEffect(() => {
     const updateRadius = () => {
       if (window.innerWidth < 640) {
-        setRadius(230);
+        setRadius(260);
       } else if (window.innerWidth < 1024) {
-        setRadius(320);
+        setRadius(360);
       } else {
-        setRadius(390);
+        setRadius(460);
       }
     };
     updateRadius();
     window.addEventListener("resize", updateRadius);
     return () => window.removeEventListener("resize", updateRadius);
   }, []);
+
+  // Rotação automática suave contínua
+  useEffect(() => {
+    if (!isAutoPlay || isHovered || isDragging) return;
+
+    let animationFrameId: number;
+    const speed = 0.12; // Velocidade suave cinematográfica
+
+    const spin = () => {
+      setRotation((prev) => prev - speed);
+      animationFrameId = requestAnimationFrame(spin);
+    };
+
+    animationFrameId = requestAnimationFrame(spin);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isAutoPlay, isHovered, isDragging]);
 
   const handlePointerDown = (e: React.PointerEvent) => {
     setIsDragging(true);
@@ -119,7 +202,7 @@ export function RoundCarousel3D() {
   const handlePointerMove = (e: React.PointerEvent) => {
     if (!isDragging) return;
     const deltaX = e.clientX - startXRef.current;
-    setRotation(startRotationRef.current + deltaX * 0.4);
+    setRotation(startRotationRef.current + deltaX * 0.35);
   };
 
   const handlePointerUp = () => {
@@ -134,23 +217,32 @@ export function RoundCarousel3D() {
       {/* Cabeçalho da Seção */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 px-4 sm:px-0 gap-4">
         <div>
-          <span className="font-mono text-xs font-semibold text-emerald-400 uppercase tracking-wider">
+          <span className="font-mono text-xs font-semibold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">
             Visão Tridimensional de Áreas
           </span>
-          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1">
-            Especialidades Jurídicas com Inteligência Dedicada
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight mt-1">
+            As 11 Áreas de Atuação do Dendrix no Seu Escritório
           </h3>
-          <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl">
-            Arraste para girar a galeria 3D e explorar como o Dendrix molda o raciocínio forense de cada ramo da sua banca.
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 max-w-xl">
+            Giro contínuo e interativo em 3D: explore como o Dendrix apoia o raciocínio e a gestão de cada área da sua banca.
           </p>
         </div>
 
-        {/* Controles de Rotação */}
+        {/* Controles de Rotação e Autoplay */}
         <div className="flex items-center gap-2 self-start sm:self-auto">
           <button
             type="button"
+            onClick={() => setIsAutoPlay(!isAutoPlay)}
+            className="h-10 px-3 rounded-full border border-slate-300 dark:border-white/10 bg-white dark:bg-[#0B131C] text-slate-800 dark:text-white flex items-center gap-1.5 text-xs font-mono hover:bg-slate-100 dark:hover:bg-[#111C2A] transition-colors shadow-xs"
+            aria-label={isAutoPlay ? "Pausar rotação automática" : "Ativar rotação automática"}
+          >
+            {isAutoPlay ? <Pause className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" /> : <Play className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" />}
+            <span>{isAutoPlay ? "Pausar" : "Girar"}</span>
+          </button>
+          <button
+            type="button"
             onClick={rotatePrev}
-            className="w-10 h-10 rounded-full border border-white/10 bg-[#0B131C] text-white flex items-center justify-center hover:bg-[#111C2A] hover:border-emerald-500/30 transition-colors shadow-xs"
+            className="w-10 h-10 rounded-full border border-slate-300 dark:border-white/10 bg-white dark:bg-[#0B131C] text-slate-800 dark:text-white flex items-center justify-center hover:bg-slate-100 dark:hover:bg-[#111C2A] hover:border-emerald-500/30 transition-colors shadow-xs"
             aria-label="Girar anterior"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -158,7 +250,7 @@ export function RoundCarousel3D() {
           <button
             type="button"
             onClick={rotateNext}
-            className="w-10 h-10 rounded-full border border-white/10 bg-[#0B131C] text-white flex items-center justify-center hover:bg-[#111C2A] hover:border-emerald-500/30 transition-colors shadow-xs"
+            className="w-10 h-10 rounded-full border border-slate-300 dark:border-white/10 bg-white dark:bg-[#0B131C] text-slate-800 dark:text-white flex items-center justify-center hover:bg-slate-100 dark:hover:bg-[#111C2A] hover:border-emerald-500/30 transition-colors shadow-xs"
             aria-label="Girar próximo"
           >
             <ArrowRight className="w-4 h-4" />
@@ -168,7 +260,9 @@ export function RoundCarousel3D() {
 
       {/* Palco 3D do Cilindro */}
       <div
-        className="relative h-[420px] sm:h-[460px] w-full flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing"
+        className="relative h-[440px] sm:h-[480px] w-full flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
@@ -176,7 +270,7 @@ export function RoundCarousel3D() {
         style={{ perspective: 1200 }}
       >
         <div
-          className="relative w-0 h-0 transition-transform duration-200 ease-out"
+          className="relative w-0 h-0 transition-transform duration-150 ease-out"
           style={{
             transformStyle: "preserve-3d",
             transform: `rotateY(${rotation}deg)`,
@@ -189,7 +283,7 @@ export function RoundCarousel3D() {
             return (
               <div
                 key={spec.id}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] sm:w-[280px] h-[340px] rounded-2xl p-6 border border-white/10 bg-[#081018]/95 backdrop-blur-md shadow-2xl flex flex-col justify-between"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] sm:w-[260px] h-[330px] rounded-2xl p-5 sm:p-6 border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-[#081018]/95 backdrop-blur-md shadow-xl dark:shadow-2xl flex flex-col justify-between"
                 style={{
                   transformStyle: "preserve-3d",
                   transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
@@ -198,37 +292,37 @@ export function RoundCarousel3D() {
               >
                 {/* Cabeçalho do Card da Especialidade */}
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-4">
+                  <div className="flex items-center justify-between gap-2 mb-3">
                     <span
                       className={`font-mono text-[10px] font-semibold px-2 py-0.5 rounded-full border ${spec.tagColor}`}
                     >
                       {spec.badge}
                     </span>
-                    <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/10 flex items-center justify-center text-white/80">
-                      <Icon className="w-4 h-4 text-emerald-400" />
+                    <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-white/80">
+                      <Icon className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
                     </div>
                   </div>
 
-                  <span className="text-[11px] font-mono text-slate-400 block mb-1">
+                  <span className="text-[10.5px] font-mono text-slate-500 dark:text-slate-400 block mb-1">
                     {spec.category}
                   </span>
-                  <h4 className="text-lg font-bold text-white tracking-tight leading-snug">
+                  <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
                     {spec.title}
                   </h4>
-                  <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed line-clamp-3">
                     {spec.description}
                   </p>
                 </div>
 
                 {/* Rodapé com Métrica e Indicador */}
-                <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between">
+                <div className="pt-3 border-t border-slate-200 dark:border-white/[0.08] flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-slate-400 block font-sans">Capacidade</span>
-                    <span className="text-xs font-mono font-bold text-emerald-400">
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400 block font-sans">Destaque</span>
+                    <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400">
                       {spec.stat}
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono text-slate-400 bg-white/[0.04] px-2 py-1 rounded">
+                  <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-white/[0.04] px-2 py-1 rounded">
                     Módulo Ativo
                   </span>
                 </div>

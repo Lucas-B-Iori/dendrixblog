@@ -47,9 +47,11 @@ interface AssistenteChatState {
   };
 }
 
+import { useTheme } from "@/components/providers/ThemeProvider";
+
 export function ProductCockpit() {
   const [activeTab, setActiveTab] = useState<TabView>("dashboard");
-  const [theme, setTheme] = useState<ThemeMode>("dark");
+  const { theme, setTheme, isDark } = useTheme();
   const [isCopilotOpen, setIsCopilotOpen] = useState(false);
 
   // Assistente Interativo State
@@ -61,8 +63,6 @@ export function ProductCockpit() {
   // Jurisprudência State
   const [selectedTribunal, setSelectedTribunal] = useState<string>("STJ");
   const [jurisSearchQuery, setJurisSearchQuery] = useState("dano moral por negativação indevida");
-
-  const isDark = theme === "dark";
 
   const handleStarterPromptClick = (starterText: string, simulation: {
     title: string;
@@ -265,7 +265,7 @@ export function ProductCockpit() {
                   { label: "Assistente jurídico", icon: Sparkles, active: activeTab === "assistente", tab: "assistente" as TabView },
                   { label: "Jurisprudência", icon: Scale, active: activeTab === "jurisprudencia", tab: "jurisprudencia" as TabView },
                   { label: "Publicações jurídicas", icon: FileText, active: activeTab === "publicacoes", tab: "publicacoes" as TabView },
-                  { label: "Agenda Forense", icon: Calendar, active: activeTab === "agenda", tab: "agenda" as TabView },
+                  { label: "Agenda & Prazos", icon: Calendar, active: activeTab === "agenda", tab: "agenda" as TabView },
                   { label: "Tarefas", icon: CheckSquare, active: false },
                   { label: "Clientes", icon: Users, active: false },
                 ].map((item, idx) => {
@@ -305,7 +305,7 @@ export function ProductCockpit() {
                 >
                   <span className="flex items-center gap-2">
                     <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
-                    <span>Copilot Forense</span>
+                    <span>Copilot Jurídico</span>
                   </span>
                   <span className="text-[9px] font-mono px-1 rounded bg-emerald-500/20">IA</span>
                 </button>
@@ -376,12 +376,12 @@ export function ProductCockpit() {
                       })}
                     </div>
 
-                    {/* Minha Rotina Forense & Jurisprudência Sugerida */}
+                    {/* Minha Rotina da Banca & Jurisprudência Sugerida */}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
                       <div className="lg:col-span-7 space-y-3">
                         <div className="flex items-center justify-between">
                           <h4 className="text-xs font-semibold uppercase tracking-wider font-mono text-slate-400">
-                            Minha Rotina Forense
+                            Minha Rotina do Dia
                           </h4>
                           <span className="text-[10px] font-mono text-emerald-500">
                             Prioridade Algorítmica
@@ -670,7 +670,7 @@ export function ProductCockpit() {
                         </div>
                       </div>
                       <span className="text-xs font-mono text-emerald-500 px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20">
-                        IA Forense Conectada
+                        IA Jurídica Conectada
                       </span>
                     </div>
 
@@ -762,7 +762,7 @@ export function ProductCockpit() {
                               label: "Tenho documentos e quero organizar o caso.",
                               sim: {
                                 title: "OCR & Mapeamento Cronológico",
-                                step1: "15 PDFs processados com OCR forense de alta precisão.",
+                                step1: "15 PDFs processados com OCR de alta precisão.",
                                 step2: "Cronologia de fatos gerada com datas, contratos e comprovantes vinculados.",
                                 actionLabel: "Abrir Linha do Tempo dos Fatos",
                                 docRef: "Fls. 01 a Fls. 210",
@@ -1122,7 +1122,7 @@ export function ProductCockpit() {
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div>
                         <h3 className={`font-serif text-xl sm:text-2xl font-semibold tracking-tight ${isDark ? "text-white" : "text-[#0F2B48]"}`}>
-                          Agenda Forense & Tarefas
+                          Agenda & Tarefas do Dia
                         </h3>
                         <p className="text-xs text-slate-400">
                           Tarefas, follow-ups, audiências e prazos em visão semanal integrada da banca.
@@ -1242,7 +1242,7 @@ export function ProductCockpit() {
               type="button"
               onClick={() => setIsCopilotOpen(!isCopilotOpen)}
               className="w-12 h-12 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-500 text-white shadow-xl flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all"
-              title="Abrir Copilot Forense"
+              title="Abrir Assistente Jurídico"
             >
               <Sparkles className="w-5 h-5" />
             </button>
@@ -1260,7 +1260,7 @@ export function ProductCockpit() {
                   <div className="flex items-center justify-between pb-3 border-b border-slate-700/40">
                     <div className="flex items-center gap-2">
                       <Sparkles className="w-4 h-4 text-emerald-400" />
-                      <span className="font-semibold text-xs">Copilot Forense Dendrix</span>
+                      <span className="font-semibold text-xs">Assistente Jurídico Dendrix</span>
                     </div>
                     <button
                       type="button"

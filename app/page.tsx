@@ -17,20 +17,20 @@ import { StickyMobileBar } from "@/components/layout/StickyMobileBar";
 
 export default function HomePage() {
   return (
-    <div className="flex min-h-screen flex-col bg-[#05080C] text-[#F8FAFC]">
+    <div className="flex min-h-screen flex-col bg-[var(--surface-canvas)] text-[var(--text-primary)] transition-colors duration-300">
       <Navbar />
 
       <main className="flex-1">
         {/* Seção 01: Hero com Split-Screen Programático e Liquid Mesh (Skiper 12) */}
         <HeroSection />
 
-        {/* Seção 02: O Custo do Caos Forense com Texto Scrubado (Skiper 70 + 29) */}
+        {/* Seção 02: O Custo do Caos Operacional com Texto Scrubado (Skiper 70 + 29) */}
         <CaosSection />
 
         {/* Seção 03: O Loop do Caso com Fio Condutor Dinâmico (Skiper 19) */}
         <LoopSection />
 
-        {/* Seção Interativa V4: Cockpit Forense + Slider de Peças Reais (OriginKit Slider) */}
+        {/* Seção Interativa V4: Cockpit do Advogado + Slider de Peças Reais (OriginKit Slider) */}
         <CockpitSection />
 
         {/* Seção 04: Mesa Jurídica com Spotlight Frames (OriginKit Frames) */}

@@ -33,17 +33,17 @@ export function MesaJuridicaSection({ onOpenDemo }: MesaJuridicaSectionProps = {
   ];
 
   return (
-    <SectionWrapper id="recursos" className="border-t border-white/[0.08] bg-[#070D14]" spacing="default">
-      {/* Bloco Superior: Acordeão de Lâminas Forenses (OriginKit Spotlight Frames) */}
+    <SectionWrapper id="recursos" className="border-t border-slate-200 dark:border-white/[0.08] bg-slate-50 dark:bg-[#070D14]" spacing="default">
+      {/* Bloco Superior: Acordeão de Lâminas Jurídicas (OriginKit Spotlight Frames) */}
       <div className="mb-16">
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
-          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full inline-block">
-            Mesa de Trabalho Forense
+          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full inline-block">
+            Mesa de Trabalho Jurídica
           </span>
-          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-white leading-tight">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-slate-900 dark:text-white leading-tight">
             Os 4 Pilares da Engenharia Jurídica do Dendrix
           </h2>
-          <p className="text-sm sm:text-base text-slate-300">
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300">
             Passe o cursor sobre cada lâmina para inspecionar a arquitetura de leitura, redação, tempestividade e governança.
           </p>
         </div>
@@ -52,19 +52,19 @@ export function MesaJuridicaSection({ onOpenDemo }: MesaJuridicaSectionProps = {
       </div>
 
       {/* Bloco Inferior: Detalhamento do Pilar 01 (Mesa Jurídica & Raio-X) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center pt-8 border-t border-white/[0.08]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center pt-8 border-t border-slate-200 dark:border-white/[0.08]">
         {/* Coluna Esquerda: Copy & Destaques de Recursos */}
         <div className="lg:col-span-6 space-y-6 text-left">
           <div className="space-y-3">
-            <p className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400">
+            <p className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
               Pilar 01 • Mesa Jurídica
             </p>
-            <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-white leading-tight text-balance">
+            <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-slate-900 dark:text-white leading-tight text-balance">
               Transforme autos volumosos em um mapa claro de fatos e contradições.
             </h3>
           </div>
 
-          <p className="text-base text-slate-300 leading-relaxed">
+          <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
             Faça o upload do processo em PDF e receba uma visão estruturada da controvérsia. O Dendrix analisa os documentos, localiza argumentos relevantes e indica as folhas de onde as informações foram extraídas.
           </p>
 
@@ -72,16 +72,16 @@ export function MesaJuridicaSection({ onOpenDemo }: MesaJuridicaSectionProps = {
             {features.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="p-4 sm:p-5 rounded-xl bg-[#0B131C] border border-white/10 space-y-2 shadow-sm hover:border-emerald-500/30 transition-colors">
+                <div key={idx} className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#0B131C] border border-slate-200 dark:border-white/10 space-y-2 shadow-sm hover:border-emerald-500/30 transition-colors">
                   <div className="flex items-center gap-2.5">
-                    <div className="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                    <div className="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400">
                       <Icon className="w-4 h-4" />
                     </div>
-                    <h4 className="text-xs font-semibold text-white">
+                    <h4 className="text-xs font-semibold text-slate-900 dark:text-white">
                       {item.title}
                     </h4>
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                     {item.description}
                   </p>
                 </div>

@@ -28,20 +28,20 @@ export function PrazosSection() {
   ];
 
   return (
-    <SectionWrapper className="border-t border-white/[0.08] bg-[#070D14]" spacing="default">
+    <SectionWrapper className="border-t border-slate-200 dark:border-white/[0.08] bg-slate-50 dark:bg-[#070D14]" spacing="default">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         {/* Left Column: Copy */}
         <div className="lg:col-span-6 space-y-6 text-left">
           <div className="space-y-3">
-            <p className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400">
-              Pilar 03 • Rotina Forense e Prazos
+            <p className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+              Pilar 03 • Rotina de Prazos e Publicações
             </p>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-white leading-tight text-balance">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-slate-900 dark:text-white leading-tight text-balance">
               Publicações monitoradas com sugestão do próximo passo processual.
             </h2>
           </div>
 
-          <p className="text-base text-slate-300 leading-relaxed">
+          <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
             O Dendrix acompanha as intimações do seu escritório nos diários oficiais, interpreta o teor do despacho e auxilia no controle dos prazos da sua equipe.
           </p>
 
@@ -49,16 +49,16 @@ export function PrazosSection() {
             {modules.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="p-4 sm:p-5 rounded-xl bg-[#0B131C] border border-white/10 space-y-2 shadow-xs hover:border-emerald-500/30 transition-colors">
+                <div key={idx} className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#0B131C] border border-slate-200 dark:border-white/10 space-y-2 shadow-xs hover:border-emerald-500/30 transition-colors">
                   <div className="flex items-center gap-2.5">
-                    <div className="p-1.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                    <div className="p-1.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400">
                       <Icon className="w-4 h-4" />
                     </div>
-                    <h3 className="text-xs font-semibold text-white">
+                    <h3 className="text-xs font-semibold text-slate-900 dark:text-white">
                       {item.title}
                     </h3>
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
