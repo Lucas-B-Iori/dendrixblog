@@ -31,6 +31,7 @@ export function HeroSection() {
               "radial-gradient(ellipse at 50% 45%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.15) 80%, transparent 100%)",
           }}
         >
+          <source src="/videos/hero_bg_loop.webm" type="video/webm" />
           <source src="/videos/hero_bg_loop.mp4" type="video/mp4" />
           {/* Fallback de imagem caso o navegador desabilite autoplay */}
           <Image
