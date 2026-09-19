@@ -1,35 +1,53 @@
+"use client";
+
 import React from "react";
 import { HeroSplitScreen } from "./HeroSplitScreen";
-import { ArrowRight, Sparkles, CheckCircle, ShieldCheck } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { OpenDemoButton } from "@/components/cta/OpenDemoButton";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { ContainerScroll3D } from "@/components/motion/ContainerScroll3D";
 import { RollingCounter } from "@/components/motion/RollingCounter";
+import {
+  HeroDynamicHeadline,
+  HeroDynamicController,
+  useHeroDynamicCycle,
+} from "./HeroDynamicText";
 
 export function HeroSection() {
+  const { activeIndex, selectSlide, progress, isPaused, pause, resume } =
+    useHeroDynamicCycle();
+
   return (
-    <SectionWrapper id="hero" width="default" spacing="hero" className="relative overflow-hidden min-h-[92vh] flex items-center">
+    <SectionWrapper
+      id="hero"
+      width="default"
+      spacing="hero"
+      className="relative overflow-hidden min-h-[92vh] flex items-center"
+    >
       {/* Brilho Radial Atmosférico Jurídico Suave */}
       <div
         className="pointer-events-none absolute -top-24 right-0 w-[700px] h-[700px] rounded-full opacity-20 dark:opacity-35 blur-3xl"
         style={{
-          background: "radial-gradient(circle, rgba(16,185,129,0.15) 0%, rgba(2,132,199,0.08) 40%, transparent 75%)",
+          background:
+            "radial-gradient(circle, rgba(16,185,129,0.15) 0%, rgba(2,132,199,0.08) 40%, transparent 75%)",
         }}
         aria-hidden="true"
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10 w-full py-6">
-        {/* Coluna Esquerda: Texto Oficial Travado com Estética de Luxo */}
-        <div className="lg:col-span-5 space-y-6 sm:space-y-7 text-left">
+        {/* Coluna Esquerda: Texto Oficial com Revelação Dinâmica (Skiper 6) */}
+        <div className="lg:col-span-5 space-y-5 sm:space-y-6 text-left">
           {/* Eyebrow Institucional */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider shadow-[0_0_12px_rgba(16,185,129,0.15)]">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-600 dark:text-emerald-400 text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider shadow-[0_0_12px_rgba(16,185,129,0.15)]">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400 animate-pulse" />
             <span>CRM Jurídico com Inteligência Contextual</span>
           </div>
 
-          {/* H1 Oficial (Locked) */}
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-[3.25rem] font-medium leading-[1.12] tracking-[-0.03em] text-slate-900 dark:text-white text-balance">
-            Dos autos à minuta, com a origem das informações sempre visível.
+          {/* H1 com Rotação Cinética Inspirada no Skiper 6 (V5.1) */}
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-[3.15rem] font-medium leading-[1.14] tracking-[-0.03em] text-slate-900 dark:text-white text-balance min-h-[90px] sm:min-h-[110px]">
+            Dos autos à minuta, com{" "}
+            <HeroDynamicHeadline activeIndex={activeIndex} />{" "}
+            sempre visível.
           </h1>
 
           {/* Subheadline Oficial (Locked) */}
@@ -37,8 +55,18 @@ export function HeroSection() {
             O Dendrix conecta o contexto do processo à leitura dos autos em PDF, identifica fatos e contradições com referência às páginas e auxilia na redação da peça no mesmo ambiente.
           </p>
 
+          {/* Controlador Interativo de Pílulas com Auto-Ciclo (Skiper 6 Dynamic Ticker) */}
+          <HeroDynamicController
+            activeIndex={activeIndex}
+            onSelect={selectSlide}
+            progress={progress}
+            isPaused={isPaused}
+            onMouseEnter={pause}
+            onMouseLeave={resume}
+          />
+
           {/* Action CTAs */}
-          <div className="space-y-3.5 pt-1">
+          <div className="space-y-3.5 pt-2">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <OpenDemoButton className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white bg-gradient-to-r from-[#0F2B48] to-[#0A3D62] hover:from-[#143D66] hover:to-[#0D4B78] border border-white/10 rounded-xl transition-all shadow-[0_0_25px_rgba(15,43,72,0.6)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer focus-ring text-center">
                 <span>Agendar demonstração prática</span>
