@@ -1,5 +1,7 @@
 import React from "react";
-import { Server, ShieldBan, Lock, UserCheck } from "lucide-react";
+import Link from "next/link";
+import { Server, ShieldBan, Lock, UserCheck, ArrowRight } from "lucide-react";
+import { SectionWrapper } from "@/components/layout/SectionWrapper";
 
 export function SecuritySection() {
   const securityPillars = [
@@ -30,9 +32,9 @@ export function SecuritySection() {
   ];
 
   return (
-    <div id="seguranca" className="w-full space-y-12">
+    <SectionWrapper id="seguranca" className="border-t border-[#E2E8F0]/70 bg-[#F4F4F2]/50" spacing="default">
       {/* Header */}
-      <div className="text-left max-w-3xl space-y-3">
+      <div className="text-left max-w-3xl space-y-4 mb-14">
         <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#0F2B48]">
           Segurança da Informação e Privacidade
         </p>
@@ -45,15 +47,15 @@ export function SecuritySection() {
       </div>
 
       {/* 2x2 Grid of Solid Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {securityPillars.map((pillar, idx) => {
           const Icon = pillar.icon;
           return (
             <div
               key={idx}
-              className="p-6 sm:p-7 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs space-y-3 hover:border-slate-300 transition-colors"
+              className="p-7 sm:p-8 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-4 hover:shadow-sm hover:border-slate-300 transition-all"
             >
-              <div className="w-10 h-10 rounded-lg bg-[#EDF2F7] flex items-center justify-center text-[#0F2B48]">
+              <div className="w-12 h-12 rounded-xl bg-[#EDF2F7] flex items-center justify-center text-[#0F2B48]">
                 <Icon className="w-5 h-5" />
               </div>
               <h3 className="text-base sm:text-lg font-semibold text-[#0F172A]">
@@ -66,6 +68,20 @@ export function SecuritySection() {
           );
         })}
       </div>
-    </div>
+
+      {/* Contextual link to full security documentation */}
+      <div className="mt-10 pt-6 border-t border-[#CBD5E1]/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs sm:text-sm">
+        <p className="text-[#64748B]">
+          Dúvidas sobre governança técnica, DPO ou conformidade com a LGPD?
+        </p>
+        <Link
+          href="/seguranca"
+          className="inline-flex items-center gap-1.5 font-semibold text-[#0F2B48] hover:underline"
+        >
+          <span>Consulte nossas diretrizes completas de segurança</span>
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
+    </SectionWrapper>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { CaseSourceBadge } from "../hero/CaseSourceBadge";
 import { Award, Layers, Sparkles, FileText, CheckCircle2 } from "lucide-react";
+import { SectionWrapper } from "@/components/layout/SectionWrapper";
 
 interface RedatorSectionProps {
   onOpenDemo?: () => void;
@@ -31,49 +32,47 @@ export function RedatorSection({ onOpenDemo }: RedatorSectionProps = {}) {
   ];
 
   return (
-    <div className="w-full">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+    <SectionWrapper className="border-t border-[#E2E8F0]/70 bg-[#F4F4F2]/40" spacing="default">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         {/* Left Column: Macro-recorte do Redator (Inverted layout) */}
         <div className="lg:col-span-6 w-full order-2 lg:order-1">
-          <div className="rounded-xl border border-[#E2E8F0] bg-white shadow-card overflow-hidden">
+          <div className="rounded-2xl border border-[#E2E8F0] bg-white shadow-card overflow-hidden">
             {/* Header */}
-            <div className="h-9 px-4 bg-[#F8F9FA] border-b border-[#E2E8F0] flex items-center justify-between text-xs font-mono text-[#475569]">
+            <div className="h-10 px-4 bg-[#F8F9FA] border-b border-[#E2E8F0] flex items-center justify-between text-xs font-mono text-[#475569]">
               <span className="truncate">Redator Forense • Réplica_Civil_V2.docx</span>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">
+              <div className="flex items-center gap-2 shrink-0">
+                <span className="text-[10px] text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 hidden sm:inline-block">
                   Dados demonstrativos
                 </span>
-                <span className="text-[11px] text-[#0F2B48] bg-[#EDF2F7] px-2 py-0.5 rounded font-semibold">
+                <span className="text-[11px] text-[#0F2B48] bg-[#EDF2F7] px-2.5 py-0.5 rounded font-semibold">
                   Peça Ouro
                 </span>
               </div>
             </div>
 
             {/* Document Draft Body */}
-            <div className="p-5 sm:p-6 space-y-4 font-sans text-xs sm:text-sm text-slate-800 leading-relaxed">
+            <div className="p-5 sm:p-7 space-y-4 font-sans text-xs sm:text-sm text-slate-800 leading-relaxed">
               <div className="border-b border-slate-100 pb-3 space-y-1 font-mono text-[11px] text-slate-500">
                 <p>EXCELENTÍSSIMO SENHOR DOUTOR JUIZ DE DIREITO DA 2ª VARA CÍVEL</p>
                 <p>PROCESSO Nº 1002341-89.2024.8.26.0100</p>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 <p className="font-semibold text-[#0F172A] text-xs uppercase tracking-wide">
                   1. Da Refutação à Preliminar de Ilegitimidade
                 </p>
                 <p className="text-slate-700">
                   Diferentemente do que sustenta a parte contrária, os documentos anexados aos autos demonstram com clareza a cadeia de responsabilidade civil. Conforme se observa às{" "}
-                  <CaseSourceBadge page="89" documentType="Laudo Pericial" variant="emerald" className="mx-1" />
-                  , a notificação prévia foi devidamente recebida e assinada pelo preposto da ré.
+                  <CaseSourceBadge page="89" documentType="Laudo Pericial" variant="emerald" className="inline-flex align-baseline" />, a notificação prévia foi devidamente recebida e assinada pelo preposto da ré.
                 </p>
                 <p className="text-slate-700">
                   Ademais, resta incontroversa a aplicação da multa moratória prevista na cláusula contratual expressa às{" "}
-                  <CaseSourceBadge page="112" documentType="Contrato" variant="amber" className="mx-1" />
-                  .
+                  <CaseSourceBadge page="112" documentType="Contrato" variant="amber" className="inline-flex align-baseline" />.
                 </p>
               </div>
 
-              <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-emerald-800 bg-emerald-50/70 p-2.5 rounded border border-emerald-200/50">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+              <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-emerald-800 bg-emerald-50/70 p-3 rounded-xl border border-emerald-200/60">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>Dados de partes e prazos validados diretamente pelo CRM Dendrix.</span>
               </div>
             </div>
@@ -82,7 +81,7 @@ export function RedatorSection({ onOpenDemo }: RedatorSectionProps = {}) {
 
         {/* Right Column: Copy */}
         <div className="lg:col-span-6 space-y-6 text-left order-1 lg:order-2">
-          <div className="space-y-2">
+          <div className="space-y-3">
             <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#0F2B48]">
               Pilar 02 • Redator Jurídico
             </p>
@@ -99,12 +98,14 @@ export function RedatorSection({ onOpenDemo }: RedatorSectionProps = {}) {
             {features.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="p-3.5 rounded-lg bg-white border border-[#E2E8F0] space-y-1.5 shadow-2xs">
-                  <div className="flex items-center gap-2">
-                    <Icon className="w-4 h-4 text-[#0F2B48]" />
-                    <h4 className="text-xs font-semibold text-[#0F172A]">
+                <div key={idx} className="p-4 sm:p-5 rounded-xl bg-white border border-[#E2E8F0] space-y-2 shadow-xs hover:border-slate-300 transition-colors">
+                  <div className="flex items-center gap-2.5">
+                    <div className="p-1.5 rounded bg-[#EDF2F7] text-[#0F2B48]">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <h3 className="text-xs font-semibold text-[#0F172A]">
                       {item.title}
-                    </h4>
+                    </h3>
                   </div>
                   <p className="text-xs text-[#64748B] leading-relaxed">
                     {item.description}
@@ -115,6 +116,6 @@ export function RedatorSection({ onOpenDemo }: RedatorSectionProps = {}) {
           </div>
         </div>
       </div>
-    </div>
+    </SectionWrapper>
   );
 }

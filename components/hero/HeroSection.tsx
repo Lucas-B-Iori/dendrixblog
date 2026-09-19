@@ -2,11 +2,12 @@ import React from "react";
 import { HeroSplitScreen } from "./HeroSplitScreen";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { OpenDemoButton } from "@/components/cta/OpenDemoButton";
+import { SectionWrapper } from "@/components/layout/SectionWrapper";
 
 export function HeroSection() {
   return (
-    <div id="hero" className="w-full pt-4 pb-16 sm:pb-24 lg:pb-28">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+    <SectionWrapper id="hero" width="default" spacing="hero">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         {/* Left Column: Official Locked Copy */}
         <div className="lg:col-span-5 space-y-6 sm:space-y-7 text-left">
           {/* Eyebrow */}
@@ -35,7 +36,7 @@ export function HeroSection() {
 
               <a
                 href="#como-funciona"
-                className="inline-flex items-center justify-center px-5 py-3.5 text-sm font-semibold text-[#0F172A] hover:text-[#0F2B48] bg-transparent hover:bg-black/5 active:bg-black/10 rounded-md transition-colors text-center border border-transparent hover:border-[#E2E8F0]"
+                className="inline-flex items-center justify-center px-5 py-3.5 text-sm font-semibold text-[#0F172A] hover:text-[#0F2B48] bg-white hover:bg-slate-50 active:bg-slate-100 rounded-md transition-all text-center border border-[#CBD5E1] shadow-2xs"
               >
                 Ver o produto em ação
               </a>
@@ -64,6 +65,6 @@ export function HeroSection() {
           <HeroSplitScreen />
         </div>
       </div>
-    </div>
+    </SectionWrapper>
   );
 }

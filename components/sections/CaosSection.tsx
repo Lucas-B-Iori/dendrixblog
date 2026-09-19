@@ -1,5 +1,6 @@
 import React from "react";
 import { Clock, FolderGit2, BotOff } from "lucide-react";
+import { SectionWrapper } from "@/components/layout/SectionWrapper";
 
 export function CaosSection() {
   const painPoints = [
@@ -27,8 +28,8 @@ export function CaosSection() {
   ];
 
   return (
-    <div className="w-full">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+    <SectionWrapper id="problema" className="border-t border-[#E2E8F0]/70 bg-white/60" spacing="default">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* Left Column: Asymmetrical Editorial Header */}
         <div className="lg:col-span-5 space-y-4 text-left">
           <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#B45309]">
@@ -42,29 +43,29 @@ export function CaosSection() {
           </p>
         </div>
 
-        {/* Right Column: Editorial Open Stack (Not 3 equal cards) */}
-        <div className="lg:col-span-7 divide-y divide-[#E2E8F0] border-t border-b border-[#E2E8F0]">
+        {/* Right Column: Refined Stack Card */}
+        <div className="lg:col-span-7 divide-y divide-[#E2E8F0] bg-white border border-[#E2E8F0] rounded-2xl p-3 sm:p-6 shadow-xs">
           {painPoints.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
-                className="py-6 sm:py-7 first:pt-4 last:pb-4 group hover:bg-black/[0.015] transition-colors"
+                className="p-4 sm:p-6 group hover:bg-slate-50/60 rounded-xl transition-colors"
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-2 rounded-md bg-[#EDF2F7] text-[#0F2B48] shrink-0 mt-1">
+                  <div className="p-2.5 rounded-lg bg-[#EDF2F7] text-[#0F2B48] shrink-0 mt-0.5">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <div className="space-y-2">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                      <h3 className="text-base sm:text-lg font-semibold text-[#0F172A]">
-                        {item.title}
-                      </h3>
-                      <span className="text-[11px] font-mono text-[#64748B] bg-slate-100 px-2 py-0.5 rounded self-start sm:self-auto shrink-0">
+                  <div className="space-y-1.5 flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200/80 font-medium">
                         {item.tag}
                       </span>
                     </div>
-                    <p className="text-sm text-[#475569] leading-relaxed">
+                    <h3 className="text-base sm:text-lg font-semibold text-[#0F172A] leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-[#475569] leading-relaxed pt-1">
                       {item.description}
                     </p>
                   </div>
@@ -74,6 +75,6 @@ export function CaosSection() {
           })}
         </div>
       </div>
-    </div>
+    </SectionWrapper>
   );
 }

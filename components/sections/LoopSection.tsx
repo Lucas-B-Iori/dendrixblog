@@ -1,5 +1,6 @@
 import React from "react";
 import { Database, FileSearch, PenTool, ArrowRight } from "lucide-react";
+import { SectionWrapper } from "@/components/layout/SectionWrapper";
 
 export function LoopSection() {
   const steps = [
@@ -33,9 +34,13 @@ export function LoopSection() {
   ];
 
   return (
-    <div id="como-funciona" className="w-full space-y-12 sm:space-y-16 scroll-mt-20">
+    <SectionWrapper
+      id="como-funciona"
+      className="border-t border-[#E2E8F0]/70 bg-[#F4F4F2]/50 scroll-mt-16"
+      spacing="default"
+    >
       {/* Centered Header for Architectural Shift */}
-      <div className="text-center max-w-3xl mx-auto space-y-3">
+      <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
         <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#0F2B48]">
           O Fluxo Contínuo do Processo
         </p>
@@ -48,21 +53,21 @@ export function LoopSection() {
       </div>
 
       {/* Connected 3-Stage Track */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
         {steps.map((step, idx) => {
           const Icon = step.icon;
           return (
             <div
               key={step.number}
-              className="relative p-6 sm:p-7 rounded-xl bg-white border border-[#E2E8F0] shadow-xs flex flex-col justify-between hover:border-slate-300 transition-all group"
+              className="relative p-7 sm:p-8 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs flex flex-col justify-between hover:shadow-md hover:border-slate-300 transition-all group"
             >
-              <div className="space-y-4">
+              <div className="space-y-5">
                 {/* Header Step Indicator */}
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold text-[#0F2B48] px-2 py-0.5 rounded bg-[#EDF2F7]">
+                  <span className="font-mono text-xs font-bold text-[#0F2B48] px-2.5 py-1 rounded bg-[#EDF2F7]">
                     {step.number} • {step.category}
                   </span>
-                  <div className="p-2 rounded-md bg-slate-50 text-slate-700 group-hover:bg-[#0F2B48] group-hover:text-white transition-colors">
+                  <div className="p-2.5 rounded-lg bg-slate-50 text-slate-700 group-hover:bg-[#0F2B48] group-hover:text-white transition-colors">
                     <Icon className="w-4 h-4" />
                   </div>
                 </div>
@@ -77,16 +82,16 @@ export function LoopSection() {
               </div>
 
               {/* Sub-badge */}
-              <div className="pt-6 mt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-mono">
+              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-mono">
                 <span>{step.badgeText}</span>
                 {idx < 2 && (
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-400 hidden md:inline-block" />
+                  <ArrowRight className="w-4 h-4 text-slate-400 hidden md:inline-block" />
                 )}
               </div>
             </div>
           );
         })}
       </div>
-    </div>
+    </SectionWrapper>
   );
 }
