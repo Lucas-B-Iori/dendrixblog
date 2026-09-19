@@ -44,6 +44,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       authors: [post.author.name],
       tags: post.tags,
       locale: "pt_BR",
+      images: post.coverImage ? [{ url: post.coverImage, alt: post.title }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: post.coverImage ? [post.coverImage] : undefined,
     },
   };
 }
@@ -142,6 +149,17 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Coluna Central do Artigo (8 colunas) */}
             <div className="lg:col-span-8 space-y-8">
+              {/* Imagem de Capa do Artigo */}
+              {post.coverImage && (
+                <div className="overflow-hidden rounded-3xl border border-slate-200/90 dark:border-white/10 shadow-2xl bg-slate-100 dark:bg-white/[0.02]">
+                  <img
+                    src={post.coverImage}
+                    alt={post.title}
+                    className="w-full aspect-video sm:aspect-16/9 object-cover"
+                  />
+                </div>
+              )}
+
               {/* Sumário no Mobile (Colapsável) */}
               <TableOfContents toc={post.toc} variant="mobile" />
 

@@ -164,6 +164,9 @@ function renderMarkdownToHtml(markdown: string): string {
   let inBlockquote = false;
   let blockquoteBuffer: string[] = [];
 
+  let inTable = false;
+  let tableBuffer: string[] = [];
+
   const flushList = () => {
     if (inList) {
       htmlParts.push("</ul>");
@@ -175,12 +178,91 @@ function renderMarkdownToHtml(markdown: string): string {
     }
   };
 
+  const flushTable = () => {
+    if (inTable && tableBuffer.length >= 2) {
+      const headerRow = tableBuffer[0]
+        .split("|")
+        .slice(1, -1)
+        .map((c) => c.trim());
+      // tableBuffer[1] is separator (e.g. |---|---|)
+      const dataRows = tableBuffer.slice(2).map((row) =>
+        row
+          .split("|")
+          .slice(1, -1)
+          .map((c) => c.trim())
+      );
+
+      let tableHtml = '<div class="my-8 overflow-x-auto rounded-2xl border border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#0A121A]/80 shadow-lg">';
+      tableHtml += '<table class="w-full text-left text-sm border-collapse">';
+      tableHtml += '<thead><tr class="border-b border-slate-200 dark:border-white/10 bg-slate-50/90 dark:bg-white/[0.04]">';
+      headerRow.forEach((h) => {
+        tableHtml += `<th class="py-3.5 px-4 font-semibold text-slate-900 dark:text-white font-mono text-xs uppercase tracking-wider">${formatInline(h)}</th>`;
+      });
+      tableHtml += '</tr></thead>';
+      tableHtml += '<tbody class="divide-y divide-slate-100 dark:divide-white/[0.04] font-sans">';
+      dataRows.forEach((cols) => {
+        tableHtml += '<tr class="hover:bg-emerald-500/[0.03] dark:hover:bg-white/[0.02] transition-colors">';
+        cols.forEach((cell, idx) => {
+          const isFirstCol = idx === 0;
+          tableHtml += `<td class="py-3.5 px-4 ${isFirstCol ? 'font-semibold text-slate-900 dark:text-white font-mono text-xs' : 'text-slate-700 dark:text-slate-300 text-sm'}">${formatInline(cell)}</td>`;
+        });
+        tableHtml += '</tr>';
+      });
+      tableHtml += '</tbody></table></div>';
+
+      htmlParts.push(tableHtml);
+      inTable = false;
+      tableBuffer = [];
+    } else if (inTable) {
+      inTable = false;
+      tableBuffer = [];
+    }
+  };
+
   const flushBlockquote = () => {
     if (inBlockquote) {
       const quoteText = blockquoteBuffer.join(" ");
-      htmlParts.push(
-        `<blockquote class="my-6 p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-emerald-950/20 border-l-4 border-emerald-500 text-slate-700 dark:text-slate-300 italic text-sm sm:text-base leading-relaxed shadow-xs">${quoteText}</blockquote>`
-      );
+      
+      // Checagem de callout types: [!DADO], [!ALERTA], [!INSIGHT]
+      if (quoteText.startsWith("[!DADO]")) {
+        const cleanContent = quoteText.replace(/^\[!DADO\]\s*/, "");
+        htmlParts.push(
+          `<div class="my-6 p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-slate-800 dark:text-emerald-100 text-sm sm:text-base leading-relaxed shadow-sm flex items-start gap-3.5">
+            <div class="mt-0.5 shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xs">📊</div>
+            <div>
+              <div class="font-mono text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-1">Evidência Fática & Métricas</div>
+              <div class="text-slate-700 dark:text-slate-200">${cleanContent}</div>
+            </div>
+          </div>`
+        );
+      } else if (quoteText.startsWith("[!ALERTA]")) {
+        const cleanContent = quoteText.replace(/^\[!ALERTA\]\s*/, "");
+        htmlParts.push(
+          `<div class="my-6 p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-slate-800 dark:text-amber-100 text-sm sm:text-base leading-relaxed shadow-sm flex items-start gap-3.5">
+            <div class="mt-0.5 shrink-0 w-6 h-6 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-xs">⚠️</div>
+            <div>
+              <div class="font-mono text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-1">Atenção Jurisprudencial / Risco</div>
+              <div class="text-slate-700 dark:text-slate-200">${cleanContent}</div>
+            </div>
+          </div>`
+        );
+      } else if (quoteText.startsWith("[!INSIGHT]")) {
+        const cleanContent = quoteText.replace(/^\[!INSIGHT\]\s*/, "");
+        htmlParts.push(
+          `<div class="my-6 p-5 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-slate-800 dark:text-cyan-100 text-sm sm:text-base leading-relaxed shadow-sm flex items-start gap-3.5">
+            <div class="mt-0.5 shrink-0 w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-bold text-xs">💡</div>
+            <div>
+              <div class="font-mono text-xs font-bold uppercase tracking-wider text-cyan-700 dark:text-cyan-400 mb-1">Diretriz Prática Forense</div>
+              <div class="text-slate-700 dark:text-slate-200">${cleanContent}</div>
+            </div>
+          </div>`
+        );
+      } else {
+        htmlParts.push(
+          `<blockquote class="my-6 p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-emerald-950/20 border-l-4 border-emerald-500 text-slate-700 dark:text-slate-300 italic text-sm sm:text-base leading-relaxed shadow-xs">${quoteText}</blockquote>`
+        );
+      }
+
       inBlockquote = false;
       blockquoteBuffer = [];
     }
@@ -217,6 +299,42 @@ function renderMarkdownToHtml(markdown: string): string {
     if (!trimmed) {
       flushList();
       flushBlockquote();
+      flushTable();
+      continue;
+    }
+
+    // Markdown Table detection: starts and ends with |
+    if (trimmed.startsWith("|") && trimmed.endsWith("|")) {
+      flushList();
+      flushBlockquote();
+      inTable = true;
+      tableBuffer.push(trimmed);
+      continue;
+    } else if (inTable) {
+      flushTable();
+    }
+
+    // Markdown Image detection: ![alt](src)
+    const imgMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imgMatch) {
+      flushList();
+      flushBlockquote();
+      flushTable();
+      const altText = imgMatch[1];
+      const imgSrc = imgMatch[2];
+      htmlParts.push(
+        `<figure class="my-8 overflow-hidden rounded-2xl border border-slate-200/90 dark:border-white/10 bg-slate-50 dark:bg-white/[0.02] shadow-xl">
+          <img src="${imgSrc}" alt="${altText}" class="w-full h-auto object-cover rounded-t-2xl max-h-[500px]" loading="lazy" />
+          ${
+            altText
+              ? `<figcaption class="px-4 py-3 text-xs text-center text-slate-500 dark:text-slate-400 border-t border-slate-200/60 dark:border-white/5 font-mono flex items-center justify-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
+                  ${formatInline(altText)}
+                </figcaption>`
+              : ""
+          }
+        </figure>`
+      );
       continue;
     }
 
@@ -224,6 +342,7 @@ function renderMarkdownToHtml(markdown: string): string {
     if (trimmed.startsWith("## ")) {
       flushList();
       flushBlockquote();
+      flushTable();
       const text = trimmed.slice(3).trim();
       const id = slugify(text);
       htmlParts.push(
@@ -238,6 +357,7 @@ function renderMarkdownToHtml(markdown: string): string {
     if (trimmed.startsWith("### ")) {
       flushList();
       flushBlockquote();
+      flushTable();
       const text = trimmed.slice(4).trim();
       const id = slugify(text);
       htmlParts.push(
@@ -251,6 +371,7 @@ function renderMarkdownToHtml(markdown: string): string {
     // Blockquote
     if (trimmed.startsWith("> ")) {
       flushList();
+      flushTable();
       inBlockquote = true;
       blockquoteBuffer.push(formatInline(trimmed.slice(2).trim()));
       continue;
@@ -262,6 +383,7 @@ function renderMarkdownToHtml(markdown: string): string {
     if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
       if (!inList) {
         flushList();
+        flushTable();
         htmlParts.push('<ul class="my-4 space-y-2 text-slate-700 dark:text-slate-300 text-sm sm:text-base pl-5 list-disc marker:text-emerald-500">');
         inList = true;
       }
@@ -275,6 +397,7 @@ function renderMarkdownToHtml(markdown: string): string {
     if (numberedMatch) {
       if (!inNumberedList) {
         flushList();
+        flushTable();
         htmlParts.push('<ol class="my-4 space-y-2 text-slate-700 dark:text-slate-300 text-sm sm:text-base pl-5 list-decimal marker:text-emerald-500 font-mono text-xs sm:text-sm">');
         inNumberedList = true;
       }
@@ -284,6 +407,7 @@ function renderMarkdownToHtml(markdown: string): string {
     }
 
     flushList();
+    flushTable();
 
     // Divisor Horizontal (---)
     if (trimmed === "---" || trimmed === "***") {
@@ -301,6 +425,7 @@ function renderMarkdownToHtml(markdown: string): string {
 
   flushList();
   flushBlockquote();
+  flushTable();
 
   return htmlParts.join("\n");
 }
