@@ -41,6 +41,11 @@
 
   /* Focus Ring */
   --focus-ring: #10B981;
+
+  /* Luxury Scrollbar */
+  --scrollbar-track: #05080C;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.18);
+  --scrollbar-thumb-hover: #10B981;
 }
 
 html.dark,
@@ -60,6 +65,11 @@ html.dark,
   --border-hairline: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(255, 255, 255, 0.15);
   --border-brand: #0284C7;
+
+  /* Luxury Scrollbar */
+  --scrollbar-track: #05080C;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.18);
+  --scrollbar-thumb-hover: #10B981;
 }
 
 html.light,
@@ -86,6 +96,11 @@ html.light,
   --border-hairline: #E2E8F0;
   --border-strong: #CBD5E1;
   --border-brand: #93C5FD;
+
+  /* Luxury Scrollbar */
+  --scrollbar-track: #F4F4F2;
+  --scrollbar-thumb: rgba(15, 23, 42, 0.25);
+  --scrollbar-thumb-hover: #0F2B48;
 }
 
 @theme {
@@ -144,29 +159,37 @@ a {
   text-underline-offset: 3px;
 }
 
+/* Custom Luxury Scrollbar (Adapts to Dark / Light Theme) */
 @supports (scrollbar-width: thin) {
   * {
     scrollbar-width: thin;
-    scrollbar-color: #CBD5E1 transparent;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #CBD5E1;
+  background-color: var(--scrollbar-thumb);
   border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background-color 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #94A3B8;
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 /* Focus ring accessibility helper */

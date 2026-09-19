@@ -33,8 +33,8 @@ export function KineticLink({
   const isExternal = href.startsWith("http");
 
   const content = (
-    <span className="relative inline-flex items-center gap-1.5 overflow-hidden group cursor-pointer">
-      <span className="relative block overflow-hidden leading-tight">
+    <span className="relative inline-flex items-center gap-1.5 overflow-hidden group cursor-pointer whitespace-nowrap">
+      <span className="relative block overflow-hidden leading-tight whitespace-nowrap">
         {/* Texto original que sobe no hover */}
         <span className="block transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
           {children}

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { FileSearch, PenTool, BellRing, ShieldCheck, ArrowRight, CheckCircle2 } from "lucide-react";
 
 interface FrameItem {
@@ -106,8 +106,10 @@ export function SpotlightFrames() {
               onClick={() => setActiveId(frame.id)}
               onMouseEnter={() => setActiveId(frame.id)}
               layout
-              transition={{ type: "spring", stiffness: 280, damping: 28 }}
-              className={`relative rounded-2xl overflow-hidden cursor-pointer border transition-all duration-300 flex flex-col justify-between p-7 ${
+              transition={{
+                layout: { type: "spring", stiffness: 180, damping: 26, mass: 0.8 },
+              }}
+              className={`relative rounded-2xl overflow-hidden cursor-pointer border flex flex-col justify-between p-7 select-none transition-colors duration-500 ${
                 isActive
                   ? "flex-[3.5] bg-white dark:bg-[#0A121A] border-emerald-500/40 shadow-xl dark:shadow-[0_0_30px_rgba(16,185,129,0.15)]"
                   : "flex-1 bg-slate-100/80 dark:bg-[#070D14]/70 border-slate-200 dark:border-white/[0.08] hover:border-slate-300 dark:hover:border-white/20 hover:bg-white dark:hover:bg-[#0A121A]/50"
@@ -123,10 +125,10 @@ export function SpotlightFrames() {
               {/* Cabeçalho do Card */}
               <div className="relative z-10">
                 <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="font-mono text-xs font-bold text-emerald-700 dark:text-emerald-400/80 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                  <span className="font-mono text-xs font-bold text-emerald-700 dark:text-emerald-400/80 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 whitespace-nowrap">
                     FASE {frame.step}
                   </span>
-                  <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-white/80">
+                  <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-white/80 shrink-0">
                     <Icon className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
                   </div>
                 </div>
@@ -135,54 +137,83 @@ export function SpotlightFrames() {
                   {frame.title}
                 </h3>
 
-                {isActive && (
-                  <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="text-sm text-slate-600 dark:text-slate-300 mt-2 line-clamp-2"
-                  >
-                    {frame.subtitle}
-                  </motion.p>
-                )}
+                <AnimatePresence initial={false}>
+                  {isActive && (
+                    <motion.p
+                      key="subtitle"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                      className="text-sm text-slate-600 dark:text-slate-300 mt-2 line-clamp-2"
+                    >
+                      {frame.subtitle}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
               </div>
 
               {/* Conteúdo Expandido (Apenas Ativo) */}
-              {isActive && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.1, duration: 0.3 }}
-                  className="relative z-10 my-4 space-y-2.5"
-                >
-                  {frame.details.map((detail, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-600 dark:text-slate-300">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
-                      <span>{detail}</span>
-                    </div>
-                  ))}
-                </motion.div>
-              )}
+              <AnimatePresence initial={false}>
+                {isActive && (
+                  <motion.div
+                    key="details-list"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.3, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative z-10 my-4 space-y-2.5"
+                  >
+                    {frame.details.map((detail, idx) => (
+                      <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-600 dark:text-slate-300">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
+                        <span>{detail}</span>
+                      </div>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               {/* Rodapé com Métrica de Destaque */}
-              <div className="relative z-10 pt-4 border-t border-slate-200 dark:border-white/[0.08] flex items-end justify-between">
-                {isActive ? (
-                  <div>
-                    <span className="font-mono text-3xl font-extrabold text-slate-900 dark:text-white block tracking-tight">
-                      {frame.metric}
-                    </span>
-                    <span className="text-[11px] font-sans text-slate-500 dark:text-slate-400 block mt-0.5">
-                      {frame.metricLabel}
-                    </span>
-                  </div>
-                ) : (
-                  <div className="text-left">
-                    <span className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 block">
-                      {frame.tag}
-                    </span>
-                  </div>
-                )}
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 dark:bg-emerald-400 shadow-[0_0_8px_#34D399]" />
+              <div className="relative z-10 pt-4 border-t border-slate-200 dark:border-white/[0.08] flex items-end justify-between min-h-[58px]">
+                <AnimatePresence mode="wait" initial={false}>
+                  {isActive ? (
+                    <motion.div
+                      key={`metric-${frame.id}`}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <span className="font-mono text-3xl font-extrabold text-slate-900 dark:text-white block tracking-tight">
+                        {frame.metric}
+                      </span>
+                      <span className="text-[11px] font-sans text-slate-500 dark:text-slate-400 block mt-0.5 whitespace-nowrap">
+                        {frame.metricLabel}
+                      </span>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key={`tag-${frame.id}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.22 }}
+                      className="text-left py-1"
+                    >
+                      <span className="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 block whitespace-nowrap">
+                        {frame.tag}
+                      </span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+                <div
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 shrink-0 mb-1 ${
+                    isActive
+                      ? "bg-emerald-500 dark:bg-emerald-400 shadow-[0_0_8px_#34D399] scale-110"
+                      : "bg-slate-300 dark:bg-white/20"
+                  }`}
+                />
               </div>
             </motion.div>
           );
@@ -196,41 +227,64 @@ export function SpotlightFrames() {
           const Icon = frame.icon;
 
           return (
-            <div
+            <motion.div
               key={frame.id}
-              onClick={() => setActiveId(frame.id)}
-              className={`rounded-2xl p-5 border transition-all duration-200 ${
+              onClick={() => setActiveId(isActive ? "" : frame.id)}
+              layout
+              transition={{ layout: { type: "spring", stiffness: 220, damping: 26 } }}
+              className={`rounded-2xl p-5 border cursor-pointer transition-colors duration-300 ${
                 isActive
                   ? "bg-white dark:bg-[#0A121A] border-emerald-500/50 shadow-lg dark:shadow-[0_0_20px_rgba(16,185,129,0.15)]"
-                  : "bg-slate-50 dark:bg-[#070D14] border-slate-200 dark:border-white/10"
+                  : "bg-slate-50 dark:bg-[#070D14] border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20"
               }`}
             >
               <div className="flex items-center justify-between mb-3">
                 <span className="font-mono text-xs text-emerald-700 dark:text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
                   {frame.step} • {frame.tag}
                 </span>
-                <Icon className="w-5 h-5 text-slate-500 dark:text-slate-300" />
+                <div
+                  className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-300 ${
+                    isActive
+                      ? "bg-emerald-500/10 text-emerald-500"
+                      : "bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-slate-400"
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                </div>
               </div>
 
               <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{frame.title}</h3>
-              <p className="text-xs text-slate-600 dark:text-slate-300 mb-3">{frame.subtitle}</p>
+              <p className="text-xs text-slate-600 dark:text-slate-300 mb-2">{frame.subtitle}</p>
 
-              {isActive && (
-                <div className="space-y-2 py-3 border-t border-slate-200 dark:border-white/10 my-2">
-                  {frame.details.map((detail, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
-                      <span>{detail}</span>
+              <AnimatePresence initial={false}>
+                {isActive && (
+                  <motion.div
+                    key="mobile-expanded"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="space-y-2 py-3 border-t border-slate-200 dark:border-white/10 my-2">
+                      {frame.details.map((detail, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
+                          <span>{detail}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              )}
 
-              <div className="flex items-center justify-between pt-2 text-xs">
-                <span className="text-emerald-700 dark:text-emerald-400 font-mono font-bold">{frame.metric}</span>
-                <span className="text-slate-500 dark:text-slate-400 text-[11px]">{frame.metricLabel}</span>
-              </div>
-            </div>
+                    <div className="flex items-center justify-between pt-2 text-xs border-t border-slate-100 dark:border-white/5">
+                      <span className="text-emerald-700 dark:text-emerald-400 font-mono font-bold text-sm">
+                        {frame.metric}
+                      </span>
+                      <span className="text-slate-500 dark:text-slate-400 text-[11px]">{frame.metricLabel}</span>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           );
         })}
       </div>

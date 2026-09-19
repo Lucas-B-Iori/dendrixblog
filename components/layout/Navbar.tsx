@@ -29,8 +29,8 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
 
   const navLinks = [
     { label: "Recursos", href: "#recursos" },
-    { label: "Cockpit do Advogado", href: "#cockpit" },
-    { label: "O Loop do Caso", href: "#como-funciona" },
+    { label: "Cockpit", href: "#cockpit" },
+    { label: "Como Funciona", href: "#como-funciona" },
     { label: "Especialidades", href: "#especialidades" },
     { label: "Segurança", href: "#seguranca" },
     { label: "FAQ", href: "#faq" },
@@ -45,24 +45,24 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18">
+        <div className="flex items-center justify-between h-18 gap-4">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0 mr-2 lg:mr-6 group">
             <span className="font-serif text-2xl sm:text-[1.65rem] font-medium tracking-tight text-slate-900 dark:text-white group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
               Dendrix
             </span>
-            <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 font-semibold tracking-wider">
+            <span className="hidden sm:inline-block text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 font-semibold tracking-wider whitespace-nowrap">
               CRM JURÍDICO
             </span>
           </Link>
 
           {/* Desktop Navigation Links com KineticLink */}
-          <nav className="hidden md:flex items-center gap-7">
+          <nav className="hidden md:flex items-center gap-5 lg:gap-7 shrink-0">
             {navLinks.map((link) => (
               <KineticLink
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors whitespace-nowrap"
               >
                 {link.label}
               </KineticLink>
@@ -70,7 +70,7 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
           </nav>
 
           {/* Action CTAs & Controls */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3 lg:gap-4 shrink-0">
             {/* Morphing Theme Toggle Conectado ao ThemeProvider */}
             <MorphingThemeToggle
               isDark={isDark}
@@ -82,7 +82,7 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
               href="https://dendrix.app.br"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors px-2.5 py-1.5"
+              className="inline-flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors px-2.5 py-1.5 whitespace-nowrap"
             >
               Entrar
               <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
@@ -91,7 +91,7 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
             <button
               type="button"
               onClick={handleOpen}
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-[#0F2B48] to-[#0A3D62] hover:from-[#13375C] hover:to-[#0C4A75] border border-white/10 rounded-xl transition-all duration-200 shadow-[0_0_15px_rgba(15,43,72,0.4)] cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-[#0F2B48] to-[#0A3D62] hover:from-[#13375C] hover:to-[#0C4A75] border border-white/10 rounded-xl transition-all duration-200 shadow-[0_0_15px_rgba(15,43,72,0.4)] cursor-pointer hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap"
             >
               <Calendar className="w-4 h-4 text-emerald-400" />
               <span>Agendar demonstração</span>
