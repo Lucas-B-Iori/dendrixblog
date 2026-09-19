@@ -230,8 +230,8 @@ export function Skiper6Hero() {
         </div>
       </div>
 
-      {/* 3. Tipografia Monumental Cinética (O Core do Skiper 6) */}
-      <div className="relative w-full h-[18vw] sm:h-[15vw] md:h-[13vw] lg:h-[11vw] max-h-[200px] min-h-[90px] flex items-center justify-center select-none my-1 sm:my-3">
+      {/* 3. Tipografia Monumental Cinética (O Core do Skiper 6 — Aumentado V5.2) */}
+      <div className="relative w-full h-[20vw] sm:h-[18vw] md:h-[15.5vw] lg:h-[13.5vw] max-h-[235px] min-h-[105px] flex items-center justify-center select-none my-1 sm:my-3">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTitle}
@@ -241,20 +241,22 @@ export function Skiper6Hero() {
             exit="exit"
           >
             <h1
-              className={`font-sans font-black uppercase tracking-tighter leading-none text-[13.5vw] sm:text-[12vw] md:text-[10vw] lg:text-[8.8vw] xl:text-[7.8rem] transition-colors duration-300 flex items-center justify-center ${
+              className={`font-sans font-black uppercase tracking-tighter leading-none text-[15.5vw] sm:text-[13.8vw] md:text-[11.8vw] lg:text-[10.2vw] xl:text-[9.2rem] transition-colors duration-300 flex items-center justify-center ${
                 activeModule
-                  ? activeModule.accentColorClass
-                  : "text-slate-900 dark:text-white drop-shadow-[0_0_35px_rgba(255,255,255,0.12)]"
+                  ? `${activeModule.accentColorClass} drop-shadow-[0_0_50px_rgba(16,185,129,0.35)]`
+                  : "text-slate-900 dark:text-white drop-shadow-[0_0_40px_rgba(255,255,255,0.18)]"
               }`}
             >
               {Array.from(activeTitle).map((char, charIdx) => (
-                <span
+                <motion.span
                   key={`${activeTitle}-${charIdx}`}
-                  className="inline-block overflow-hidden py-1 sm:py-2"
+                  className="inline-block overflow-hidden py-1.5 sm:py-2.5"
                 >
                   <motion.span
                     className="inline-block"
-                    variants={letterVariants}
+                    initial={{ y: "110%", opacity: 0 }}
+                    animate={{ y: "0%", opacity: 1 }}
+                    exit={{ y: "-110%", opacity: 0 }}
                     transition={{
                       duration: 0.55,
                       ease: [0.19, 1, 0.22, 1],
@@ -263,7 +265,7 @@ export function Skiper6Hero() {
                   >
                     {char === " " ? "\u00A0" : char}
                   </motion.span>
-                </span>
+                </motion.span>
               ))}
             </h1>
           </motion.div>
