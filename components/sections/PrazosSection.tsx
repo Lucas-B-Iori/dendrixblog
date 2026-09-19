@@ -1,6 +1,7 @@
 import React from "react";
 import { Newspaper, BellRing, CalendarClock, DollarSign, ArrowRight, Bot } from "lucide-react";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
+import { BorderBeam } from "@/components/motion/BorderBeam";
 
 export function PrazosSection() {
   const modules = [
@@ -68,7 +69,8 @@ export function PrazosSection() {
 
         {/* Right Column: Macro-recorte da Publicação com IA */}
         <div className="lg:col-span-6 w-full">
-          <div className="rounded-2xl border border-[#E2E8F0] bg-white shadow-card overflow-hidden">
+          <div className="relative rounded-2xl border border-[#E2E8F0] bg-white shadow-card overflow-hidden">
+            <BorderBeam size={180} duration={7} colorFrom="#B45309" colorTo="#10B981" borderWidth={2} />
             {/* Header */}
             <div className="h-10 px-4 bg-[#F8F9FA] border-b border-[#E2E8F0] flex items-center justify-between text-xs font-mono text-[#475569]">
               <div className="flex items-center gap-2 min-w-0">

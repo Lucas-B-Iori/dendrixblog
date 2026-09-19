@@ -2,6 +2,7 @@ import React from "react";
 import { Calendar, MessageSquare, ArrowRight } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/config";
 import { OpenDemoButton } from "@/components/cta/OpenDemoButton";
+import { BorderBeam } from "@/components/motion/BorderBeam";
 
 export function ClosingCtaSection() {
   const whatsappUrl = getWhatsAppLink(
@@ -9,21 +10,24 @@ export function ClosingCtaSection() {
   );
 
   return (
-    <section className="bg-[var(--surface-dark)] text-white py-20 sm:py-28 relative overflow-hidden border-t border-[var(--border-subtle)]">
+    <section className="bg-[#080C14] text-white py-20 sm:py-28 relative overflow-hidden border-t border-slate-800">
       {/* Background ambient radial lighting */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-20"
+        className="absolute inset-0 pointer-events-none opacity-30"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 50% 30%, rgba(37, 99, 235, 0.25) 0%, transparent 60%)",
+            "radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.2) 0%, rgba(37, 99, 235, 0.15) 40%, transparent 70%)",
         }}
       />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs font-mono text-slate-300 uppercase tracking-wider mb-6 border border-white/10">
-          <Calendar className="w-3.5 h-3.5 text-[var(--accent-emerald)]" />
-          <span>AGENDAMENTO DE DEMONSTRAÇÃO</span>
-        </div>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="relative rounded-3xl bg-white/[0.03] border border-white/10 p-8 sm:p-14 md:p-16 text-center backdrop-blur-sm shadow-2xl overflow-hidden">
+          <BorderBeam size={220} duration={9} colorFrom="#10B981" colorTo="#38BDF8" borderWidth={1.5} />
+
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-xs font-mono text-emerald-300 uppercase tracking-wider mb-6 border border-white/15">
+            <Calendar className="w-3.5 h-3.5 text-emerald-400" />
+            <span>AGENDAMENTO DE DEMONSTRAÇÃO</span>
+          </div>
 
         <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight mb-6 text-white leading-tight">
           Coloque ordem no seu escritório e ganhe horas de estratégia.
@@ -56,14 +60,15 @@ export function ClosingCtaSection() {
           Sessão prática no Google Meet • Traga um processo real ou use nosso caso modelo • Sem compromisso comercial
         </p>
 
-        {/* Institutional signature */}
-        <div className="pt-10 border-t border-white/10 max-w-lg mx-auto">
-          <p className="font-serif text-lg sm:text-xl italic text-slate-200 mb-2">
-            “Antes da peça, existe um caso inteiro.”
-          </p>
-          <p className="font-mono text-xs sm:text-sm tracking-wide text-slate-400 uppercase">
-            O Dendrix organiza. A IA apoia. O advogado decide.
-          </p>
+          {/* Institutional signature */}
+          <div className="pt-10 border-t border-white/10 max-w-lg mx-auto">
+            <p className="font-serif text-lg sm:text-xl italic text-slate-200 mb-2">
+              “Antes da peça, existe um caso inteiro.”
+            </p>
+            <p className="font-mono text-xs sm:text-sm tracking-wide text-slate-400 uppercase">
+              O Dendrix organiza. A IA apoia. O advogado decide.
+            </p>
+          </div>
         </div>
       </div>
     </section>

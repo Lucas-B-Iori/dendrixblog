@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Server, ShieldBan, Lock, UserCheck, ArrowRight } from "lucide-react";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
+import { Card3D } from "@/components/motion/Card3D";
 
 export function SecuritySection() {
   const securityPillars = [
@@ -51,20 +52,24 @@ export function SecuritySection() {
         {securityPillars.map((pillar, idx) => {
           const Icon = pillar.icon;
           return (
-            <div
+            <Card3D
               key={idx}
-              className="p-7 sm:p-8 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-4 hover:shadow-sm hover:border-slate-300 transition-all"
+              className="h-full"
+              enableSpotlight={true}
+              spotlightColor="rgba(16, 185, 129, 0.08)"
             >
-              <div className="w-12 h-12 rounded-xl bg-[#EDF2F7] flex items-center justify-center text-[#0F2B48]">
-                <Icon className="w-5 h-5" />
+              <div className="h-full p-7 sm:p-8 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-4 hover:border-slate-300 transition-all">
+                <div className="w-12 h-12 rounded-xl bg-[#EDF2F7] flex items-center justify-center text-[#0F2B48] shadow-2xs">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold text-[#0F172A]">
+                  {pillar.title}
+                </h3>
+                <p className="text-sm text-[#475569] leading-relaxed">
+                  {pillar.description}
+                </p>
               </div>
-              <h3 className="text-base sm:text-lg font-semibold text-[#0F172A]">
-                {pillar.title}
-              </h3>
-              <p className="text-sm text-[#475569] leading-relaxed">
-                {pillar.description}
-              </p>
-            </div>
+            </Card3D>
           );
         })}
       </div>

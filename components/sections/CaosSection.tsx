@@ -1,6 +1,7 @@
 import React from "react";
 import { Clock, FolderGit2, BotOff } from "lucide-react";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
+import { Card3D } from "@/components/motion/Card3D";
 
 export function CaosSection() {
   const painPoints = [
@@ -43,36 +44,40 @@ export function CaosSection() {
           </p>
         </div>
 
-        {/* Right Column: Refined Stack Card */}
-        <div className="lg:col-span-7 divide-y divide-[#E2E8F0] bg-white border border-[#E2E8F0] rounded-2xl p-3 sm:p-6 shadow-xs">
-          {painPoints.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={index}
-                className="p-4 sm:p-6 group hover:bg-slate-50/60 rounded-xl transition-colors"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-lg bg-[#EDF2F7] text-[#0F2B48] shrink-0 mt-0.5">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div className="space-y-1.5 flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200/80 font-medium">
-                        {item.tag}
-                      </span>
+        {/* Right Column: Refined Stack Card with 3D Physics */}
+        <div className="lg:col-span-7">
+          <Card3D enableSpotlight={true} spotlightColor="rgba(245, 158, 11, 0.08)">
+            <div className="divide-y divide-[#E2E8F0] bg-white border border-[#E2E8F0] rounded-2xl p-3 sm:p-6 shadow-xs overflow-hidden">
+              {painPoints.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={index}
+                    className="p-4 sm:p-6 group hover:bg-slate-50/60 rounded-xl transition-colors"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="p-2.5 rounded-lg bg-[#EDF2F7] text-[#0F2B48] shrink-0 mt-0.5 shadow-2xs">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <div className="space-y-1.5 flex-1 min-w-0">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200/80 font-medium">
+                            {item.tag}
+                          </span>
+                        </div>
+                        <h3 className="text-base sm:text-lg font-semibold text-[#0F172A] leading-snug">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm text-[#475569] leading-relaxed pt-1">
+                          {item.description}
+                        </p>
+                      </div>
                     </div>
-                    <h3 className="text-base sm:text-lg font-semibold text-[#0F172A] leading-snug">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-[#475569] leading-relaxed pt-1">
-                      {item.description}
-                    </p>
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          </Card3D>
         </div>
       </div>
     </SectionWrapper>

@@ -3,11 +3,27 @@ import { HeroSplitScreen } from "./HeroSplitScreen";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { OpenDemoButton } from "@/components/cta/OpenDemoButton";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
+import { ContainerScroll3D } from "@/components/motion/ContainerScroll3D";
+import { ParticlesBackground } from "@/components/motion/ParticlesBackground";
+import { InteractiveGridPattern } from "@/components/motion/InteractiveGridPattern";
 
 export function HeroSection() {
   return (
-    <SectionWrapper id="hero" width="default" spacing="hero">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <SectionWrapper id="hero" width="default" spacing="hero" className="relative overflow-hidden">
+      {/* Subtle Dynamic Ambient Layers */}
+      <InteractiveGridPattern className="opacity-40" />
+      <ParticlesBackground quantity={28} className="opacity-60" />
+
+      {/* Soft Ambient Radial Light */}
+      <div
+        className="pointer-events-none absolute -top-24 right-0 w-[600px] h-[600px] rounded-full opacity-20 blur-3xl"
+        style={{
+          background: "radial-gradient(circle, rgba(15,43,72,0.3) 0%, rgba(16,185,129,0.15) 50%, transparent 80%)",
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
         {/* Left Column: Official Locked Copy */}
         <div className="lg:col-span-5 space-y-6 sm:space-y-7 text-left">
           {/* Eyebrow */}
@@ -60,9 +76,11 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Right Column: Split-Screen Real Product Simulation */}
+        {/* Right Column: Split-Screen Real Product Simulation with 3D Scroll Physics */}
         <div className="lg:col-span-7 w-full">
-          <HeroSplitScreen />
+          <ContainerScroll3D>
+            <HeroSplitScreen />
+          </ContainerScroll3D>
         </div>
       </div>
     </SectionWrapper>

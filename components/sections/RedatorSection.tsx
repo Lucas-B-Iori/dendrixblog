@@ -2,6 +2,7 @@ import React from "react";
 import { CaseSourceBadge } from "../hero/CaseSourceBadge";
 import { Award, Layers, Sparkles, FileText, CheckCircle2 } from "lucide-react";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
+import { BorderBeam } from "@/components/motion/BorderBeam";
 
 interface RedatorSectionProps {
   onOpenDemo?: () => void;
@@ -36,7 +37,8 @@ export function RedatorSection({ onOpenDemo }: RedatorSectionProps = {}) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         {/* Left Column: Macro-recorte do Redator (Inverted layout) */}
         <div className="lg:col-span-6 w-full order-2 lg:order-1">
-          <div className="rounded-2xl border border-[#E2E8F0] bg-white shadow-card overflow-hidden">
+          <div className="relative rounded-2xl border border-[#E2E8F0] bg-white shadow-card overflow-hidden">
+            <BorderBeam size={180} duration={8} colorFrom="#0F2B48" colorTo="#10B981" borderWidth={2} />
             {/* Header */}
             <div className="h-10 px-4 bg-[#F8F9FA] border-b border-[#E2E8F0] flex items-center justify-between text-xs font-mono text-[#475569]">
               <span className="truncate">Redator Forense • Réplica_Civil_V2.docx</span>
