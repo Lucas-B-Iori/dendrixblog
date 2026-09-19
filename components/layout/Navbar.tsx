@@ -25,6 +25,7 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
 
   const navLinks = [
     { label: "Recursos", href: "#recursos" },
+    { label: "Cockpit Forense", href: "#cockpit" },
     { label: "O Loop do Caso", href: "#como-funciona" },
     { label: "Segurança", href: "#seguranca" },
     { label: "FAQ", href: "#faq" },

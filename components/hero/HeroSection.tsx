@@ -51,7 +51,7 @@ export function HeroSection() {
               </OpenDemoButton>
 
               <a
-                href="#como-funciona"
+                href="#cockpit"
                 className="inline-flex items-center justify-center px-5 py-3.5 text-sm font-semibold text-[#0F172A] hover:text-[#0F2B48] bg-white hover:bg-slate-50 active:bg-slate-100 rounded-md transition-all text-center border border-[#CBD5E1] shadow-2xs"
               >
                 Ver o produto em ação

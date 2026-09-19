@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { CaosSection } from "@/components/sections/CaosSection";
 import { LoopSection } from "@/components/sections/LoopSection";
+import { CockpitSection } from "@/components/sections/CockpitSection";
 import { MesaJuridicaSection } from "@/components/sections/MesaJuridicaSection";
 import { RedatorSection } from "@/components/sections/RedatorSection";
 import { PrazosSection } from "@/components/sections/PrazosSection";
@@ -27,6 +28,9 @@ export default function HomePage() {
 
         {/* Seção 03: O Loop do Caso */}
         <LoopSection />
+
+        {/* Seção Interativa V3: O Cockpit Forense do Dendrix na Prática */}
+        <CockpitSection />
 
         {/* Seção 04: Mesa Jurídica (Pilar 1 - Raio-X dos Autos) */}
         <MesaJuridicaSection />
