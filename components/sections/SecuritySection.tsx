@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Server, ShieldBan, Lock, UserCheck, ArrowRight } from "lucide-react";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { Card3D } from "@/components/motion/Card3D";
+import { AppleFeatureCard } from "@/components/showcase/AppleFeatureCard";
 
 export function SecuritySection() {
   const securityPillars = [
@@ -33,22 +34,27 @@ export function SecuritySection() {
   ];
 
   return (
-    <SectionWrapper id="seguranca" className="border-t border-[#E2E8F0]/70 bg-[#F4F4F2]/50" spacing="default">
-      {/* Header */}
-      <div className="text-left max-w-3xl space-y-4 mb-14">
-        <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#0F2B48]">
+    <SectionWrapper id="seguranca" className="border-t border-white/[0.08] bg-[#05080C]" spacing="default">
+      {/* Bloco Flagship Apple (Skiper 76 / Apple Feature Block) */}
+      <div className="mb-14">
+        <AppleFeatureCard />
+      </div>
+
+      {/* Header Secundário */}
+      <div className="text-left max-w-3xl space-y-4 mb-12">
+        <p className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400">
           Segurança da Informação e Privacidade
         </p>
-        <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-[#0F172A] leading-tight text-balance">
+        <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-white leading-tight text-balance">
           Seus dados não treinam modelos públicos. A decisão final é sempre sua.
         </h2>
-        <p className="text-base text-[#475569] leading-relaxed">
+        <p className="text-base text-slate-300 leading-relaxed">
           O Dendrix foi projetado adotando controles de segurança técnica, isolamento de dados e respeito às prerrogativas e deveres de sigilo da advocacia.
         </p>
       </div>
 
-      {/* 2x2 Grid of Solid Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* 2x2 Grid de Pilares de Segurança em Vidro Escuro */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {securityPillars.map((pillar, idx) => {
           const Icon = pillar.icon;
           return (
@@ -56,16 +62,16 @@ export function SecuritySection() {
               key={idx}
               className="h-full"
               enableSpotlight={true}
-              spotlightColor="rgba(16, 185, 129, 0.08)"
+              spotlightColor="rgba(16, 185, 129, 0.12)"
             >
-              <div className="h-full p-7 sm:p-8 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs space-y-4 hover:border-slate-300 transition-all">
-                <div className="w-12 h-12 rounded-xl bg-[#EDF2F7] flex items-center justify-center text-[#0F2B48] shadow-2xs">
+              <div className="h-full p-7 sm:p-8 rounded-2xl bg-[#09131C] border border-white/10 shadow-xl space-y-4 hover:border-emerald-500/30 transition-all backdrop-blur-xl">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shadow-xs">
                   <Icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-base sm:text-lg font-semibold text-[#0F172A]">
+                <h3 className="text-base sm:text-lg font-semibold text-white">
                   {pillar.title}
                 </h3>
-                <p className="text-sm text-[#475569] leading-relaxed">
+                <p className="text-sm text-slate-300 leading-relaxed">
                   {pillar.description}
                 </p>
               </div>
@@ -74,14 +80,14 @@ export function SecuritySection() {
         })}
       </div>
 
-      {/* Contextual link to full security documentation */}
-      <div className="mt-10 pt-6 border-t border-[#CBD5E1]/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs sm:text-sm">
-        <p className="text-[#64748B]">
+      {/* Link Contextual para Documentação Completa */}
+      <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs sm:text-sm">
+        <p className="text-slate-400">
           Dúvidas sobre governança técnica, DPO ou conformidade com a LGPD?
         </p>
         <Link
           href="/seguranca"
-          className="inline-flex items-center gap-1.5 font-semibold text-[#0F2B48] hover:underline"
+          className="inline-flex items-center gap-1.5 font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
         >
           <span>Consulte nossas diretrizes completas de segurança</span>
           <ArrowRight className="w-4 h-4" />

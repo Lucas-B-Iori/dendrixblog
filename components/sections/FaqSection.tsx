@@ -13,18 +13,20 @@ export function FaqSection() {
   };
 
   return (
-    <SectionWrapper id="faq" className="border-t border-[#E2E8F0]/70 bg-white/70" spacing="default" width="narrow">
+    <SectionWrapper id="faq" className="border-t border-white/[0.08] bg-[#070D14]" spacing="default" width="narrow">
       <div className="text-center mb-14">
-        <div className="eyebrow mb-3">ESCLARECIMENTOS TÉCNICOS</div>
-        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] mb-4 text-balance">
+        <span className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full inline-block mb-3">
+          ESCLARECIMENTOS TÉCNICOS
+        </span>
+        <h2 className="font-serif text-3xl sm:text-4xl text-white mb-4 text-balance">
           Perguntas diretas sobre o funcionamento do Dendrix.
         </h2>
-        <p className="text-[var(--text-secondary)] text-base sm:text-lg max-w-xl mx-auto">
+        <p className="text-slate-300 text-base sm:text-lg max-w-xl mx-auto">
           Informações objetivas para esclarecer pontos operacionais antes de agendar sua demonstração.
         </p>
       </div>
 
-      <div className="divide-y divide-[var(--border-subtle)] bg-white border border-[#E2E8F0] rounded-2xl p-4 sm:p-8 shadow-xs">
+      <div className="divide-y divide-white/[0.08] bg-[#0A121A] border border-white/10 rounded-2xl p-4 sm:p-8 shadow-2xl backdrop-blur-xl">
         {FAQ_DATA.map((faq, idx) => {
           const isOpen = openIndex === idx;
           const contentId = `faq-content-${idx}`;
@@ -37,14 +39,14 @@ export function FaqSection() {
                 onClick={() => toggle(idx)}
                 aria-expanded={isOpen}
                 aria-controls={contentId}
-                className="w-full flex items-center justify-between text-left py-2 font-medium text-[var(--text-primary)] hover:text-[var(--accent-navy)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-navy)] rounded-md cursor-pointer group"
+                className="w-full flex items-center justify-between text-left py-2 font-medium text-white hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-md cursor-pointer group"
               >
-                <span className="text-base sm:text-lg pr-4 font-semibold group-hover:text-[var(--accent-navy)]">
+                <span className="text-base sm:text-lg pr-4 font-semibold group-hover:text-emerald-300">
                   {faq.question}
                 </span>
                 <ChevronDown
-                  className={`w-5 h-5 flex-shrink-0 text-[var(--text-tertiary)] transition-transform duration-200 ${
-                    isOpen ? "rotate-180 text-[var(--accent-navy)]" : ""
+                  className={`w-5 h-5 flex-shrink-0 text-slate-400 transition-transform duration-200 ${
+                    isOpen ? "rotate-180 text-emerald-400" : ""
                   }`}
                 />
               </button>
@@ -54,15 +56,15 @@ export function FaqSection() {
                   id={contentId}
                   role="region"
                   aria-labelledby={buttonId}
-                  className="pt-3 pb-2 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed animate-in fade-in-50 duration-200"
+                  className="pt-3 pb-2 text-sm sm:text-base text-slate-300 leading-relaxed animate-in fade-in-50 duration-200"
                 >
                   {faq.bullets ? (
                     <div className="space-y-3">
                       <p>{faq.answerText}</p>
-                      <ul className="list-disc pl-5 space-y-2 text-sm text-[#475569]">
+                      <ul className="list-disc pl-5 space-y-2 text-sm text-slate-300">
                         {faq.bullets.map((bullet, bIdx) => (
                           <li key={bIdx}>
-                            <strong className="text-[var(--text-primary)] font-semibold">{bullet.label}:</strong>{" "}
+                            <strong className="text-white font-semibold">{bullet.label}:</strong>{" "}
                             {bullet.text}
                           </li>
                         ))}

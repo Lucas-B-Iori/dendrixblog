@@ -3,6 +3,7 @@ import { Newsreader, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google"
 import "./globals.css";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { DemoModalProvider } from "@/components/providers/DemoModalProvider";
+import { ScrollProgressBar } from "@/components/layout/ScrollProgressBar";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
@@ -65,7 +66,8 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${newsreader.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
-      <body className="antialiased min-h-screen bg-[#FBFBFA] text-[#0F172A] font-sans selection:bg-[#0F2B48] selection:text-white">
+      <body className="antialiased min-h-screen bg-[#05080C] text-[#F8FAFC] font-sans selection:bg-[#0F2B48] selection:text-white">
+        <ScrollProgressBar />
         <JsonLd />
         <DemoModalProvider>{children}</DemoModalProvider>
       </body>

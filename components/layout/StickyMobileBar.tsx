@@ -29,16 +29,16 @@ export function StickyMobileBar() {
   return (
     <aside
       aria-label="Barra de ações rápidas"
-      className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-[var(--surface-primary)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] px-4 py-2.5 shadow-2xl transition-transform duration-300 animate-in slide-in-from-bottom-full"
+      className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#05080C]/90 backdrop-blur-xl border-t border-white/10 px-4 py-2.5 shadow-[0_-10px_30px_rgba(0,0,0,0.8)] transition-transform duration-300 animate-in slide-in-from-bottom-full"
       style={{ paddingBottom: "calc(0.625rem + env(safe-area-inset-bottom, 0px))" }}
     >
       <div className="flex items-center gap-2.5 max-w-md mx-auto">
         <button
           type="button"
           onClick={openDemoModal}
-          className="flex-1 min-h-[44px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--accent-emerald)] text-white text-xs font-semibold shadow-xs active:scale-[0.98] transition-transform cursor-pointer"
+          className="flex-1 min-h-[44px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-xs font-semibold shadow-[0_0_15px_rgba(16,185,129,0.3)] active:scale-[0.98] transition-transform cursor-pointer border border-emerald-400/30"
         >
-          <Calendar className="w-4 h-4" />
+          <Calendar className="w-4 h-4 text-emerald-200" />
           <span>Agendar Demonstração (15m)</span>
         </button>
 
@@ -47,9 +47,9 @@ export function StickyMobileBar() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Falar no WhatsApp"
-          className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-lg bg-[var(--surface-subtle)] border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-emerald-700 active:scale-[0.98] transition-colors"
+          className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl bg-white/[0.05] border border-white/10 text-slate-200 hover:text-emerald-400 active:scale-[0.98] transition-colors"
         >
-          <MessageSquare className="w-5 h-5 text-emerald-600" />
+          <MessageSquare className="w-5 h-5 text-emerald-400" />
         </a>
       </div>
     </aside>

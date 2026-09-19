@@ -3,6 +3,7 @@ import { Calendar, MessageSquare, ArrowRight } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/config";
 import { OpenDemoButton } from "@/components/cta/OpenDemoButton";
 import { BorderBeam } from "@/components/motion/BorderBeam";
+import { LiquidBackground } from "@/components/motion/LiquidBackground";
 
 export function ClosingCtaSection() {
   const whatsappUrl = getWhatsAppLink(
@@ -10,57 +11,60 @@ export function ClosingCtaSection() {
   );
 
   return (
-    <section className="bg-[#080C14] text-white py-20 sm:py-28 relative overflow-hidden border-t border-slate-800">
-      {/* Background ambient radial lighting */}
+    <section className="bg-[#05080C] text-white py-20 sm:py-28 relative overflow-hidden border-t border-white/[0.08]">
+      {/* Liquid Canvas de Fechamento (Skiper 12) */}
+      <LiquidBackground variant="closing" />
+
+      {/* Brilho de Fundo Esmeralda / Azul Profundo */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-30"
+        className="absolute inset-0 pointer-events-none opacity-25"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.2) 0%, rgba(37, 99, 235, 0.15) 40%, transparent 70%)",
+            "radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.25) 0%, rgba(2, 132, 199, 0.15) 40%, transparent 75%)",
         }}
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="relative rounded-3xl bg-white/[0.03] border border-white/10 p-8 sm:p-14 md:p-16 text-center backdrop-blur-sm shadow-2xl overflow-hidden">
+        <div className="relative rounded-3xl bg-[#09131C]/90 border border-white/15 p-8 sm:p-14 md:p-16 text-center backdrop-blur-2xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] overflow-hidden">
           <BorderBeam size={220} duration={9} colorFrom="#10B981" colorTo="#38BDF8" borderWidth={1.5} />
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-xs font-mono text-emerald-300 uppercase tracking-wider mb-6 border border-white/15">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-xs font-mono text-emerald-400 uppercase tracking-wider mb-6 border border-emerald-500/20 shadow-[0_0_12px_rgba(16,185,129,0.15)]">
             <Calendar className="w-3.5 h-3.5 text-emerald-400" />
             <span>AGENDAMENTO DE DEMONSTRAÇÃO</span>
           </div>
 
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight mb-6 text-white leading-tight">
-          Coloque ordem no seu escritório e ganhe horas de estratégia.
-        </h2>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight mb-6 text-white leading-tight">
+            Coloque ordem no seu escritório e ganhe horas de estratégia.
+          </h2>
 
-        <p className="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-sans">
-          Traga um processo da sua banca para uma demonstração prática de 15 minutos. Veja o Dendrix ler os autos, apontar informações relevantes e estruturar a minuta ao vivo.
-        </p>
+          <p className="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-sans">
+            Traga um processo da sua banca para uma demonstração prática de 15 minutos. Veja o Dendrix ler os autos, apontar informações relevantes e estruturar a minuta ao vivo.
+          </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-          <OpenDemoButton className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[var(--accent-emerald)] hover:bg-[#047857] text-white font-medium text-base shadow-lg shadow-emerald-950/40 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
-            <span>Agendar demonstração prática (15 min)</span>
-            <ArrowRight className="w-4 h-4" />
-          </OpenDemoButton>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+            <OpenDemoButton className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-base shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer border border-emerald-400/30">
+              <span>Agendar demonstração prática (15 min)</span>
+              <ArrowRight className="w-4 h-4" />
+            </OpenDemoButton>
 
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-lg bg-white/10 hover:bg-white/15 text-slate-200 border border-white/15 font-medium text-base transition-colors"
-          >
-            <MessageSquare className="w-4 h-4 text-emerald-400" />
-            <span>Dúvidas rápidas? Fale pelo WhatsApp</span>
-          </a>
-        </div>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white/[0.05] hover:bg-white/[0.08] text-slate-200 border border-white/10 font-medium text-base transition-colors backdrop-blur-md"
+            >
+              <MessageSquare className="w-4 h-4 text-emerald-400" />
+              <span>Dúvidas rápidas? Fale pelo WhatsApp</span>
+            </a>
+          </div>
 
-        {/* Microcopy */}
-        <p className="text-xs sm:text-sm text-slate-400 mb-14">
-          Sessão prática no Google Meet • Traga um processo real ou use nosso caso modelo • Sem compromisso comercial
-        </p>
+          {/* Microcopy Oficial (Locked) */}
+          <p className="text-xs sm:text-sm text-slate-400 mb-14">
+            Sessão prática no Google Meet • Traga um processo real ou use nosso caso modelo • Sem compromisso comercial
+          </p>
 
-          {/* Institutional signature */}
+          {/* Assinatura Institucional Oficial (Locked) */}
           <div className="pt-10 border-t border-white/10 max-w-lg mx-auto">
             <p className="font-serif text-lg sm:text-xl italic text-slate-200 mb-2">
               “Antes da peça, existe um caso inteiro.”

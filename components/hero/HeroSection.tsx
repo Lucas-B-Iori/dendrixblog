@@ -1,82 +1,103 @@
 import React from "react";
 import { HeroSplitScreen } from "./HeroSplitScreen";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, CheckCircle, ShieldCheck } from "lucide-react";
 import { OpenDemoButton } from "@/components/cta/OpenDemoButton";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { ContainerScroll3D } from "@/components/motion/ContainerScroll3D";
-import { ParticlesBackground } from "@/components/motion/ParticlesBackground";
-import { InteractiveGridPattern } from "@/components/motion/InteractiveGridPattern";
+import { LiquidBackground } from "@/components/motion/LiquidBackground";
+import { RollingCounter } from "@/components/motion/RollingCounter";
 
 export function HeroSection() {
   return (
-    <SectionWrapper id="hero" width="default" spacing="hero" className="relative overflow-hidden">
-      {/* Subtle Dynamic Ambient Layers */}
-      <InteractiveGridPattern className="opacity-40" />
-      <ParticlesBackground quantity={28} className="opacity-60" />
+    <SectionWrapper id="hero" width="default" spacing="hero" className="relative overflow-hidden min-h-[92vh] flex items-center">
+      {/* Camada 0: Canvas Líquido Escuro Nobre (Skiper 12 / Vercel Liquid Simulation) */}
+      <LiquidBackground variant="hero" />
 
-      {/* Soft Ambient Radial Light */}
+      {/* Brilho Radial Atmosférico Forense */}
       <div
-        className="pointer-events-none absolute -top-24 right-0 w-[600px] h-[600px] rounded-full opacity-20 blur-3xl"
+        className="pointer-events-none absolute -top-24 right-0 w-[700px] h-[700px] rounded-full opacity-35 blur-3xl"
         style={{
-          background: "radial-gradient(circle, rgba(15,43,72,0.3) 0%, rgba(16,185,129,0.15) 50%, transparent 80%)",
+          background: "radial-gradient(circle, rgba(16,185,129,0.18) 0%, rgba(2,132,199,0.12) 40%, transparent 75%)",
         }}
         aria-hidden="true"
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
-        {/* Left Column: Official Locked Copy */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10 w-full py-6">
+        {/* Coluna Esquerda: Texto Oficial Travado com Estética de Luxo */}
         <div className="lg:col-span-5 space-y-6 sm:space-y-7 text-left">
-          {/* Eyebrow */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0F2B48]/6 border border-[#0F2B48]/12 text-[#0F2B48] text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-[#0F2B48]" />
+          {/* Eyebrow Forense */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider shadow-[0_0_12px_rgba(16,185,129,0.15)]">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
             <span>CRM Jurídico com Inteligência Contextual</span>
           </div>
 
-          {/* H1 (Locked) */}
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-[3.25rem] font-medium leading-[1.14] tracking-[-0.025em] text-[#0F172A] text-balance">
+          {/* H1 Oficial (Locked) */}
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-[3.25rem] font-medium leading-[1.12] tracking-[-0.03em] text-white text-balance">
             Dos autos à minuta, com a origem das informações sempre visível.
           </h1>
 
-          {/* Subheadline (Locked) */}
-          <p className="text-base sm:text-lg text-[#334155] leading-relaxed max-w-xl font-normal">
+          {/* Subheadline Oficial (Locked) */}
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl font-normal">
             O Dendrix conecta o contexto do processo à leitura dos autos em PDF, identifica fatos e contradições com referência às páginas e auxilia na redação da peça no mesmo ambiente.
           </p>
 
           {/* Action CTAs */}
-          <div className="space-y-3 pt-1">
+          <div className="space-y-3.5 pt-1">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <OpenDemoButton className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white bg-[#0F2B48] hover:bg-[#0A1C30] active:scale-[0.99] rounded-md transition-all shadow-sm hover:shadow cursor-pointer focus-ring text-center">
+              <OpenDemoButton className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white bg-gradient-to-r from-[#0F2B48] to-[#0A3D62] hover:from-[#143D66] hover:to-[#0D4B78] border border-white/10 rounded-xl transition-all shadow-[0_0_25px_rgba(15,43,72,0.6)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer focus-ring text-center">
                 <span>Agendar demonstração prática</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 text-emerald-400" />
               </OpenDemoButton>
 
               <a
                 href="#cockpit"
-                className="inline-flex items-center justify-center px-5 py-3.5 text-sm font-semibold text-[#0F172A] hover:text-[#0F2B48] bg-white hover:bg-slate-50 active:bg-slate-100 rounded-md transition-all text-center border border-[#CBD5E1] shadow-2xs"
+                className="inline-flex items-center justify-center px-5 py-3.5 text-sm font-semibold text-slate-200 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] active:bg-white/[0.1] rounded-xl transition-all text-center border border-white/10 backdrop-blur-md"
               >
                 Ver o produto em ação
               </a>
             </div>
 
-            {/* Microcopy (Locked) */}
-            <p className="text-xs text-[#64748B] flex items-start sm:items-center gap-2 pt-0.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block shrink-0 mt-1 sm:mt-0" />
+            {/* Microcopy Oficial (Locked) */}
+            <p className="text-xs text-slate-400 flex items-start sm:items-center gap-2 pt-0.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block shrink-0 mt-1 sm:mt-0 shadow-[0_0_6px_#34D399]" />
               <span className="leading-snug">15 minutos • Traga um processo da sua banca ou use nosso caso modelo.</span>
             </p>
           </div>
 
-          {/* Institutional Signature (Locked) */}
-          <div className="pt-4 border-t border-[#E2E8F0] space-y-1">
-            <p className="text-sm font-semibold text-[#0F172A]">
+          {/* Métricas Operacionais Rolantes (Skiper 37) */}
+          <div className="grid grid-cols-3 gap-2.5 pt-3 pb-1 border-t border-white/10">
+            <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <div className="text-lg sm:text-xl font-bold font-mono text-emerald-400">
+                <RollingCounter value={10412} suffix="+" />
+              </div>
+              <span className="text-[10px] text-slate-400 block font-sans leading-tight">Autos indexados</span>
+            </div>
+            <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <div className="text-lg sm:text-xl font-bold font-mono text-cyan-400">
+                <RollingCounter value={8} prefix="< " suffix="s" />
+              </div>
+              <span className="text-[10px] text-slate-400 block font-sans leading-tight">Leitura por volume</span>
+            </div>
+            <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <div className="text-lg sm:text-xl font-bold font-mono text-emerald-400">
+                <RollingCounter value={0} />
+              </div>
+              <span className="text-[10px] text-slate-400 block font-sans leading-tight">Prazos perdidos</span>
+            </div>
+          </div>
+
+          {/* Assinatura Institucional Oficial (Locked) */}
+          <div className="pt-3 border-t border-white/10 space-y-1">
+            <p className="text-sm font-semibold text-white">
               Antes da peça, existe um caso inteiro.
             </p>
-            <p className="text-xs sm:text-sm text-[#64748B]">
+            <p className="text-xs sm:text-sm text-slate-400">
               O Dendrix organiza. A IA apoia. O advogado decide.
             </p>
           </div>
         </div>
 
-        {/* Right Column: Split-Screen Real Product Simulation with 3D Scroll Physics */}
+        {/* Coluna Direita: Split-Screen Real com Física de Scroll 3D */}
         <div className="lg:col-span-7 w-full">
           <ContainerScroll3D>
             <HeroSplitScreen />

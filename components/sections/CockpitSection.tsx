@@ -4,6 +4,7 @@ import React from "react";
 import { Sparkles, ShieldCheck, Eye, Layers } from "lucide-react";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { ProductCockpit } from "@/components/showcase/ProductCockpit";
+import { SmoothScrollSlider } from "@/components/showcase/SmoothScrollSlider";
 import { InteractiveGridPattern } from "@/components/motion/InteractiveGridPattern";
 
 export function CockpitSection() {
@@ -12,17 +13,17 @@ export function CockpitSection() {
       id="cockpit"
       width="wide"
       spacing="spacious"
-      className="bg-[#0B1520] text-slate-100 relative overflow-hidden border-t border-slate-800"
+      className="bg-[#05080C] text-slate-100 relative overflow-hidden border-t border-white/[0.08]"
     >
-      {/* Background Interactive Subtle Grid & Glow */}
-      <div className="absolute inset-0 pointer-events-none opacity-40">
-        <InteractiveGridPattern className="text-slate-700/30" />
+      {/* Background Interactive Grid & Glow */}
+      <div className="absolute inset-0 pointer-events-none opacity-20">
+        <InteractiveGridPattern className="text-slate-600/20" />
       </div>
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-emerald-500/10 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[850px] h-[380px] bg-emerald-500/10 blur-[140px] rounded-full pointer-events-none" />
 
       {/* Section Header */}
       <div className="relative z-10 text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-semibold uppercase tracking-wider shadow-inner">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-semibold uppercase tracking-wider shadow-[0_0_12px_rgba(16,185,129,0.15)]">
           <Sparkles className="w-3.5 h-3.5" />
           <span>Experiência Operacional do Software</span>
         </div>
@@ -37,23 +38,23 @@ export function CockpitSection() {
 
         {/* Feature Pills */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-2">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700/70 text-xs text-slate-300 font-mono">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs text-slate-300 font-mono">
             <Eye className="w-3 h-3 text-emerald-400" />
             Tema Escuro & Claro
           </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700/70 text-xs text-slate-300 font-mono">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs text-slate-300 font-mono">
             <Sparkles className="w-3 h-3 text-emerald-400" />
             Assistente Jurídico IA
           </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700/70 text-xs text-slate-300 font-mono">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs text-slate-300 font-mono">
             <Layers className="w-3 h-3 text-cyan-400" />
             Jurisprudência com Deduplicação
           </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700/70 text-xs text-slate-300 font-mono">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs text-slate-300 font-mono">
             <ShieldCheck className="w-3 h-3 text-amber-400" />
             DJEN & OCR Automatizado
           </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700/70 text-xs text-slate-300 font-mono">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs text-slate-300 font-mono">
             <Layers className="w-3 h-3 text-indigo-400" />
             Agenda & Tarefas por SLA
           </span>
@@ -63,6 +64,11 @@ export function CockpitSection() {
       {/* Interactive Digital Twin Showcase */}
       <div className="relative z-10">
         <ProductCockpit />
+      </div>
+
+      {/* Galeria de Peças e Evidências Forenses Reais (OriginKit Smooth Scroll Slider) */}
+      <div className="relative z-10 mt-16 pt-12 border-t border-white/[0.08]">
+        <SmoothScrollSlider />
       </div>
 
       {/* Footnote & Forensic Compliance Notice */}
