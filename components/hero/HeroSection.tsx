@@ -4,14 +4,14 @@ import { ArrowRight, Sparkles, CheckCircle, ShieldCheck } from "lucide-react";
 import { OpenDemoButton } from "@/components/cta/OpenDemoButton";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { ContainerScroll3D } from "@/components/motion/ContainerScroll3D";
-import { LiquidBackground } from "@/components/motion/LiquidBackground";
+import { VercelLiquidSimulation } from "@/components/motion/VercelLiquidSimulation";
 import { RollingCounter } from "@/components/motion/RollingCounter";
 
 export function HeroSection() {
   return (
     <SectionWrapper id="hero" width="default" spacing="hero" className="relative overflow-hidden min-h-[92vh] flex items-center">
-      {/* Camada 0: Canvas Líquido Escuro Nobre (Skiper 12 / Vercel Liquid Simulation) */}
-      <LiquidBackground variant="hero" />
+      {/* Camada 0: WebGL Liquid Wave Simulation (Skiper 12 / Vercel Ship caustics) */}
+      <VercelLiquidSimulation />
 
       {/* Brilho Radial Atmosférico Jurídico */}
       <div
