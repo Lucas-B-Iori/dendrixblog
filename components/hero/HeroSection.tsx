@@ -4,20 +4,16 @@ import { ArrowRight, Sparkles, CheckCircle, ShieldCheck } from "lucide-react";
 import { OpenDemoButton } from "@/components/cta/OpenDemoButton";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { ContainerScroll3D } from "@/components/motion/ContainerScroll3D";
-import { VercelLiquidSimulation } from "@/components/motion/VercelLiquidSimulation";
 import { RollingCounter } from "@/components/motion/RollingCounter";
 
 export function HeroSection() {
   return (
     <SectionWrapper id="hero" width="default" spacing="hero" className="relative overflow-hidden min-h-[92vh] flex items-center">
-      {/* Camada 0: WebGL Liquid Wave Simulation (Skiper 12 / Vercel Ship caustics) */}
-      <VercelLiquidSimulation />
-
-      {/* Brilho Radial Atmosférico Jurídico */}
+      {/* Brilho Radial Atmosférico Jurídico Suave */}
       <div
-        className="pointer-events-none absolute -top-24 right-0 w-[700px] h-[700px] rounded-full opacity-35 blur-3xl"
+        className="pointer-events-none absolute -top-24 right-0 w-[700px] h-[700px] rounded-full opacity-20 dark:opacity-35 blur-3xl"
         style={{
-          background: "radial-gradient(circle, rgba(16,185,129,0.18) 0%, rgba(2,132,199,0.12) 40%, transparent 75%)",
+          background: "radial-gradient(circle, rgba(16,185,129,0.15) 0%, rgba(2,132,199,0.08) 40%, transparent 75%)",
         }}
         aria-hidden="true"
       />

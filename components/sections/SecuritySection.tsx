@@ -34,7 +34,7 @@ export function SecuritySection() {
   ];
 
   return (
-    <SectionWrapper id="seguranca" className="border-t border-slate-200 dark:border-white/[0.08] bg-slate-50 dark:bg-[#05080C]" spacing="default">
+    <SectionWrapper id="seguranca" className="border-t border-slate-200 dark:border-white/[0.08] bg-transparent" spacing="default">
       {/* Bloco Flagship Apple (Skiper 76 / Apple Feature Block) */}
       <div className="mb-14">
         <AppleFeatureCard />

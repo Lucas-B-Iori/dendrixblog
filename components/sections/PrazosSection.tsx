@@ -28,7 +28,7 @@ export function PrazosSection() {
   ];
 
   return (
-    <SectionWrapper className="border-t border-slate-200 dark:border-white/[0.08] bg-slate-50 dark:bg-[#070D14]" spacing="default">
+    <SectionWrapper className="border-t border-slate-200 dark:border-white/[0.08] bg-transparent" spacing="default">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         {/* Left Column: Copy */}
         <div className="lg:col-span-6 space-y-6 text-left">

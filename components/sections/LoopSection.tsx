@@ -53,7 +53,7 @@ export function LoopSection() {
   return (
     <SectionWrapper
       id="como-funciona"
-      className="border-t border-slate-200 dark:border-white/[0.08] bg-white dark:bg-[#05080C] scroll-mt-16 relative overflow-hidden"
+      className="border-t border-slate-200 dark:border-white/[0.08] bg-transparent scroll-mt-16 relative overflow-hidden"
       spacing="default"
     >
       {/* Brilho Radial Central */}

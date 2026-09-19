@@ -13,7 +13,7 @@ export function CockpitSection() {
       id="cockpit"
       width="wide"
       spacing="spacious"
-      className="bg-[#F8FAFC] dark:bg-[#05080C] text-slate-800 dark:text-slate-100 relative overflow-hidden border-t border-slate-200 dark:border-white/[0.08]"
+      className="bg-transparent text-slate-800 dark:text-slate-100 relative overflow-hidden border-t border-slate-200 dark:border-white/[0.08]"
     >
       {/* Background Interactive Grid & Glow */}
       <div className="absolute inset-0 pointer-events-none opacity-20">

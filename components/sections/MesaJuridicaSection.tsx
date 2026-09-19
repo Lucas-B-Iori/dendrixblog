@@ -33,7 +33,7 @@ export function MesaJuridicaSection({ onOpenDemo }: MesaJuridicaSectionProps = {
   ];
 
   return (
-    <SectionWrapper id="recursos" className="border-t border-slate-200 dark:border-white/[0.08] bg-slate-50 dark:bg-[#070D14]" spacing="default">
+    <SectionWrapper id="recursos" className="border-t border-slate-200 dark:border-white/[0.08] bg-transparent" spacing="default">
       {/* Bloco Superior: Acordeão de Lâminas Jurídicas (OriginKit Spotlight Frames) */}
       <div className="mb-16">
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">

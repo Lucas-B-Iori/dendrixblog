@@ -15,7 +15,7 @@ export function EspecialidadesSection() {
   return (
     <SectionWrapper
       id="especialidades"
-      className="border-t border-slate-200 dark:border-white/[0.08] bg-[#F8FAFC] dark:bg-[#05080C] text-slate-900 dark:text-white relative overflow-hidden"
+      className="border-t border-slate-200 dark:border-white/[0.08] bg-transparent text-slate-900 dark:text-white relative overflow-hidden"
       spacing="default"
     >
       {/* Brilho de Fundo Esmeralda & Ciano */}

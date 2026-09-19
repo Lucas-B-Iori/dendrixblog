@@ -13,7 +13,7 @@ export function FaqSection() {
   };
 
   return (
-    <SectionWrapper id="faq" className="border-t border-slate-200 dark:border-white/[0.08] bg-slate-50 dark:bg-[#070D14]" spacing="default" width="narrow">
+    <SectionWrapper id="faq" className="border-t border-slate-200 dark:border-white/[0.08] bg-transparent" spacing="default" width="narrow">
       <div className="text-center mb-14">
         <span className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full inline-block mb-3">
           ESCLARECIMENTOS TÉCNICOS

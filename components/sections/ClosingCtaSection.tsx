@@ -3,7 +3,6 @@ import { Calendar, MessageSquare, ArrowRight } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/config";
 import { OpenDemoButton } from "@/components/cta/OpenDemoButton";
 import { BorderBeam } from "@/components/motion/BorderBeam";
-import { LiquidBackground } from "@/components/motion/LiquidBackground";
 
 export function ClosingCtaSection() {
   const whatsappUrl = getWhatsAppLink(
@@ -11,10 +10,7 @@ export function ClosingCtaSection() {
   );
 
   return (
-    <section className="bg-[#F8FAFC] dark:bg-[#05080C] text-slate-900 dark:text-white py-20 sm:py-28 relative overflow-hidden border-t border-slate-200 dark:border-white/[0.08]">
-      {/* Liquid Canvas de Fechamento (Skiper 12) */}
-      <LiquidBackground variant="closing" />
-
+    <section className="bg-transparent text-slate-900 dark:text-white py-20 sm:py-28 relative overflow-hidden border-t border-slate-200 dark:border-white/[0.08]">
       {/* Brilho de Fundo Esmeralda / Azul Profundo */}
       <div
         className="absolute inset-0 pointer-events-none opacity-25"

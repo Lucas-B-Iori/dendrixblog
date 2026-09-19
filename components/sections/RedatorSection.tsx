@@ -33,7 +33,7 @@ export function RedatorSection({ onOpenDemo }: RedatorSectionProps = {}) {
   ];
 
   return (
-    <SectionWrapper className="border-t border-slate-200 dark:border-white/[0.08] bg-white dark:bg-[#05080C]" spacing="default">
+    <SectionWrapper className="border-t border-slate-200 dark:border-white/[0.08] bg-transparent" spacing="default">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         {/* Left Column: Macro-recorte do Redator (Inverted layout) */}
         <div className="lg:col-span-6 w-full order-2 lg:order-1">

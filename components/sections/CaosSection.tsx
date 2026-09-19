@@ -33,7 +33,7 @@ export function CaosSection() {
   ];
 
   return (
-    <SectionWrapper id="problema" className="border-t border-slate-200 dark:border-white/[0.08] bg-slate-50 dark:bg-[#070D14] relative overflow-hidden" spacing="default">
+    <SectionWrapper id="problema" className="border-t border-slate-200 dark:border-white/[0.08] bg-transparent relative overflow-hidden" spacing="default">
       {/* Brilho de Fundo Sutil Âmbar */}
       <div
         className="pointer-events-none absolute -left-20 top-1/3 w-[500px] h-[500px] rounded-full opacity-15 blur-3xl"
