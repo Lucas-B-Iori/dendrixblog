@@ -33,24 +33,36 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const canonicalUrl = `https://dendrixcrm.com.br/blog/${slug}/`;
+  const absoluteImageUrl = post.coverImage
+    ? post.coverImage.startsWith("http")
+      ? post.coverImage
+      : `https://dendrixcrm.com.br${post.coverImage.startsWith("/") ? "" : "/"}${post.coverImage}`
+    : undefined;
+
   return {
     title: `${post.title} | Blog Dendrix`,
     description: post.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: post.title,
       description: post.description,
+      url: canonicalUrl,
+      siteName: "Dendrix CRM",
       type: "article",
       publishedTime: post.date,
       authors: [post.author.name],
       tags: post.tags,
       locale: "pt_BR",
-      images: post.coverImage ? [{ url: post.coverImage, alt: post.title }] : undefined,
+      images: absoluteImageUrl ? [{ url: absoluteImageUrl, alt: post.title }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: post.coverImage ? [post.coverImage] : undefined,
+      images: absoluteImageUrl ? [absoluteImageUrl] : undefined,
     },
   };
 }
@@ -71,8 +83,78 @@ export default async function BlogPostPage({ params }: PageProps) {
     year: "numeric",
   });
 
+  const canonicalUrl = `https://dendrixcrm.com.br/blog/${slug}/`;
+  const absoluteImageUrl = post.coverImage
+    ? post.coverImage.startsWith("http")
+      ? post.coverImage
+      : `https://dendrixcrm.com.br${post.coverImage.startsWith("/") ? "" : "/"}${post.coverImage}`
+    : undefined;
+
+  const blogPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonicalUrl,
+    },
+    author: {
+      "@type": "Person",
+      name: post.author.name || "Lucas Iori",
+      jobTitle: post.author.role,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Dendrix CRM",
+      url: "https://dendrixcrm.com.br",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://dendrixcrm.com.br/icon.svg",
+      },
+    },
+    image: absoluteImageUrl,
+    inLanguage: "pt-BR",
+    keywords: post.tags?.join(", "),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: "https://dendrixcrm.com.br/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://dendrixcrm.com.br/blog/",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: canonicalUrl,
+      },
+    ],
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-[var(--surface-canvas)] text-[var(--text-primary)] transition-colors duration-300">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Barra de Progresso de Leitura Suave */}
       <ReadingProgressBar />
 
@@ -141,7 +223,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
               </div>
 
-              <ShareButtons title={post.title} />
+              <ShareButtons title={post.title} url={canonicalUrl} />
             </div>
           </header>
 
@@ -186,7 +268,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   ))}
                 </div>
 
-                <ShareButtons title={post.title} />
+                <ShareButtons title={post.title} url={canonicalUrl} />
               </div>
 
               {/* Box de Assinatura do Autor */}

@@ -1,12 +1,25 @@
 import React from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Calendar, ShieldCheck, MessageSquare, ExternalLink } from "lucide-react";
 import { ENV_CONFIG, getWhatsAppLink } from "@/lib/config";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Agendar Demonstração Prática (15 min) | Dendrix CRM",
   description:
     "Escolha o melhor dia e horário para ver o Dendrix ler um processo da sua banca e estruturar a minuta ao vivo.",
+  alternates: {
+    canonical: "https://dendrixcrm.com.br/demonstracao/",
+  },
+  openGraph: {
+    title: "Agendar Demonstração Prática (15 min) | Dendrix CRM",
+    description:
+      "Escolha o melhor dia e horário para ver o Dendrix ler um processo da sua banca e estruturar a minuta ao vivo.",
+    url: "https://dendrixcrm.com.br/demonstracao/",
+    siteName: "Dendrix CRM",
+    locale: "pt_BR",
+    type: "website",
+  },
 };
 
 export default function DemonstracaoPage() {

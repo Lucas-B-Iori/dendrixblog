@@ -1,13 +1,26 @@
 import React from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Server, ShieldCheck, Lock, UserCheck, ArrowLeft, ArrowRight } from "lucide-react";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Segurança, Privacidade e LGPD | Dendrix CRM",
   description:
     "Conheça as medidas técnicas e contratuais de isolamento de dados, servidores no Brasil e vedação de retreino de IA adotadas pelo Dendrix CRM.",
+  alternates: {
+    canonical: "https://dendrixcrm.com.br/seguranca/",
+  },
+  openGraph: {
+    title: "Segurança, Privacidade e LGPD | Dendrix CRM",
+    description:
+      "Conheça as medidas técnicas e contratuais de isolamento de dados, servidores no Brasil e vedação de retreino de IA adotadas pelo Dendrix CRM.",
+    url: "https://dendrixcrm.com.br/seguranca/",
+    siteName: "Dendrix CRM",
+    locale: "pt_BR",
+    type: "website",
+  },
 };
 
 export default function SegurancaPage() {

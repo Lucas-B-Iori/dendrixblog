@@ -1,4 +1,5 @@
 import React from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -6,14 +7,19 @@ import { getAllPosts } from "@/lib/blog";
 import { BlogFeed } from "@/components/blog/BlogFeed";
 import { ArrowLeft, BookOpen, Sparkles, Calendar, ArrowRight } from "lucide-react";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Blog Jurídico Dendrix | Inteligência Contextual, Gestão e Prazos",
   description:
     "Artigos técnicos, guias operacionais de controladoria e análises de inteligência artificial aplicada ao contencioso judicial brasileiro.",
+  alternates: {
+    canonical: "https://dendrixcrm.com.br/blog/",
+  },
   openGraph: {
     title: "Blog Jurídico Dendrix | Inteligência Contextual, Gestão e Prazos",
     description:
       "Artigos técnicos e guias práticos sobre inteligência jurídica, gestão de processos e produtividade para bancas de advocacia.",
+    url: "https://dendrixcrm.com.br/blog/",
+    siteName: "Dendrix CRM",
     type: "website",
     locale: "pt_BR",
   },

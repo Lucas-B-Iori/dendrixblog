@@ -1,5 +1,3 @@
-import { FAQ_DATA } from "@/lib/faqData";
-
 export function JsonLd() {
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -26,19 +24,6 @@ export function JsonLd() {
       "Software jurídico que conecta o contexto do processo à leitura dos autos em PDF com citação de páginas e redação assistida no mesmo ambiente.",
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: FAQ_DATA.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answerText,
-      },
-    })),
-  };
-
   return (
     <>
       <script
@@ -48,10 +33,6 @@ export function JsonLd() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </>
   );

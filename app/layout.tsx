@@ -35,9 +35,6 @@ export const metadata: Metadata = {
   title: "Dendrix CRM | O CRM Jurídico com Inteligência Contextual",
   description: "Dos autos à minuta, com a origem das informações sempre visível. Conecte processos, prazos e clientes à melhor estratégia jurídica.",
   metadataBase: new URL("https://dendrixcrm.com.br"),
-  alternates: {
-    canonical: "/",
-  },
   robots: {
     index: true,
     follow: true,
@@ -45,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Dendrix CRM | O CRM Jurídico com Inteligência Contextual",
     description: "Dos autos à minuta, com a origem das informações sempre visível. Conecte processos, prazos e clientes à melhor estratégia jurídica.",
-    url: "https://dendrixcrm.com.br",
+    url: "https://dendrixcrm.com.br/",
     siteName: "Dendrix CRM",
     locale: "pt_BR",
     type: "website",

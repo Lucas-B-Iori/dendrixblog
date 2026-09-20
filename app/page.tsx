@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { CaosSection } from "@/components/sections/CaosSection";
@@ -11,14 +12,34 @@ import { CaseStudySection } from "@/components/sections/CaseStudySection";
 import { RoiCalculator } from "@/components/sections/RoiCalculator";
 import { SecuritySection } from "@/components/sections/SecuritySection";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { ClosingCtaSection } from "@/components/sections/ClosingCtaSection";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileBar } from "@/components/layout/StickyMobileBar";
 import { ContinuousPageSpine } from "@/components/motion/ContinuousPageSpine";
 
+export const metadata: Metadata = {
+  title: "Dendrix CRM | O CRM Jurídico com Inteligência Contextual",
+  description:
+    "Dos autos à minuta, com a origem das informações sempre visível. Conecte processos, prazos e clientes à melhor estratégia jurídica.",
+  alternates: {
+    canonical: "https://dendrixcrm.com.br/",
+  },
+  openGraph: {
+    title: "Dendrix CRM | O CRM Jurídico com Inteligência Contextual",
+    description:
+      "Dos autos à minuta, com a origem das informações sempre visível. Conecte processos, prazos e clientes à melhor estratégia jurídica.",
+    url: "https://dendrixcrm.com.br/",
+    siteName: "Dendrix CRM",
+    locale: "pt_BR",
+    type: "website",
+  },
+};
+
 export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col bg-[var(--surface-canvas)] text-[var(--text-primary)] transition-colors duration-300">
+      <FaqJsonLd />
       <Navbar />
 
       <main className="flex-1 relative">

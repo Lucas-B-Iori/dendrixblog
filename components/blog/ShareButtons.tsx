@@ -15,7 +15,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
     if (typeof window !== "undefined") {
       return url || window.location.href;
     }
-    return url || "https://dendrix.app.br/blog";
+    return url || "https://dendrixcrm.com.br/blog/";
   };
 
   const handleCopy = async () => {
