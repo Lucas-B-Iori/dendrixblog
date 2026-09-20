@@ -4,8 +4,8 @@ slug: "controle-de-prazos-djen-sem-planilhas-paralelas"
 description: "Por que controlar intimações oficiais e prazos fatais em planilhas de Excel gera riscos graves de preclusão e como estruturar uma esteira automatizada conectada ao Diário de Justiça Eletrônico Nacional."
 date: "2026-09-17"
 author:
-  name: "Dra. Carolina Mendes"
-  role: "Especialista em Controladoria Jurídica & Gestão Processual"
+  name: "Lucas Iori"
+  role: "Fundador Dendrix & Estrategista de Operações Jurídicas"
 category: "Gestão e CRM Jurídico"
 categorySlug: "gestao-crm"
 tags: ["DJEN", "Prazos Processuais", "CPC/15", "Controladoria Jurídica", "Tempestividade"]

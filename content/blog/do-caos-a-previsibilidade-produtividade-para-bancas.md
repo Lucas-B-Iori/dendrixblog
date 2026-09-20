@@ -4,7 +4,7 @@ slug: "do-caos-a-previsibilidade-produtividade-para-bancas"
 description: "Como bancas em crescimento dobram a capacidade de protocolo sem contratar estagiários em excesso, sem estender o expediente até a madrugada e mantendo o padrão técnico artesanal."
 date: "2026-09-16"
 author:
-  name: "Lucas B. Iori"
+  name: "Lucas Iori"
   role: "Fundador Dendrix & Estrategista de Operações Jurídicas"
 category: "Produtividade Forense"
 categorySlug: "produtividade"

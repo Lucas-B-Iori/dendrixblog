@@ -4,8 +4,8 @@ slug: "por-que-o-chatgpt-falha-na-advocacia-estrita"
 description: "Estudos de Stanford apontam taxas de alucinação de até 88% em modelos genéricos no Direito. Entenda os riscos de litigância de má-fé e como a indexação fática de autos com indicação de folhas resolve o problema."
 date: "2026-09-18"
 author:
-  name: "Dr. Roberto Antunes"
-  role: "Consultor de Inteligência Processual & LegalTech"
+  name: "Lucas Iori"
+  role: "Fundador Dendrix & Estrategista de Operações Jurídicas"
 category: "Inteligência Artificial Jurídica"
 categorySlug: "ia-juridica"
 tags: ["IA Jurídica", "Leitura de Autos", "CED-OAB", "Jurisprudência", "Tempestividade"]
