@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { ShieldCheck, Server, Lock } from "lucide-react";
+import { trackDemoCtaClick } from "@/lib/analytics";
 
 export function Footer() {
   return (
@@ -101,7 +104,16 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/demonstracao" className="hover:text-white transition-colors">
+                <Link
+                  href="/demonstracao"
+                  onClick={() =>
+                    trackDemoCtaClick({
+                      cta_location: "footer",
+                      cta_text: "Agendar Demonstração (15 min)",
+                    })
+                  }
+                  className="hover:text-white transition-colors"
+                >
                   Agendar Demonstração (15 min)
                 </Link>
               </li>

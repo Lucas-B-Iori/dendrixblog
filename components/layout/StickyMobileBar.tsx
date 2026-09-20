@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { MessageSquare, Calendar } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/config";
 import { useDemoModal } from "@/components/providers/DemoModalProvider";
+import { trackDemoCtaClick, trackWhatsAppClick } from "@/lib/analytics";
 
 export function StickyMobileBar() {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,7 +36,13 @@ export function StickyMobileBar() {
       <div className="flex items-center gap-2.5 max-w-md mx-auto">
         <button
           type="button"
-          onClick={openDemoModal}
+          onClick={() => {
+            trackDemoCtaClick({
+              cta_location: "sticky_mobile_bar",
+              cta_text: "Agendar Demonstração (15m)",
+            });
+            openDemoModal();
+          }}
           className="flex-1 min-h-[44px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-xs font-semibold shadow-[0_0_15px_rgba(16,185,129,0.3)] active:scale-[0.98] transition-transform cursor-pointer border border-emerald-400/30"
         >
           <Calendar className="w-4 h-4 text-emerald-200" />
@@ -47,6 +54,12 @@ export function StickyMobileBar() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Falar no WhatsApp"
+          onClick={() =>
+            trackWhatsAppClick({
+              cta_location: "sticky_mobile_bar",
+              cta_text: "Falar no WhatsApp",
+            })
+          }
           className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-200 hover:text-emerald-500 dark:hover:text-emerald-400 active:scale-[0.98] transition-colors"
         >
           <MessageSquare className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />

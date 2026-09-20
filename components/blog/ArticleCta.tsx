@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Calendar, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
+import { trackDemoCtaClick } from "@/lib/analytics";
 
 interface ArticleCtaProps {
   compact?: boolean;
@@ -21,6 +22,12 @@ export function ArticleCta({ compact = false }: ArticleCtaProps) {
         </p>
         <Link
           href="/demonstracao"
+          onClick={() =>
+            trackDemoCtaClick({
+              cta_location: "article_cta_compact",
+              cta_text: "Agendar Demo (15 min)",
+            })
+          }
           className="inline-flex items-center justify-center gap-1.5 w-full py-2 px-3 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl transition-colors shadow-sm"
         >
           <Calendar className="w-3.5 h-3.5" />
@@ -55,6 +62,12 @@ export function ArticleCta({ compact = false }: ArticleCtaProps) {
         <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           <Link
             href="/demonstracao"
+            onClick={() =>
+              trackDemoCtaClick({
+                cta_location: "article_cta_full",
+                cta_text: "Agendar demonstração prática (15 min)",
+              })
+            }
             className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition-all shadow-md hover:scale-[1.02] active:scale-[0.98]"
           >
             <Calendar className="w-4 h-4" />

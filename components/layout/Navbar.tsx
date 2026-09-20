@@ -8,6 +8,7 @@ import { useDemoModal } from "@/components/providers/DemoModalProvider";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { KineticLink } from "@/components/motion/KineticLink";
 import { MorphingThemeToggle } from "@/components/motion/MorphingThemeToggle";
+import { trackDemoCtaClick } from "@/lib/analytics";
 
 interface NavbarProps {
   onOpenDemo?: () => void;
@@ -101,7 +102,13 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
 
             <button
               type="button"
-              onClick={handleOpen}
+              onClick={() => {
+                trackDemoCtaClick({
+                  cta_location: "navbar_desktop",
+                  cta_text: "Agendar demonstração",
+                });
+                handleOpen();
+              }}
               className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-[#0F2B48] to-[#0A3D62] hover:from-[#13375C] hover:to-[#0C4A75] border border-white/10 rounded-xl transition-all duration-200 shadow-[0_0_15px_rgba(15,43,72,0.4)] cursor-pointer hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap"
             >
               <Calendar className="w-4 h-4 text-emerald-400" />
@@ -118,7 +125,13 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
             />
             <button
               type="button"
-              onClick={handleOpen}
+              onClick={() => {
+                trackDemoCtaClick({
+                  cta_location: "navbar_mobile",
+                  cta_text: "Agendar",
+                });
+                handleOpen();
+              }}
               className="px-3 py-1.5 text-xs font-semibold text-white bg-[#0F2B48] border border-white/10 rounded-lg cursor-pointer"
             >
               Agendar

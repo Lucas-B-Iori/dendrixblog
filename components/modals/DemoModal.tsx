@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { X, Calendar, MessageSquare, ExternalLink, ShieldCheck } from "lucide-react";
 import { ENV_CONFIG, getWhatsAppLink } from "@/lib/config";
+import { trackOpenCal, trackWhatsAppClick, trackGenerateLead } from "@/lib/analytics";
 
 interface DemoModalProps {
   isOpen: boolean;
@@ -11,6 +12,50 @@ interface DemoModalProps {
 
 export function DemoModal({ isOpen, onClose }: DemoModalProps) {
   const [iframeLoaded, setIframeLoaded] = useState(false);
+
+  // Mensuração do acesso à agenda quando a modal abre
+  useEffect(() => {
+    if (isOpen) {
+      trackOpenCal({ interaction_type: "modal", source: "demo_modal" });
+    }
+  }, [isOpen]);
+
+  // Listener para captura confiável do evento de confirmação de agendamento do Cal.com
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleMessage = (e: MessageEvent) => {
+      let data = e.data;
+      if (typeof data === "string") {
+        try {
+          data = JSON.parse(data);
+        } catch {
+          // ignora mensagens não-JSON
+        }
+      }
+      if (!data) return;
+
+      const isCalBooking =
+        data.action === "bookingSuccessful" ||
+        data.action === "bookingSuccessfulV2" ||
+        data.type === "CAL:bookingSuccessful" ||
+        data.type === "CAL:bookingSuccessfulV2" ||
+        data.event === "bookingSuccessful" ||
+        data.event === "bookingSuccessfulV2" ||
+        (data.origin === "CAL" && (data.type === "bookingSuccessful" || data.type === "bookingSuccessfulV2"));
+
+      if (isCalBooking) {
+        trackGenerateLead({
+          source: "cal_embed",
+          context: "demo_modal",
+          booking_id: data.data?.uid || data.payload?.uid || undefined,
+        });
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, [isOpen]);
 
   // Fecha no ESC
   useEffect(() => {
@@ -91,6 +136,12 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
               href={calUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackOpenCal({
+                  interaction_type: "full_screen_external",
+                  source: "demo_modal_fullscreen_link",
+                })
+              }
               className="inline-flex items-center gap-1 text-[var(--accent-navy)] hover:underline"
             >
               <span>Abrir agenda em tela cheia</span>
@@ -101,6 +152,12 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackWhatsAppClick({
+                  cta_location: "demo_modal",
+                  cta_text: "Dúvidas ou agendamento direto pelo WhatsApp",
+                })
+              }
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-50 text-emerald-800 hover:bg-emerald-100 font-medium transition-colors border border-emerald-200"
             >
               <MessageSquare className="w-4 h-4 text-emerald-600" />

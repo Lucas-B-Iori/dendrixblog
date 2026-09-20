@@ -303,7 +303,10 @@ export function Skiper6Hero() {
         {/* 5. CTAs Principais */}
         <div className="pt-2 space-y-3 flex flex-col items-center">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
-            <OpenDemoButton className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-gradient-to-r from-[#0F2B48] to-[#0A3D62] hover:from-[#143D66] hover:to-[#0D4B78] border border-white/10 rounded-xl transition-all shadow-[0_0_25px_rgba(15,43,72,0.6)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer focus-ring text-center w-full sm:w-auto">
+            <OpenDemoButton
+              ctaLocation="hero"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-gradient-to-r from-[#0F2B48] to-[#0A3D62] hover:from-[#143D66] hover:to-[#0D4B78] border border-white/10 rounded-xl transition-all shadow-[0_0_25px_rgba(15,43,72,0.6)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer focus-ring text-center w-full sm:w-auto"
+            >
               <span>Agendar demonstração prática</span>
               <ArrowRight className="w-4 h-4 text-emerald-400" />
             </OpenDemoButton>

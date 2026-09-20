@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Newsreader, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { DemoModalProvider } from "@/components/providers/DemoModalProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ScrollProgressBar } from "@/components/layout/ScrollProgressBar";
@@ -88,6 +89,7 @@ export default function RootLayout({
       data-theme="dark"
     >
       <body className="antialiased min-h-screen bg-[var(--surface-canvas)] text-[var(--text-primary)] font-sans selection:bg-[#0F2B48] selection:text-white transition-colors duration-300">
+        <GoogleAnalytics />
         <ThemeProvider>
           <ScrollProgressBar />
           <JsonLd />

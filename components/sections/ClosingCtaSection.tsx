@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import { Calendar, MessageSquare, ArrowRight } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/config";
 import { OpenDemoButton } from "@/components/cta/OpenDemoButton";
+import { trackWhatsAppClick } from "@/lib/analytics";
 import { BorderBeam } from "@/components/motion/BorderBeam";
 
 export function ClosingCtaSection() {
@@ -39,7 +42,10 @@ export function ClosingCtaSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-            <OpenDemoButton className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-base shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer border border-emerald-400/30">
+            <OpenDemoButton
+              ctaLocation="closing_cta"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-base shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer border border-emerald-400/30"
+            >
               <span>Agendar demonstração prática (15 min)</span>
               <ArrowRight className="w-4 h-4" />
             </OpenDemoButton>
@@ -48,6 +54,12 @@ export function ClosingCtaSection() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackWhatsAppClick({
+                  cta_location: "closing_cta",
+                  cta_text: "Dúvidas rápidas? Fale pelo WhatsApp",
+                })
+              }
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.05] dark:hover:bg-white/[0.08] text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-white/10 font-medium text-base transition-colors backdrop-blur-md"
             >
               <MessageSquare className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
