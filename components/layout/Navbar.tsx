@@ -3,12 +3,13 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ArrowUpRight, Calendar } from "lucide-react";
+import { Menu, X, ArrowUpRight, Calendar, LogIn } from "lucide-react";
 import { useDemoModal } from "@/components/providers/DemoModalProvider";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { KineticLink } from "@/components/motion/KineticLink";
 import { MorphingThemeToggle } from "@/components/motion/MorphingThemeToggle";
-import { trackDemoCtaClick } from "@/lib/analytics";
+import { trackDemoCtaClick, trackLoginClick } from "@/lib/analytics";
+import { ENV_CONFIG } from "@/lib/config";
 
 interface NavbarProps {
   onOpenDemo?: () => void;
@@ -91,13 +92,15 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
             />
 
             <a
-              href="https://dendrix.app.br"
+              href={ENV_CONFIG.appLoginUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors px-2.5 py-1.5 whitespace-nowrap"
+              onClick={() => trackLoginClick({ cta_location: "navbar_desktop" })}
+              title="Acessar o sistema Dendrix (Área do Cliente)"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 bg-slate-100/90 dark:bg-white/[0.06] hover:bg-slate-200/90 dark:hover:bg-white/[0.12] border border-slate-300/80 dark:border-white/15 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-xs hover:border-slate-400 dark:hover:border-white/30 whitespace-nowrap group"
             >
-              Entrar
-              <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+              <LogIn className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 transition-transform duration-200 group-hover:scale-110" />
+              <span>Entrar</span>
             </a>
 
             <button
@@ -116,13 +119,23 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
             </button>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
-          <div className="flex md:hidden items-center gap-2">
+          {/* Mobile Menu Toggle Button & Quick Actions */}
+          <div className="flex md:hidden items-center gap-1.5 sm:gap-2">
             <MorphingThemeToggle
               isDark={isDark}
               onToggle={toggleTheme}
               size="sm"
             />
+            <a
+              href={ENV_CONFIG.appLoginUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackLoginClick({ cta_location: "navbar_mobile_top" })}
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-slate-800 dark:text-slate-100 bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.08] dark:hover:bg-white/[0.15] border border-slate-300/90 dark:border-white/15 rounded-lg transition-colors whitespace-nowrap"
+            >
+              <LogIn className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+              <span>Entrar</span>
+            </a>
             <button
               type="button"
               onClick={() => {
@@ -132,7 +145,7 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
                 });
                 handleOpen();
               }}
-              className="px-3 py-1.5 text-xs font-semibold text-white bg-[#0F2B48] border border-white/10 rounded-lg cursor-pointer"
+              className="px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-white bg-[#0F2B48] border border-white/10 rounded-lg cursor-pointer whitespace-nowrap"
             >
               Agendar
             </button>
@@ -171,15 +184,25 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
               ))}
             </nav>
             <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex flex-col gap-3">
-              <a
-                href="https://dendrix.app.br"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 w-full py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 rounded-xl"
-              >
-                Acessar plataforma (Entrar)
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
+              <div className="p-3 rounded-xl bg-emerald-500/[0.07] border border-emerald-500/20 dark:bg-emerald-950/20 dark:border-emerald-500/30 flex items-center justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold text-slate-900 dark:text-white">Já é cliente Dendrix?</p>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 truncate">Acesse sua conta e processos</p>
+                </div>
+                <a
+                  href={ENV_CONFIG.appLoginUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    trackLoginClick({ cta_location: "navbar_mobile_drawer" });
+                  }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500 rounded-lg shadow-xs transition-colors shrink-0"
+                >
+                  <LogIn className="w-3.5 h-3.5" />
+                  <span>Entrar</span>
+                </a>
+              </div>
               <button
                 type="button"
                 onClick={() => {

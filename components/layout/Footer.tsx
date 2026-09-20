@@ -2,8 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
-import { ShieldCheck, Server, Lock } from "lucide-react";
-import { trackDemoCtaClick } from "@/lib/analytics";
+import { ShieldCheck, Server, Lock, LogIn } from "lucide-react";
+import { trackDemoCtaClick, trackLoginClick } from "@/lib/analytics";
+import { ENV_CONFIG } from "@/lib/config";
 
 export function Footer() {
   return (
@@ -85,12 +86,14 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm text-slate-400">
               <li>
                 <a
-                  href="https://dendrix.app.br"
+                  href={ENV_CONFIG.appLoginUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors flex items-center gap-1"
+                  onClick={() => trackLoginClick({ cta_location: "footer" })}
+                  className="hover:text-white transition-colors flex items-center gap-1.5"
                 >
-                  Acessar Aplicativo (Login)
+                  <LogIn className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Área do Cliente (Login)</span>
                 </a>
               </li>
               <li>

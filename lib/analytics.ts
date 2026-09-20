@@ -125,3 +125,14 @@ export function trackGenerateLead(params: {
 }) {
   trackEvent("generate_lead", params);
 }
+
+/**
+ * 6. click_login
+ * Disparado quando o usuário clica para acessar a plataforma / login
+ */
+export function trackLoginClick(params: {
+  cta_location: string;
+  [key: string]: any;
+} = { cta_location: "navbar" }) {
+  trackEvent("click_login", params);
+}

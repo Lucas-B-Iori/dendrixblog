@@ -8,6 +8,9 @@
  */
 
 export const ENV_CONFIG = {
+  // URL direta para login no aplicativo (evita loop de redirecionamento no domínio raiz)
+  appLoginUrl: process.env.NEXT_PUBLIC_APP_LOGIN_URL || "https://dendrix.app.br/login",
+
   // URL da agenda do Cal.com (ex: "https://cal.com/dendrix/demonstracao-15min")
   calUrl: process.env.NEXT_PUBLIC_CAL_URL || "",
 
