@@ -4,7 +4,7 @@ export function JsonLd() {
     "@type": "Organization",
     name: "Dendrix CRM",
     url: "https://dendrixcrm.com.br",
-    logo: "https://dendrixcrm.com.br/icon.svg",
+    logo: "https://dendrixcrm.com.br/icon.png",
     description:
       "CRM Jurídico com Inteligência Contextual. Conecte clientes, prazos e autos em um só ambiente.",
     address: {

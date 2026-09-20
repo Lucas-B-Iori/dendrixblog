@@ -39,6 +39,19 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-48x48.png", type: "image/png", sizes: "48x48" },
+      { url: "/icon-192x192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512x512.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
+  },
   openGraph: {
     title: "Dendrix CRM | O CRM Jurídico com Inteligência Contextual",
     description: "Dos autos à minuta, com a origem das informações sempre visível. Conecte processos, prazos e clientes à melhor estratégia jurídica.",
@@ -46,11 +59,20 @@ export const metadata: Metadata = {
     siteName: "Dendrix CRM",
     locale: "pt_BR",
     type: "website",
+    images: [
+      {
+        url: "/icon-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "Dendrix CRM",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Dendrix CRM | O CRM Jurídico com Inteligência Contextual",
     description: "Dos autos à minuta, com a origem das informações sempre visível. Conecte processos, prazos e clientes à melhor estratégia jurídica.",
+    images: ["/icon-512x512.png"],
   },
 };
 

@@ -112,7 +112,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       url: "https://dendrixcrm.com.br",
       logo: {
         "@type": "ImageObject",
-        url: "https://dendrixcrm.com.br/icon.svg",
+        url: "https://dendrixcrm.com.br/icon.png",
       },
     },
     image: absoluteImageUrl,

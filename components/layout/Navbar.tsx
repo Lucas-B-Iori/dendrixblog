@@ -50,6 +50,15 @@ export function Navbar({ onOpenDemo }: NavbarProps) {
         <div className="flex items-center justify-between h-18 gap-4">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0 mr-2 lg:mr-6 group">
+            <div className="w-8 h-8 rounded-lg overflow-hidden border border-slate-200/80 dark:border-white/10 shadow-2xs group-hover:scale-105 transition-transform duration-200 shrink-0 bg-[#0A121A]">
+              <img
+                src="/icon-96x96.png"
+                alt="Dendrix CRM"
+                width={32}
+                height={32}
+                className="w-full h-full object-cover"
+              />
+            </div>
             <span className="font-serif text-2xl sm:text-[1.65rem] font-medium tracking-tight text-slate-900 dark:text-white group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
               Dendrix
             </span>

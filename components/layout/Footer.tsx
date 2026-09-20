@@ -9,7 +9,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 lg:gap-12 pb-12 border-b border-white/[0.08]">
           {/* Col 1: Brand & Positioning */}
           <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg overflow-hidden border border-white/10 shadow-xs shrink-0 bg-[#0A121A]">
+                <img
+                  src="/icon-96x96.png"
+                  alt="Dendrix CRM"
+                  width={28}
+                  height={28}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <span className="font-serif text-2xl font-medium tracking-tight text-white">
                 Dendrix
               </span>
